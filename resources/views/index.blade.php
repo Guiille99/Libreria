@@ -15,6 +15,7 @@
     <span class="text-muted">Toggleable via the navbar brand.</span>
   </div>
 </div>
+<button class="btn btn-primary">Botón</button>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>

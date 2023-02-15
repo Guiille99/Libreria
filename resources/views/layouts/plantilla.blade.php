@@ -8,15 +8,63 @@
     @vite(["resources/css/app.scss", "resources/js/app.js"])
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-success">
-        <div class="container-fluid">
-            <div class="logo__container">
-                <figure>
-                    <img src="uploads/logo-nombre.png" alt="LOGO">
-                </figure>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-success text-white">
+            <div class="container-fluid justify-content-space-around">
+                <div class="logo__container d-flex align-items-center">
+                    <a href="" class="navbar-brand">
+                        <figure>
+                            <img src="uploads/logo-nombre.png" alt="LOGO" class="d-block">
+                        </figure>
+                    </a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#container__collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="container__collapse">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown link
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+
+                    <div class="cuenta__carrito">
+                        <div class="cuenta__container">
+                            <figure>
+                                <img src="uploads/person.svg" alt="Imagen de perfil">
+                            </figure>
+                            <p id="username">Mi cuenta</p> 
+                        </div>
+
+                        <div class="carrito__container">
+                            <figure>
+                                <img src="uploads/cart.svg" alt="Carrito">
+                            </figure>
+                        </div>
+                    </div>
+                  </div>                
             </div>
-        </div>
-    </nav>
+        </nav>
+
+    </header>
     @yield('content')
 </body>
 </html>

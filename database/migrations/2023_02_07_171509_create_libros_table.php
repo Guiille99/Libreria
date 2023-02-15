@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("titulo");
             $table->string("autor", 80);
             $table->string("editorial", 80);
+            $table->string("portada");
             $table->timestamp("fecha_publicacion");
             $table->double("precio");
             $table->string("genero", 40);

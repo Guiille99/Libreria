@@ -1,14 +1,26 @@
 nav{
     display: flex;
     align-items: center;
+    font-size: 1.1rem;
+    .nav_content{
+        padding: 0 40px;
+    }
     .logo__container{
-        width: 20%;
-        min-width: 180px;
+        // width: 20%;
+        // min-width: 180px;
         img{
             width: 100%;
         }
     }
-
+    .items{
+        flex: 0;
+    }
+    #cuenta__carrito{
+        img{
+            height: 25px;
+            width: 25px;
+        }
+    }
     #container__collapse{
         display: flex;
         justify-content: space-between;

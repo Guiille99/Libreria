@@ -64,7 +64,7 @@
             </div>
         </nav> --}}
         <nav class="navbar navbar-expand-lg bg-success text-white">
-            <div class="nav_content container-fluid justify-content-space-around">
+            <div class="nav_content container-fluid justify-content-space-around ps-sm-2">
                 <a class="navbar-brand" href="">
                     <figure>
                         <img src="uploads/logo-nombre2.svg" alt="LOGO" class="img-fluid">
@@ -77,7 +77,7 @@
 
                 {{-- Nav items --}}
               <div class="collapse navbar-collapse navbarNavDropdown justify-content-end">
-                <ul class="navbar-nav gap-2">
+                <ul class="navbar-nav gap-2 text-center">
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="">Inicio</a>
                   </li>

@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <div class="logo__container">
                 <figure>
-                    <img src="uploads/logo.png" alt="LOGO">
+                    <img src="uploads/logo-nombre.png" alt="LOGO">
                 </figure>
             </div>
         </div>

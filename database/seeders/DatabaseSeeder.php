@@ -17,5 +17,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(5)->create();
+        Libro::factory(5)->create();
+        $libros=Libro::all();
+        foreach ($libros as $libro) {
+            if (mb_stripos($libro->imagen, "public/")) {
+                $libro->image=str_replace(["public/"], "", $libro->imagen);
+            }
+        }
     }
 }

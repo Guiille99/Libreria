@@ -26,7 +26,7 @@
             <div class="mi-cuenta__container">
               <a href="" class="nav-link">
                 <img src="uploads/person.svg" alt="Mi cuenta" class="img-fluid">
-                <span>Mi cuenta</span>
+                <span>@yield("miCuenta")Mi cuenta</span>
               </a>
             </div>
     

@@ -23,16 +23,17 @@
             </form>
           </div>
           <div class="cuenta-carrito col-3 d-flex justify-content-center gap-5">
-            <div>
+            <div class="mi-cuenta__container">
               <a href="" class="nav-link">
                 <img src="uploads/person.svg" alt="Mi cuenta" class="img-fluid">
                 <span>Mi cuenta</span>
               </a>
             </div>
     
-            <div>
+            <div class="carrito__container">
               <a href="" class="nav-link">
                 <img src="uploads/cart.svg" alt="Carrito" class="img-fluid">
+                <span class="carrito__cantidad">0</span>
               </a>
             </div>
           </div>

@@ -20,7 +20,21 @@
         border-radius: 10px;
     }
 }
+.carrito__container{
+    position: relative;
+    span{
+        font-size: 0.8rem;
+        padding: 3px;
+        background-color: v.$dark-green;
+        color: white;
+        border-radius: 50%;
 
+        position: absolute;
+        bottom: -12px;
+        right: -10px;
+        // transform: skew(-10deg);
+    }
+}
 nav{
     font-family: v.$main_font;
     background-color: v.$dark-green;

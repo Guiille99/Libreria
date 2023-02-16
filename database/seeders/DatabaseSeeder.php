@@ -20,8 +20,9 @@ class DatabaseSeeder extends Seeder
         Libro::factory(5)->create();
         $libros=Libro::all();
         foreach ($libros as $libro) {
-            if (mb_stripos($libro->imagen, "public/")) {
-                $libro->image=str_replace(["public/"], "", $libro->imagen);
+            if (strpos($libro->portada, "public/")!="") {
+                $libro->portada=str_replace(["public/"], "", $libro->portada);
+                $libro->save();
             }
         }
     }

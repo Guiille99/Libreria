@@ -2,12 +2,34 @@
 //Colores
 $green: #219250;
 $dark-green: #0F7238;
+$white: #fff;
+$boder-input: #85e1ab;
 
-//Reseteo bootstrap
-$navbar-light-color: #fff;
-figure{
-    margin: 0 !important; //Buscar variable en bootstrap
-}
+//RESETEO BOOTSTRAP
+$navbar-light-color: $white; /*Color de los nav links*/
+$navbar-light-hover-color: $white;
+$navbar-light-toggler-icon-bg: url("uploads/toggler.svg"); //Imagen del toggler
+$navbar-toggler-focus-width: 0; //Borde del ancho cuando se pulsa el toggler
+$navbar-light-toggler-border-color: transparent; //Borde del toggler
+
+//Formularios
+$input-btn-padding-y:         .375rem;
+$input-btn-padding-x:         .75rem;
+$input-btn-focus-width:         .10rem;
+$input-btn-focus-color-opacity: .25;
+$input-btn-focus-color: $boder-input;
+$input-btn-focus-blur:          0;
+$input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
+
+//Tamaños
+$tamNavIcon: 25px;
+$tam-nav: 1.1rem;
+
+//Tamaños media-queries
+$small: 480px;
+$medium: 768px;
+$big: 1024px;
+
 //Fuentes
 $main_font: "Montserrat";
-$second_font: ""
+$second_font: "Work Sans"

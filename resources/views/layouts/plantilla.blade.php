@@ -9,114 +9,93 @@
 </head>
 <body>
     <header>
-        {{-- <nav class="navbar navbar-expand-lg bg-success text-white">
-            <div class="container-fluid justify-content-space-around">
-                <div class="logo__container d-flex align-items-center">
-                    <a href="" class="navbar-brand">
-                        <figure>
-                            <img src="uploads/logo-nombre.png" alt="LOGO" class="d-block">
-                        </figure>
-                    </a>
-                </div>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#container__collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="container__collapse">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown link
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-
-                    <div class="cuenta__carrito">
-                        <div class="cuenta__container">
-                            <figure>
-                                <img src="uploads/person.svg" alt="Imagen de perfil">
-                            </figure>
-                            <p id="username">Mi cuenta</p> 
-                        </div>
-
-                        <div class="carrito__container">
-                            <figure>
-                                <img src="uploads/cart.svg" alt="Carrito">
-                            </figure>
-                        </div>
-                    </div>
-                  </div>                
+      <div class="nav-top container-fluid">
+        <div class="row bg-success align-items-center d-none d-lg-flex">
+          <div class="col-3">
+            <figure class="m-0">
+              <img src="uploads/logo-nombre.png" alt="LOGO" class="img-fluid">
+            </figure>
+          </div>
+          <div class="col">
+            <form action="" method="post" >
+              <input type="text" name="" id="" class="form-control" placeholder="Buscar">
+              <button type="submit" class="d-none"></button>
+            </form>
+          </div>
+          <div class="cuenta-carrito col-3 d-flex justify-content-center gap-5">
+            <div>
+              <a href="" class="nav-link">
+                <img src="uploads/person.svg" alt="Mi cuenta" class="img-fluid">
+                <span>Mi cuenta</span>
+              </a>
             </div>
-        </nav> --}}
-        <nav class="navbar navbar-expand-lg bg-success text-white">
-            <div class="nav_content container-fluid justify-content-space-around ps-sm-2">
-                <a class="navbar-brand" href="">
-                    <figure>
-                        <img src="uploads/logo-nombre2.svg" alt="LOGO" class="img-fluid">
-                    </figure>
+    
+            <div>
+              <a href="" class="nav-link">
+                <img src="uploads/cart.svg" alt="Carrito" class="img-fluid">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <nav class="navbar navbar-expand-lg text-center pb-3 pb-md-auto">
+        <div class="container-fluid">      
+          <a class="navbar-brand d-block d-lg-none" href="#">
+            <img src="uploads/logo-nombre2.svg" alt="LOGO">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center gap-5" id="navbarNav">
+            {{-- Nav items --}}
+            <ul class="nav__options navbar-nav gap-2 gap-lg-4 justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="">Inicio</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Libros
                 </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                {{-- Nav items --}}
-              <div class="collapse navbar-collapse navbarNavDropdown justify-content-end">
-                <ul class="navbar-nav gap-2 text-center">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="">Inicio</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Libros
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">Contacto</a>
-                  </li>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="">Action</a></li>
+                  <li><a class="dropdown-item" href="">Another action</a></li>
+                  <li><a class="dropdown-item" href="">Something else here</a></li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Novedades</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Contacto</a>
+              </li>
+            </ul>
+    
+            <form action="" method="post" class="d-block d-lg-none mt-2">
+              <input type="text" name="" id="" class="form-control" placeholder="Buscar">
+              <button type="submit" class="d-none"></button>
+            </form>
+    
+            <div class="cuenta-carrito d-flex justify-content-center gap-5 mt-3 d-block d-lg-none">
+              <div>
+                <a href="" class="nav-link">
+                  <img src="uploads/person.svg" alt="Mi cuenta" class="img-fluid">
+                  <span>Mi cuenta</span>
+                </a>
               </div>
-      
-                {{-- Cuenta y carrito --}}
-                <div class="collapse navbar-collapse navbarNavDropdown gap-5 justify-content-end">
-                    <div class="cuenta__container d-flex align-items-center">
-                        <figure>
-                            <img src="uploads/person.svg" alt="Imagen de perfil">
-                        </figure>
-                        <p id="username" class="m-0 img-fluid">Mi cuenta</p> 
-                    </div>
-
-                    <div class="carrito__container">
-                        <figure>
-                            <img src="uploads/cart.svg" alt="Carrito" class="img-fluid">
-                        </figure>
-                    </div>
-                </div>
+        
+              <div>
+                <a href="" class="nav-link">
+                  <img src="uploads/cart.svg" alt="Carrito" class="img-fluid">
+                </a>
+              </div>
             </div>
-          </nav>
+          </div>
+        </div>
+      </nav>
     </header>
     @yield('content')
 </body>

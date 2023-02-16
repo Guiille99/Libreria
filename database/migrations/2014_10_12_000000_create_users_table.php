@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string("password", 40);
             $table->string("nombre");
             $table->string("apellidos");
-            $table->string("dni")->unique();
             $table->string("email")->unique();
             $table->string("rol", 20);
             $table->timestamps();

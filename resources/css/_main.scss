@@ -29,6 +29,7 @@ main{
 }
 
 /*LIBROS CONTAINER*/
+//MIRAR CARDS
 .libros__container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -37,10 +38,36 @@ main{
     justify-content: center;
     gap: 20px;
     .card{
+        .libro__info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        justify-content: center;
+        position: relative;
         text-align: center;
+        transition: transform 500ms ease;
         gap: 10px;
+        padding: 15px;
+        overflow: hidden;
         // figure{
         //     width: 60%;
         // }
+
+        &:hover{
+            transform: scale(1.05);
+        }
+        button{
+            padding: 5px 10px;
+            margin: 0 auto;
+            position: absolute;
+            bottom: 0;
+            transform: translateY(100%);
+            transition: all 2s ease;
+        }
+
+        &:hover button{
+            transform: translateY(0%);
     }
+}
 }

@@ -36,72 +36,51 @@
     
     <main class="container-xl">
         <div class="row">
-            <div class="recomendados__container mt-5 col-6 col-md-9 m-auto">
+            <div class="recomendados__container mt-5 col-6 col-md-10 m-auto">
                 <div class="title__container">
                     <h1 class="text-center">Recomendados</h1>
                 </div>
                 <div class="libros__container mt-3">
+                    @foreach ($libros_recomendados as $libro)
                     <div class="card">
                         <figure class="m-0">
-                            <img src="uploads/Libros/la-niebla-de-los-bosques.jpg" alt="" class="img-fluid">
+                            <img src="{{$libro->portada}}" alt="" class="img-fluid">
                         </figure>
                         <div class="libro__info">
-                            <h3 class="libro__titulo">Título</h3>
-                            <p class="libro__autor">Autor</p>
-                            <p class="libro__precio">15 €</p>
+                            <h4 class="libro__titulo">{{$libro->titulo}}</h4>
+                            <p class="libro__autor">{{$libro->autor}}</p>
+                            <p class="libro__precio">{{$libro->precio}}€</p>
                             <button>Comprar</button>
                         </div>
                     </div>
-    
-                    <div class="card">
-                        <figure class="m-0">
-                            <img src="uploads/Libros/la-niebla-de-los-bosques.jpg" alt="" class="img-fluid">
-                        </figure>
-                        <div class="libro__info">
-                            <h3 class="libro__titulo">Título</h3>
-                            <p class="libro__autor">Autor</p>
-                            <p class="libro__precio">15 €</p>
-                            <button>Comprar</button>
-                        </div>
-                    </div>
-    
-                    <div class="card">
-                        <figure class="m-0">
-                            <img src="uploads/Libros/la-niebla-de-los-bosques.jpg" alt="" class="img-fluid">
-                        </figure>
-                        <div class="libro__info">
-                            <h3 class="libro__titulo">Título</h3>
-                            <p class="libro__autor">Autor</p>
-                            <p class="libro__precio">15 €</p>
-                            <button>Comprar</button>
-                        </div>
-                    </div>
-    
-                    <div class="card">
-                        <figure class="m-0">
-                            <img src="uploads/Libros/la-niebla-de-los-bosques.jpg" alt="" class="img-fluid">
-                        </figure>
-                        <div class="libro__info">
-                            <h3 class="libro__titulo">Título</h3>
-                            <p class="libro__autor">Autor</p>
-                            <p class="libro__precio">15 €</p>
-                            <button>Comprar</button>
-                        </div>
-                    </div>
-    
-                    <div class="card">
-                        <figure class="m-0">
-                            <img src="uploads/Libros/la-niebla-de-los-bosques.jpg" alt="" class="img-fluid">
-                        </figure>
-                        <div class="libro__info">
-                            <h3 class="libro__titulo">Título</h3>
-                            <p class="libro__autor">Autor</p>
-                            <p class="libro__precio">15 €</p>
-                            <button>Comprar</button>
-                        </div>
-                    </div>
-    
+                    @endforeach
+                
+                </div> 
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="recomendados__container mt-5 col-6 col-md-10 m-auto">
+                <div class="title__container">
+                    <h1 class="text-center">Recientes</h1>
                 </div>
+                <div class="libros__container mt-3">
+                    @foreach ($libros_recientes as $libro)
+                    <div class="card">
+                        <figure class="m-0">
+                            <img src="{{$libro->portada}}" alt="" class="img-fluid">
+                        </figure>
+                        <div class="libro__info">
+                            <h4 class="libro__titulo">{{$libro->titulo}}</h4>
+                            <p class="libro__autor">{{$libro->autor}}</p>
+                            <p class="libro__precio">{{$libro->precio}}€</p>
+                            <button>Comprar</button>
+                        </div>
+                    </div>
+                    @endforeach
+                
+                </div> 
                 
             </div>
         </div>

@@ -38,11 +38,6 @@ main{
     justify-content: center;
     gap: 20px;
     .card{
-        .libro__info{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
         justify-content: center;
         position: relative;
         text-align: center;
@@ -50,6 +45,15 @@ main{
         gap: 10px;
         padding: 15px;
         overflow: hidden;
+        .libro__info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .libro__precio{
+                font-size: 1.5rem;
+            }
+        }
         // figure{
         //     width: 60%;
         // }
@@ -59,15 +63,24 @@ main{
         }
         button{
             padding: 5px 10px;
-            margin: 0 auto;
+            background-color: #369a36;
+            color: white;
+            border: 1px solid black;
+            border-radius: 3px;
+            font-size: 1.3rem;
             position: absolute;
             bottom: 0;
-            transform: translateY(100%);
-            transition: all 2s ease;
-        }
+            transform: translateY(101%);
+            /* transition: all 1s ease; */
+            transition: transform 1s ease;
 
+            &:hover{
+                background-color: #157315;
+            }
+        }
         &:hover button{
             transform: translateY(0%);
-    }
+            margin-bottom: 20px;
+        }
 }
 }

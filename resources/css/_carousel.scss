@@ -12,7 +12,7 @@
     }
     .carousel-caption {
         position: unset;
-        background-color: #00000085;
+        @include m.bg-dark;
         font-size: 2rem;
         padding: 20px;
         text-align: center;

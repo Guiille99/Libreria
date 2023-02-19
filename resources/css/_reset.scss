@@ -1,7 +1,10 @@
 @use "variables" as v;
 @use "mixins" as m;
-h1, h2, h3, h4{
+h1, h2, h3, p{
     font-family: v.$main_font;
+}
+h4{
+    font-family: v.$second_font;
 }
 h1{
     font-size: 1.8rem;
@@ -13,7 +16,13 @@ h1{
     }
 }
 h2{
-    font-size: 2rem;
+    font-size: 1.3rem;
+    @include m.tablet{
+        font-size: 1.6rem;
+    }
+    @include m.desktop{
+        font-size: 2rem;
+    }
 }
 h3{
     font-size: 1.5rem;

@@ -79,11 +79,52 @@
                         </div>
                     </div>
                     @endforeach
-                
                 </div> 
-                
             </div>
         </div>
     </main>
+
+    {{-- SUSCRIBE SECTION --}}
+    <div class="container-fluid">
+        <section class="row mt-5">
+            <div class="col suscribe__container">
+                <div class="suscribe__info">
+                    <h2 class="suscribe__title">Suscríbete para conocer nuestras últimas noticas</h2>
+                    <form action="" method="post">
+                        <input type="email" name="mail" id="mail" class="form-control" placeholder="Introduce tu email">
+                        <input type="submit" value="Suscribirse">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        {{-- VENTAJAS --}}
+        <section class="row mt-5">
+            <div class="col ventajas__container">
+                <div class="ventaja">
+                    <i class="bi bi-bag-check"></i>
+                    {{-- <figure>
+                        <img src="uploads/bag-check.svg" alt="Compra segura" class="img-fluid">
+                    </figure> --}}
+                    <p>Compra segura</p>
+                </div>
+
+                <div class="ventaja">
+                    <i class="bi bi-truck"></i>
+                    <p>Envío gratis a partir de 15€</p>
+                </div>
+
+                <div class="ventaja">
+                    <i class="bi bi-shop"></i>
+                    <p>Recogida en tienda gratis</p>
+                </div>
+
+                <div class="ventaja">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    <p>Devolución gratis hasta 30 días</p>
+                </div>
+            </div>
+        </section>
+    </div>
 
 @endsection

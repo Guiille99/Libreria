@@ -18,6 +18,18 @@
         width: 75%;
     }
 }
+//Imagen de fondo
+@mixin bg-image($imagen){
+    background-image: url('uploads/'+#{$imagen});
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+// Mixin para crear fondo oscuro
+@mixin bg-dark(){
+    background-color: #00000085;
+}
 
 // Mixin para crear un botón
 @mixin btn($bgcolor, $fcolor){
@@ -29,12 +41,12 @@
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
-    width: 100%;
+    // width: 100%;
 
-    // &:hover{
-    //     background-color: color.scale($bgcolor, $lightness: -30%);
-    //     cursor: pointer;
-    // }
+    &:hover{
+        background-color: color.scale($bgcolor, $lightness: -30%);
+        cursor: pointer;
+    }
 }
 
 

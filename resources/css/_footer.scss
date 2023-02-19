@@ -1,0 +1,8 @@
+@use "variables" as v;
+@use "mixins" as m;
+// @use "sass:color" as color;
+footer{
+    // height: 20vh;
+    background-color: v.$dark-green;
+    color: v.$white;
+}

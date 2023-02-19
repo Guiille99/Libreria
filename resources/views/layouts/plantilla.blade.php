@@ -99,5 +99,45 @@
       </nav>
     </header>
     @yield('content')
+
+    <footer class="mt-5">
+      <figure>
+        <img src="uploads/logo.png" alt="Logo">
+      </figure>
+
+      <div class="info__container">
+        <div class="footer__menu__container">
+          <div class="footer_menu">
+            <h4>Contacto</h4>
+            <div class="info__details">
+              <p><i class="bi bi-telephone-fill"></i>623456789</p>
+              <p><i class="bi bi-geo-alt-fill"></i>Sevilla (España)</p>
+              <a href="mailto:info@carpinteriamaderareal@gmail.com"><i class="bi bi-envelope-fill"></i>info@book.com</a>
+            </div>
+          </div>
+
+          <div class="footer_menu">
+            <h4>Información legal</h4>
+            <div class="info__details">
+              <a href="">Condiciones de uso</a>
+              <a href="">Política de protección de datos</a>
+              <a href="">Política de cookies</a>
+              <a href="">Condiciones para vender</a>
+            </div>
+          </div>
+
+          <div class="footer_menu">
+            <h4>Otros enlaces</h4>
+            <div class="info__details">
+              <a href="">Mapa del sitio</a>
+              <a href="">Empleo</a>
+              <a href="">Quiénes somos</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </footer>
 </body>
 </html>

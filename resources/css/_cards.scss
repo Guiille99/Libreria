@@ -7,8 +7,6 @@
 .libros__container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    // display: flex;
-    // flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     .card{
@@ -30,6 +28,7 @@
             }
             .libro__titulo{
                 font-size: 1rem;
+                font-weight: bolder;
             }
         }
 
@@ -40,13 +39,14 @@
             @include m.btn(v.$green, v.$white);
             position: absolute;
             bottom: 0;
+            width: 90%;
             transform: translateY(101%);
             /* transition: all 1s ease; */
             transition: transform 1s ease;
 
-            &:hover{
-                background-color: color.scale(v.$green, $lightness: -30%);
-            }
+            // &:hover{
+            //     background-color: color.scale(v.$green, $lightness: -30%);
+            // }
         }
         &:hover button{
             transform: translateY(0%);

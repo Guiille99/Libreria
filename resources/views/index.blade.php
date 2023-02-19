@@ -1,5 +1,11 @@
 @extends('layouts.plantilla')
 @section("title", "Books | Inicio")
+@section("generos_libros")
+    @foreach ($generos as $genero)
+        <li><a class="dropdown-item" href="{{route('libros.index', $genero->genero)}}">{{$genero->genero}}</a></li>
+    @endforeach
+@endsection
+
 @section('content')
     <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -44,10 +50,10 @@
                     @foreach ($libros_recomendados as $libro)
                     <div class="card">
                         <figure class="m-0">
-                            <img src="{{$libro->portada}}" alt="" class="img-fluid">
+                            <img src="{{$libro->portada}}" alt="{{$libro->portada}}" class="img-fluid">
                         </figure>
                         <div class="libro__info">
-                            <h4 class="libro__titulo">{{$libro->titulo}}</h4>
+                            <h4 class="libro__titulo" title="{{$libro->titulo}}">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             <button>Comprar</button>
@@ -100,7 +106,7 @@
 
         {{-- VENTAJAS --}}
         <section class="row mt-5">
-            <div class="col ventajas__container">
+            <div class="col-10 col-md-9 ventajas__container">
                 <div class="ventaja">
                     <i class="bi bi-bag-check"></i>
                     {{-- <figure>

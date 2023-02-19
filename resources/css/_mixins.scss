@@ -2,12 +2,12 @@
 @use "sass:color" as color;
 
 /*Mixin para crear efecto en los enlaces del nav*/
-@mixin efectoNavLinks($color, $altura, $seg){
+@mixin efectoNavLinks($color, $altura, $bottom, $seg){
     &::before{
         content: "";
         position: absolute;
         // clip-path: polygon(50% 70%, 50% 80%, 50% 80%, 50% 70%);
-        bottom: 5px;
+        bottom: $bottom;
         display: block;
         background-color: $color;
         height: $altura;
@@ -49,7 +49,20 @@
     }
 }
 
-
+//Mixin para crear iconos del footer
+@mixin icon-footer($bgcolor, $color, $padding, $border-radius){
+    background-color: $bgcolor;
+    color: $color;
+    padding: $padding;
+    border-radius: $border-radius;
+    transition: all 0.3s ease;
+    &:hover{
+        background-color: v.$green;
+        svg, i{
+            color: white;
+        }
+    }
+}
 
 //Media-query
 // Media queries

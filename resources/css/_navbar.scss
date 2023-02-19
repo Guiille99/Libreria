@@ -45,7 +45,7 @@ nav{
         .nav-link{
             color: v.$white;
             position: relative;
-            @include m.efectoNavLinks(v.$white, 3px, .3s);
+            @include m.efectoNavLinks(v.$white, 3px, 5px, .3s);
         }
        @include m.tablet{
             width: 50%;

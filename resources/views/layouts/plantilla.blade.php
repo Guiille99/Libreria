@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title")</title>
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> --}}
-    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/jquery-3.6.3.js"])
+    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/jquery-3.6.3.js", "resources/js/font-awesome.js"])
 </head>
 <body>
     <header>
@@ -59,9 +59,10 @@
                   Libros
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="">Action</a></li>
+                  @yield('generos_libros')
+                  {{-- <li><a class="dropdown-item" href="">Action</a></li>
                   <li><a class="dropdown-item" href="">Another action</a></li>
-                  <li><a class="dropdown-item" href="">Something else here</a></li>
+                  <li><a class="dropdown-item" href="">Something else here</a></li> --}}
                 </ul>
               </li>
               <li class="nav-item">
@@ -98,25 +99,33 @@
         </div>
       </nav>
     </header>
+
+
     @yield('content')
 
+
+
+
+
+
+    {{-- FOOTER --}}
     <footer class="mt-5">
       <figure>
-        <img src="uploads/logo.png" alt="Logo">
+        <img src="uploads/logo-xl.png" alt="Logo" class="img-fluid">
       </figure>
 
       <div class="info__container">
         <div class="footer__menu__container">
-          <div class="footer_menu">
+          <div class="footer__menu">
             <h4>Contacto</h4>
             <div class="info__details">
-              <p><i class="bi bi-telephone-fill"></i>623456789</p>
-              <p><i class="bi bi-geo-alt-fill"></i>Sevilla (España)</p>
-              <a href="mailto:info@carpinteriamaderareal@gmail.com"><i class="bi bi-envelope-fill"></i>info@book.com</a>
+              <p><i class="bi bi-telephone-fill"></i> 623456789</p>
+              <p><i class="bi bi-geo-alt-fill"></i> Sevilla (España)</p>
+              <a href="mailto:info@carpinteriamaderareal@gmail.com"><i class="bi bi-envelope-fill"></i> info@book.com</a>
             </div>
           </div>
 
-          <div class="footer_menu">
+          <div class="footer__menu">
             <h4>Información legal</h4>
             <div class="info__details">
               <a href="">Condiciones de uso</a>
@@ -126,7 +135,7 @@
             </div>
           </div>
 
-          <div class="footer_menu">
+          <div class="footer__menu">
             <h4>Otros enlaces</h4>
             <div class="info__details">
               <a href="">Mapa del sitio</a>
@@ -136,6 +145,13 @@
           </div>
 
 
+        </div>
+
+        <div class="rrss__container">
+          <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-twitter"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
     </footer>

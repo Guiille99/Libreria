@@ -7,7 +7,7 @@ function inicio() {
     // $("#prueba").css("background-color", "yellow");
     // let prueba=document.getElementById("prueba");
     // prueba.style.backgroundColor="yellow";
-	ellipsis_box(".libro__titulo", 20);
+	ellipsis_box(".libro__titulo", 18);
 }
 function ellipsis_box(elemento, max_chars){
 	let titulos = $(elemento);

@@ -35,11 +35,11 @@
     </div>
     
     <main class="container-xl">
-        <div class="row">
-            <div class="recomendados__container mt-5 col-6 col-md-10 m-auto">
-                <div class="title__container">
-                    <h1 class="text-center">Recomendados</h1>
-                </div>
+        <div class="row mt-5">
+            <div class="title__container">
+                <h1 class="text-center">Recomendados</h1>
+            </div>
+            <div class="recomendados__container col-6 col-md-10 m-auto">
                 <div class="libros__container mt-3">
                     @foreach ($libros_recomendados as $libro)
                     <div class="card">
@@ -60,11 +60,11 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="recomendados__container mt-5 col-6 col-md-10 m-auto">
-                <div class="title__container">
-                    <h1 class="text-center">Recientes</h1>
-                </div>
+        <div class="row mt-5">
+            <div class="title__container">
+                <h1 class="text-center">Más recientes</h1>
+            </div>
+            <div class="recomendados__container col-6 col-md-10 m-auto">
                 <div class="libros__container mt-3">
                     @foreach ($libros_recientes as $libro)
                     <div class="card">

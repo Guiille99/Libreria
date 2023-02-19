@@ -13,7 +13,7 @@
         <div class="row bg-success align-items-center d-none d-lg-flex">
           <div class="col-3">
             <figure class="m-0">
-              <img src="uploads/logo-nombre.png" alt="LOGO" class="img-fluid">
+              <img src="uploads/logo-nombre2.svg" alt="LOGO" class="img-fluid">
             </figure>
           </div>
           <div class="col">

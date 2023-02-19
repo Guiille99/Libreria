@@ -1,4 +1,5 @@
 @use "variables" as v;
+@use "mixins" as m;
 @use "sass:color" as color;
 
 /*LIBROS CONTAINER*/
@@ -36,12 +37,7 @@
             transform: scale(1.05);
         }
         button{
-            padding: 5px 10px;
-            background-color: v.$green;
-            color: white;
-            border: 1px solid black;
-            border-radius: 3px;
-            font-size: 1.3rem;
+            @include m.btn(v.$green, v.$white);
             position: absolute;
             bottom: 0;
             transform: translateY(101%);

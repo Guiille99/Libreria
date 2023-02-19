@@ -1,0 +1,22 @@
+@use "variables" as v;
+@use "mixins" as m;
+h1, h2, h3, h4{
+    font-family: v.$main_font;
+}
+h1{
+    font-size: 1.8rem;
+    @include m.tablet{
+        font-size: 2rem;
+    }
+    @include m.desktop{
+        font-size: 2.5rem;
+    }
+}
+h2{
+    font-size: 2rem;
+}
+h3{
+    font-size: 1.5rem;
+}
+
+

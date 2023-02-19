@@ -1,4 +1,6 @@
 @use "variables" as v;
+@use "sass:color" as color;
+
 /*Mixin para crear efecto en los enlaces del nav*/
 @mixin efectoNavLinks($color, $altura, $seg){
     &::before{
@@ -16,6 +18,26 @@
         width: 75%;
     }
 }
+
+// Mixin para crear un botón
+@mixin btn($bgcolor, $fcolor){
+    background-color: $bgcolor;
+    border-radius: 0.7rem;
+    border: none;
+    color: $fcolor;
+    display: block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+
+    // &:hover{
+    //     background-color: color.scale($bgcolor, $lightness: -30%);
+    //     cursor: pointer;
+    // }
+}
+
+
 
 //Media-query
 // Media queries

@@ -22,6 +22,7 @@
             flex-direction: column;
             align-items: center;
             padding: 0px 5px;
+            text-align: left;
 
             .libro__precio{
                 font-size: 1.5rem;
@@ -29,6 +30,9 @@
             .libro__titulo{
                 font-size: 1rem;
                 font-weight: bolder;
+            }
+            .libro__autor{
+                font-size: 0.8rem;
             }
         }
 

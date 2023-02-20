@@ -85,7 +85,7 @@
     
             <div class="cuenta-carrito d-flex justify-content-center gap-5 mt-3 d-block d-lg-none">
               <div>
-                <a href="" class="nav-link">
+                <a href="{{route('login.index')}}" class="nav-link">
                   <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid">
                   <span>Mi cuenta</span>
                 </a>

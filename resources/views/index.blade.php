@@ -2,7 +2,7 @@
 @section("title", "Books | Inicio")
 @section("generos_libros")
     @foreach ($generos as $genero)
-        <li><a class="dropdown-item" href="{{route('libros.index', $genero->genero)}}">{{$genero->genero}}</a></li>
+        <li><a class="dropdown-item" href="{{route('libros.categoria', $genero->genero)}}">{{$genero->genero}}</a></li>
     @endforeach
 @endsection
 

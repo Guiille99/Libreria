@@ -11,7 +11,7 @@ class LibroController extends Controller
     
     public function index($filtro){
         $generos = Libro::select('genero')->distinct()->get();
-        if (in_array($generos, $filtro)) { //Si se quiere filtrar por categoría
+        if (in_array($filtro, $generos)) { //Si se quiere filtrar por categoría
             $libros = Libro::where('genero', $filtro)->get(); //Libros de una determinada categoría
         }
         else{

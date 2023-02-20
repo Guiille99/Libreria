@@ -6,6 +6,6 @@
     @endforeach
 @endsection
 @section('content')
+<h1 class="text-center">Página para mostrar el listado de libros</h1>
     {{$libros}};
-    <h1 class="text-center">Página para mostrar el listado de libros</h1>
 @endsection

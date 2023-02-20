@@ -40,7 +40,9 @@ nav{
     background-color: v.$dark-green;
     color: v.$white;
     font-size: v.$tam-nav;
-
+    .toggler__button{
+        height: 30px;
+    }
     .nav__options{     
         .nav-link{
             color: v.$white;

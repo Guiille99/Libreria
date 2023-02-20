@@ -13,7 +13,7 @@
         <div class="row bg-success align-items-center d-none d-lg-flex">
           <div class="col-3">
             <figure class="m-0">
-              <img src="uploads/logo-nombre2.svg" alt="LOGO" class="img-fluid">
+              <a href="{{ route('index')}}"><img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO" class="img-fluid"></a>
             </figure>
           </div>
           <div class="col">
@@ -25,14 +25,14 @@
           <div class="cuenta-carrito col-3 d-flex justify-content-center gap-5">
             <div class="mi-cuenta__container">
               <a href="" class="nav-link">
-                <img src="uploads/person.svg" alt="Mi cuenta" class="img-fluid">
+                <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid">
                 <span>@yield("miCuenta")Mi cuenta</span>
               </a>
             </div>
     
             <div class="carrito__container">
               <a href="" class="nav-link">
-                <img src="uploads/cart.svg" alt="Carrito" class="img-fluid">
+                <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
                 <span class="carrito__cantidad">0</span>
               </a>
             </div>
@@ -42,8 +42,8 @@
     
       <nav class="navbar navbar-expand-lg text-center pb-3 p-md-2">
         <div class="container-fluid">      
-          <a class="navbar-brand d-block d-lg-none" href="#">
-            <img src="uploads/logo-nombre2.svg" alt="LOGO">
+          <a class="navbar-brand d-block d-lg-none" href="{{ route('index')}}">
+            <img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
             {{-- Nav items --}}
             <ul class="nav__options navbar-nav gap-2 gap-lg-4 justify-content-center">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="">Inicio</a>
+                <a class="nav-link" aria-current="page" href="{{ route('index')}}">Inicio</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,14 +84,14 @@
             <div class="cuenta-carrito d-flex justify-content-center gap-5 mt-3 d-block d-lg-none">
               <div>
                 <a href="" class="nav-link">
-                  <img src="uploads/person.svg" alt="Mi cuenta" class="img-fluid">
+                  <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid">
                   <span>Mi cuenta</span>
                 </a>
               </div>
         
               <div>
                 <a href="" class="nav-link">
-                  <img src="uploads/cart.svg" alt="Carrito" class="img-fluid">
+                  <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
                 </a>
               </div>
             </div>
@@ -111,7 +111,7 @@
     {{-- FOOTER --}}
     <footer class="mt-5">
       <figure>
-        <img src="uploads/logo-xl.png" alt="Logo" class="img-fluid">
+        <img src="{{asset('uploads/logo-xl.png')}}" alt="Logo" class="img-fluid">
       </figure>
 
       <div class="info__container">

@@ -26,13 +26,13 @@
             <div class="login__container">
               <a href="{{route('login.index')}}" class="nav-link login-link">
                 {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
-                <span>@yield("miCuenta")Login</span>
+                <span>@yield("miCuenta")Iniciar Sesión</span>
               </a>
             </div>
             <div class="register__container">
               <a href="{{route('register.index')}}" class="nav-link register-link">
                 {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
-                <span>@yield("miCuenta")Register</span>
+                <span>@yield("miCuenta")Regístrate</span>
               </a>
             </div>
     

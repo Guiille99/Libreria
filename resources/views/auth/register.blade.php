@@ -13,7 +13,8 @@
 
         <div class="col-10 col-md-8 col-lg-4 login">
             <h2 class="login__title">REGISTRO</h2>
-            <form action="">
+            <form action="{{route("register.store")}}" method="post">
+                @csrf
                 <div class="form-floating mt-3">
                     <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
                     <label for="nombre" class="form-label">Nombre</label>
@@ -35,8 +36,8 @@
                 </div>
 
                 <div class="form-floating mt-3">
-                    <input type="password" name="passwd" id="passwd" class="form-control" placeholder="Password">
-                    <label for="passwd" class="form-label">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    <label for="password" class="form-label">Contraseña</label>
                 </div>
 
 

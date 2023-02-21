@@ -12,20 +12,28 @@
         </figure>
         <div class="col-10 col-md-8 col-lg-4 login">
             <h2 class="login__title">LOGIN</h2>
-            <form action="">
+            <form action="{{route("login.store")}}" method="post">
+                @csrf
                 <div class="form-floating mt-4">
                     <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Enter email">
                     <label for="usuario" class="form-label">Usuario</label>
                 </div>
+                @error('usuario')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
+
                 <div class="form-floating mt-3">
-                    <input type="password" name="passwd" id="passwd" class="form-control" placeholder="Password">
-                    <label for="passwd" class="form-label">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    <label for="password" class="form-label">Contraseña</label>
                 </div>
+                @error('password')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
 
                 <div class="mt-3 d-flex justify-content-between gap-2 flex-wrap">
                     <div class="form-check form-switch">
                         <label class="form-check-label" for="checkRemember">Recuérdame</label>
-                        <input class="form-check-input" type="checkbox" role="switch" id="checkRemember">
+                        <input class="form-check-input" type="checkbox" role="switch" id="checkRemember" name="remember">
                     </div>
 
                     <a href="{{route('register.index')}}" class="nocount-link">¿No tienes cuenta? Regístrate</a>

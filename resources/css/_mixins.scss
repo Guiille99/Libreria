@@ -64,6 +64,11 @@
     }
 }
 
+// Mixin para gradiente del formulario
+@mixin form-gradient($deg, $color){
+    background: linear-gradient(#{$deg}deg, color.scale($color, $lightness: -30%), color.scale($color, $lightness: 30%));
+}
+
 //Media-query
 // Media queries
 @mixin mobile{

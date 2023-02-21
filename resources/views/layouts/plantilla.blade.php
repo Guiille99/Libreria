@@ -22,11 +22,17 @@
               <button type="submit" class="d-none"></button>
             </form>
           </div>
-          <div class="cuenta-carrito col-3 d-flex justify-content-center gap-5">
-            <div class="mi-cuenta__container">
-              <a href="" class="nav-link">
-                <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid">
-                <span>@yield("miCuenta")Mi cuenta</span>
+          <div class="cuenta-carrito col-3 d-flex justify-content-center gap-4">
+            <div class="login__container">
+              <a href="{{route('login.index')}}" class="nav-link login-link">
+                {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                <span>@yield("miCuenta")Login</span>
+              </a>
+            </div>
+            <div class="register__container">
+              <a href="{{route('register.index')}}" class="nav-link register-link">
+                {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                <span>@yield("miCuenta")Register</span>
               </a>
             </div>
     
@@ -83,11 +89,17 @@
               <button type="submit" class="d-none"></button>
             </form>
     
-            <div class="cuenta-carrito d-flex justify-content-center gap-5 mt-3 d-block d-lg-none">
-              <div>
+            <div class="cuenta-carrito d-flex justify-content-center gap-4 mt-3 d-block d-lg-none">
+              <div class="login__container">
                 <a href="{{route('login.index')}}" class="nav-link">
-                  <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid">
-                  <span>Mi cuenta</span>
+                  {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                  <span>Login</span>
+                </a>
+              </div>
+              <div class="register__container">
+                <a href="{{route('register.index')}}" class="nav-link">
+                  {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                  <span>Register</span>
                 </a>
               </div>
         

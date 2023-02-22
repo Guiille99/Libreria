@@ -15,10 +15,10 @@
             <form action="{{route("login.store")}}" method="post">
                 @csrf
                 <div class="form-floating mt-4">
-                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Enter email">
-                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter email">
+                    <label for="username" class="form-label">Usuario</label>
                 </div>
-                @error('usuario')
+                @error('username')
                     <small class="text-danger">* {{$message}}</small> <br>
                 @enderror
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use Dotenv\Exception\ValidationException;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -15,14 +15,26 @@ class LoginController extends Controller
     }
     public function store(Request $request){
         
-        dd($request->input("remember"));
+        // dd($request->input("remember"));
         $credentials = $request->validate([
-            "usuario" => "required",
+            "username" => "required",
             "password" => "required"
         ]);
 
-        if (!Auth::attempt($credentials, $request->boolean("remember"))) { //Si no se loguea correctamente
-            // throw ValidationException::withMessages()
+        if (Auth::attempt($credentials)) { //Si se loguea correctamente
+            request()->session()->regenerate(); //Regeneramos la sesión para evitar problemas de seguridad
+            return redirect()->route('index');
         }
+        
+        else{
+            throw ValidationException::withMessages([
+                'username' => 'Usuario incorrecto',
+                'password' => 'Contraseña incorrecta'
+            ]);
+            return redirect()->route('login.index');
+        }
+
+        // $request->session()->regenerate();
+        // return redirect('index');
     }
 }

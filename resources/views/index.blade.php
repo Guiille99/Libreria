@@ -7,6 +7,8 @@
 @endsection
 
 @section('content')
+{{-- {{Auth::user()}} --}}
+
     <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carrusel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

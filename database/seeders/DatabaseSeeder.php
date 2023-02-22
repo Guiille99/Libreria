@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(5)->create();
+        User::factory(5)->create();
         Libro::factory(10)->create();
         $libros=Libro::all();
         foreach ($libros as $libro) {

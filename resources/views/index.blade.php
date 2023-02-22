@@ -8,6 +8,7 @@
 
 @section('content')
 {{-- {{Auth::user()}} --}}
+{{Auth::check()}}
 
     <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">

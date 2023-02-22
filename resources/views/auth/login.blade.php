@@ -3,6 +3,7 @@
 
 @section('content')
 <div class="container-fluid vh-100 form__hero">
+   
 
     <div class="row flex-column gap-2 justify-content-center align-items-center h-100">
         <figure class="w-auto">
@@ -29,6 +30,9 @@
                 @error('password')
                     <small class="text-danger">* {{$message}}</small> <br>
                 @enderror
+                @if (Session::has('error'))
+                    <small class="text-danger">{{Session::get('error')}}</small>
+                @endif
 
                 <div class="mt-3 d-flex justify-content-between gap-2 flex-wrap">
                     <div class="form-check form-switch">

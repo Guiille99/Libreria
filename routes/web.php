@@ -7,7 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
-
+// hola
 
 /*
 |--------------------------------------------------------------------------

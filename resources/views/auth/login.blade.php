@@ -13,19 +13,26 @@
         </figure>
         <div class="col-10 col-md-8 col-lg-4 login">
             <h2 class="login__title">LOGIN</h2>
-            <form action="{{route("login.store")}}" method="post">
+            
+            <form action="{{route("login.store")}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 <div class="form-floating mt-4">
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter email">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter email" required>
                     <label for="username" class="form-label">Usuario</label>
+                    <div class="invalid-feedback">
+                        <small>Introduzca un usuario</small> 
+                    </div>
                 </div>
                 @error('username')
                     <small class="text-danger">* {{$message}}</small> <br>
                 @enderror
 
                 <div class="form-floating mt-3">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                     <label for="password" class="form-label">Contraseña</label>
+                    <div class="invalid-feedback">
+                        <small>Introduzca una contraseña</small> 
+                    </div>
                 </div>
                 @error('password')
                     <small class="text-danger">* {{$message}}</small> <br>
@@ -48,9 +55,29 @@
                 </div>
 
             </form>
+           
         </div>
     </div>
 
 </div>
+<script>
+    (() => {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 @endsection

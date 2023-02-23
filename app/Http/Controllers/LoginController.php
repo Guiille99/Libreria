@@ -16,15 +16,27 @@ class LoginController extends Controller
     public function store(Request $request){
         
         // dd($request->input("remember"));
-        $request->validate([
+        $remember = $request->filled('remember');
+        $request->validate([ //Validación de campos
             "username" => "required",
             "password" => "required"
         ]);
 
-        if (Auth::attempt($request->only('username', 'password'))) {
+        if (Auth::attempt($request->only('username', 'password'), $remember)) { //Si se loguea correctamente
+            $request->session()->regenerate(); //Me crea la sesión y la regeneramos para evitar problemas de seguridad
             return redirect()->route('index'); 
         }
-        return redirect()->route('login.index')->withError('Usuario o contraseña incorrectos');
+        else{ //Si hay algún error
+            $user = User::where('username', $request->username)->first();
+            if ($user==null) { //Si el usuario no existe en la BD
+                return redirect()->route('login.index')->withErrors(["username"=>"El usuario no existe"]);
+            }
+            else{
+                return redirect()->route('login.index')->withErrors(["password"=>"Contraseña incorrecta"]);
+            }
+        }
+
+
         // if (Auth::attempt($credentials)) { //Si se loguea correctamente
         //     request()->session()->regenerate(); //Regeneramos la sesión para evitar problemas de seguridad
         //     return redirect()->route('index');
@@ -40,5 +52,14 @@ class LoginController extends Controller
 
         // $request->session()->regenerate();
         // return redirect('index');
+    }
+
+    public function logout(Request $request){
+        Auth::logout();        
+        // Por seguridad, invalidamos la sesión del usuario y regeneramos el token
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login.index');
     }
 }

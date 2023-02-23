@@ -23,29 +23,56 @@
             </form>
           </div>
           <div class="cuenta-carrito col-3 d-flex justify-content-center gap-4">
-            <div class="login__container">
-              <a href="{{route('login.index')}}" class="nav-link login-link">
-                {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
-                <span>@yield("miCuenta")Iniciar Sesión</span>
-              </a>
+            <div class="login__container"> {{-- LOGIN CONTAINER --}}
+              {{-- Si se ha iniciado sesión --}}
+              @if (Auth::check())
+                <div class="dropdown">
+                  <a class="username dropdown-toggle text-decoration-none" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    <li>
+                      <form action="{{route('login.logout')}}" method="post">
+                        @method('put')
+                        @csrf
+                        {{-- Cuando haga click en el enlace hará un submit --}}
+                        <a class="dropdown-item" href="#" onclick="this.closest('form').submit()"><i class="bi bi-box-arrow-left"></i> Cerrar sesión</a></li>
+                      </form>
+                  </ul>
+                </div>
+  
+              @else
+                <a href="{{route('login.index')}}" class="nav-link login-link">
+                  {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                  <span>Iniciar Sesión</span>
+                </a>
+              @endif
             </div>
-            <div class="register__container">
+
+            @if (!Auth::check()) {{-- Si no se ha iniciado sesión --}}
+            <div class="register__container"> {{-- REGISTER CONTAINER --}}
               <a href="{{route('register.index')}}" class="nav-link register-link">
                 {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
                 <span>@yield("miCuenta")Regístrate</span>
               </a>
             </div>
+            @endif
     
+            @if (Auth::check())
             <div class="carrito__container">
               <a href="" class="nav-link">
                 <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
                 <span class="carrito__cantidad">0</span>
               </a>
             </div>
+            @endif
           </div>
         </div>
       </div>
     
+
+      {{-- SUB-NAV --}}
       <nav class="navbar navbar-expand-lg text-center pb-3 p-md-2">
         <div class="container-fluid">      
           <a class="navbar-brand d-block d-lg-none" href="{{ route('index')}}">
@@ -67,10 +94,9 @@
                   Libros
                 </a>
                 <ul class="dropdown-menu">
+
                   @yield('generos_libros')
-                  {{-- <li><a class="dropdown-item" href="">Action</a></li>
-                  <li><a class="dropdown-item" href="">Another action</a></li>
-                  <li><a class="dropdown-item" href="">Something else here</a></li> --}}
+                  
                 </ul>
               </li>
               <li class="nav-item">
@@ -90,24 +116,45 @@
             </form>
     
             <div class="cuenta-carrito d-flex justify-content-center gap-4 mt-3 d-block d-lg-none">
-              <div class="login__container">
-                <a href="{{route('login.index')}}" class="nav-link">
-                  {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
-                  <span>Login</span>
-                </a>
+              <div class="login__container"> {{-- LOGIN CONTAINER --}}
+                {{-- Si se ha iniciado sesión --}}
+                @if (Auth::check()) 
+                <div class="dropdown">
+                  <a class="username dropdown-toggle text-decoration-none" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+  
+                @else
+                  <a href="{{route('login.index')}}" class="nav-link login-link">
+                    {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                    <span>Iniciar Sesión</span>
+                  </a>
+                @endif
               </div>
-              <div class="register__container">
-                <a href="{{route('register.index')}}" class="nav-link">
-                  {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
-                  <span>Register</span>
-                </a>
-              </div>
-        
-              <div>
+
+              @if (!Auth::check()) {{-- Si no se ha iniciado sesión --}}
+                <div class="register__container"> {{-- REGISTER CONTAINER --}}
+                  <a href="{{route('register.index')}}" class="nav-link register-link">
+                    {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
+                    <span>@yield("miCuenta")Regístrate</span>
+                  </a>
+                </div>
+              @endif
+              
+              @if (Auth::check())
+              <div class="carrito__container">
                 <a href="" class="nav-link">
                   <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
+                  <span class="carrito__cantidad">0</span>
                 </a>
               </div>
+              @endif
             </div>
           </div>
         </div>

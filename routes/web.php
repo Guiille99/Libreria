@@ -24,5 +24,6 @@ Route::get('libro/{id}', [LibroController::class, "show"])->name("libros.show");
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");
 Route::post('/login', [LoginController::class, "store"])->name("login.store");
+Route::put('/logout', [LoginController::class, "logout"])->name("login.logout");
 
 Route::get('/register', [RegisterController::class, "index"])->name("register.index");

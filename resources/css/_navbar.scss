@@ -1,11 +1,9 @@
 @use "variables" as v;
 @use "mixins" as m;
+/*NAV-TOP*/
 .nav-top{
     font-family: v.$main_font;
     font-size: v.$tam-nav;
-    a{
-        color: v.$white;
-    }
     .items{
         flex: 0;
     }
@@ -28,6 +26,11 @@
     input[type="text"]{
         border-radius: 10px;
     }
+    .login__container{
+        .username{
+            color: v.$white;
+        }
+    }
 }
 .carrito__container{
     position: relative;
@@ -44,6 +47,8 @@
         // transform: skew(-10deg);
     }
 }
+
+/*SUB-NAV*/
 nav{
     font-family: v.$main_font;
     background-color: v.$dark-green;
@@ -58,6 +63,9 @@ nav{
             background-color: v.$green;
             border-radius: 5px;
         }
+    }
+    .username{
+        color: v.$white;
     }
     .nav__options{     
         .nav-link{

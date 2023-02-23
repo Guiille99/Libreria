@@ -31,7 +31,7 @@ Route::put('/logout', [LoginController::class, "logout"])->name("login.logout");
 
 Route::get('/register', [RegisterController::class, "index"])->name("register.index");
 
-Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS
+Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS PARA EL PROYECTO
     $correo = new ContactanosMailable;
 
     Mail::to('alejandro.reina-martagon@iesruizgijon.com')->send($correo);

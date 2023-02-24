@@ -74,7 +74,7 @@
     
 
       {{-- SUB-NAV --}}
-      <nav class="navbar navbar-expand-lg text-center pb-3 p-md-2">
+      <nav class="down-nav navbar navbar-expand-lg text-center pb-3 p-md-2">
         <div class="container-fluid">      
           <a class="navbar-brand d-block d-lg-none" href="{{ route('index')}}">
             <img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO">

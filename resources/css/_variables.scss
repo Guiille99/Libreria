@@ -6,13 +6,21 @@ $white: #fff;
 $black: #111111;
 $boder-input: #85e1ab;
 $nav-dark: #1f1f1f;
+$blue: #5796e8;
+$red: #ff4747;
 
 //RESETEO BOOTSTRAP
+// NAV
 $navbar-light-color: $white; /*Color de los nav links*/
 $navbar-light-hover-color: $white;
 // $navbar-light-toggler-icon-bg: "url('uploads/toggler.svg')"; //Imagen del toggler
 $navbar-toggler-focus-width: 0; //Borde del ancho cuando se pulsa el toggler
 $navbar-light-toggler-border-color: transparent; //Borde del toggler
+
+// PAGINATION
+// $pagination-focus-bg: $green;
+$pagination-active-bg: $green;
+$pagination-border-color: $dark-green;
 
 //Formularios
 $input-btn-padding-y:         .375rem;

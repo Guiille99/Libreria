@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Mail\ContactanosMailable;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
@@ -27,7 +28,9 @@ Route::post('libros', [LibroController::class, "getFiltro"])->name("libros.getFi
 //Route::get('libros/categoria/{categoria}', [LibroController::class, "indexCategoria"])->name("libros.categoria");
 Route::get('libro/{id}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
 
-Route::get('admin', [AdminController::class, "index"])->middleware('checkadmin')->name("admin.index");
+Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')->name("user.index");
+Route::delete('admin', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy");
+// Route::get('admin/users', [::class, "index"])->middleware('checkadmin')->name("admin.users");
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");
 Route::post('/login', [LoginController::class, "store"])->name("login.store");

@@ -49,7 +49,9 @@
                                     </form> --}}
                                     <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#EliminaModal">
                                         Eliminar
-                                      </button>
+                                        <input type="hidden" name="curso" value="{{$curso}}">
+                                    </button>
+
                                     <form action="" method="post">
                                         @csrf
                                         @method('put')
@@ -57,7 +59,9 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
+
+                            
+                        @endforeach
                         </tbody>
                         <tfoot>
                             <td colspan="100%">{{$users->links()}}</td>
@@ -79,7 +83,7 @@
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
-                        <form action="" method="post">
+                        <form action="{{route('user.destroy', $user)}}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-primary text-white">Confirmar</button>

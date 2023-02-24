@@ -6,6 +6,11 @@
     @endforeach
 @endsection
 @section('content')
-<h1 class="text-center">Página para mostrar el listado de libros</h1>
-    {{$libros}};
+{{-- <h1 class="text-center">Página para mostrar el listado de libros</h1> --}}
+    {{$libros}}
+    @if (count($libros)==0)
+        <h1 class="text-center fw-bold">No se ha encontrado ningún artículo :(</h1>
+
+        @section('footer-class', 'position-absolute bottom-0 w-100') {{-- Cambiamos los atributos del footer --}}
+    @endif
 @endsection

@@ -17,8 +17,9 @@
             </figure>
           </div>
           <div class="col">
-            <form action="" method="post" >
-              <input type="text" name="" id="" class="form-control" placeholder="Buscar">
+            <form action="{{ route('libros.getFiltro')}}" method="post" >
+              @csrf
+              <input type="text" name="filtro" id="filtroLibro" class="form-control" placeholder="Buscar">
               <button type="submit" class="d-none"></button>
             </form>
           </div>
@@ -170,7 +171,7 @@
 
 
     {{-- FOOTER --}}
-    <footer class="mt-5">
+    <footer class="mt-5 @yield('footer-class')">
       <figure>
         <img src="{{asset('uploads/logo-xl.png')}}" alt="Logo" class="img-fluid">
       </figure>

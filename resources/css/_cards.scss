@@ -39,20 +39,36 @@
         &:hover{
             transform: scale(1.05);
         }
-        button{
-            @include m.btn(v.$green, v.$white);
+
+        form{
             position: absolute;
             bottom: 0;
             width: 90%;
+            // border: 1px solid red;
+            border-radius: 0.7rem;
             transform: translateY(101%);
-            /* transition: all 1s ease; */
             transition: transform 1s ease;
-
-            // &:hover{
-            //     background-color: color.scale(v.$green, $lightness: -30%);
-            // }
         }
-        &:hover button{
+        .boton{
+            // border: 1px solid blue;
+            @include m.btn(v.$green, v.$white);
+            // position: absolute;
+            // bottom: 0;
+            // width: 90%;
+            // transform: translateY(101%);
+            /* transition: all 1s ease; */
+            // transition: transform 1s ease;
+            width: 100%;
+
+            &:hover{
+                background-color: color.scale(v.$green, $lightness: -30%);
+            }
+
+            &:disabled{
+                background-color: color.scale(v.$green, $lightness: 60%);
+            }
+        }
+        &:hover form{
             transform: translateY(0%);
             margin-bottom: 20px;
         }

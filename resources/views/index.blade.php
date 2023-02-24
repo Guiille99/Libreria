@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-{{Auth::user()}}
+{{-- {{Auth::user()}} --}}
 {{-- {{Auth::check()}} --}}
 
     <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
@@ -44,6 +44,7 @@
     </div>
     
     <main class="container-xl">
+        {{-- LIBROS RECOMENDADOS --}}
         <div class="row mt-5">
             <div class="title__container">
                 <h1 class="text-center">Recomendados</h1>
@@ -59,7 +60,15 @@
                             <h4 class="libro__titulo" title="{{$libro->titulo}}">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
-                            <button>Comprar</button>
+                            {{-- <button class="boton">Comprar</button> --}}
+                            <form action="" method="get">
+                                @csrf
+                                @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
+                                    <input type="submit" value="Comprar" class="boton">
+                                 @else
+                                    <input type="submit" value="Comprar" class="boton" disabled>
+                                @endif
+                            </form>
                         </div>
                     </div>
                     @endforeach
@@ -69,6 +78,7 @@
             </div>
         </div>
 
+        {{-- LIBROS MÁS RECIENTES --}}
         <div class="row mt-5">
             <div class="title__container">
                 <h1 class="text-center">Más recientes</h1>
@@ -84,7 +94,15 @@
                             <h4 class="libro__titulo">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
-                            <button>Comprar</button>
+                            {{-- <button>Comprar</button> --}}
+                            <form action="" method="get">
+                                @csrf
+                                @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
+                                    <input type="submit" value="Comprar" class="boton">
+                                 @else
+                                    <input type="submit" value="Comprar" class="boton" disabled>
+                                @endif
+                            </form>
                         </div>
                     </div>
                     @endforeach

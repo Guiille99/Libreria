@@ -48,9 +48,9 @@
                                         {{-- <input type="hidden" name="user" value="{{$user}}"> --}}
                                     </button>
 
-                                    <form action="" method="post">
+                                    <form action="{{route('user.edit', $user)}}" method="post">
                                         @csrf
-                                        @method('put')
+                                        {{-- @method('put') --}}
                                         <input type="submit" class="btn btn-primary text-white" value="Modificar">
                                     </form>
                                 </td>

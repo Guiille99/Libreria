@@ -25,11 +25,19 @@ $pagination-border-color: $dark-green;
 //Formularios
 $input-btn-padding-y:         .375rem;
 $input-btn-padding-x:         .75rem;
-$input-btn-focus-width:         .10rem;
+$input-btn-focus-width:         .08rem;
 $input-btn-focus-color-opacity: .25;
 $input-btn-focus-color: $boder-input;
 $input-btn-focus-blur:          0;
 $input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color;
+// $form-select-border-color: $dark-green;
+// $form-select-focus-border-color: $dark-green;
+// $form-select-bg: green;
+
+
+//Inputs
+$input-border-color: $boder-input;
+$input-focus-border-color: $boder-input;
 
 //Tamaños
 $tamNavIcon: 25px;

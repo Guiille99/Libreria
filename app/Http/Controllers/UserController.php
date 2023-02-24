@@ -19,8 +19,8 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function edit(){ 
-        return view("users.edit");
+    public function edit(User $user){ 
+        return view("users.edit", compact('user'));
     }
 
     public function update(){ 

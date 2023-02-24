@@ -1,0 +1,9 @@
+@use "variables" as v;
+@use "mixins" as m;
+/*Sidebar de la vista admin*/
+.sidebar{
+    position: fixed;
+    @include m.desktop{
+        position: absolute !important;
+    }
+}

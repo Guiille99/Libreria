@@ -28,10 +28,10 @@ Route::post('libros', [LibroController::class, "getFiltro"])->name("libros.getFi
 //Route::get('libros/categoria/{categoria}', [LibroController::class, "indexCategoria"])->name("libros.categoria");
 Route::get('libro/{id}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
 
-Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')->name("admin.index");
-Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy");
-Route::post('admin/edit/{user}', [UserController::class, "edit"])->middleware('checkadmin')->name("user.edit");
-Route::put('admin/edit/{user}', [UserController::class, "update"])->middleware('checkadmin')->name("user.update");
+Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')->name("admin.index"); //Página principal del admin
+Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario
+Route::get('admin/{user}/edit', [UserController::class, "edit"])->middleware('checkadmin')->name("user.edit"); //Página para mostrar el formulario de actualización de usuario
+Route::put('admin/{user}/edit', [UserController::class, "update"])->middleware('checkadmin')->name("user.update"); //Página para actualizar el usuario
 // Route::get('admin/users', [::class, "index"])->middleware('checkadmin')->name("admin.users");
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");

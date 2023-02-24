@@ -2,8 +2,8 @@
 @section('content')
 {{-- {{$users}} --}}
     {{-- DATOS --}}
-    <div class="col-9 col-lg-10 pt-3">
-        <h1 class="text-center py-3">Administración de Clientes</h1>
+    <div class="col col-lg-10 pt-3">
+        <h1 class="text-center py-3">Administración de Usuarios</h1>
         <div class="row justify-content-center">
             <div class="col-7 col-md-3 bg-success text-center text-white d-flex flex-column py-4 position-relative">
                 <a href="panel_admin_nuevo_cliente.html" class="h-100 w-100 d-block position-absolute top-0 start-0"></a>
@@ -12,12 +12,10 @@
             </div>
         </div>
         <div class="row justify-content-center py-3">
-            <div class="col-md-10">
+            <h3 class="text-center">Lista de Usuarios</h3>
+            <div class="col-md-10 table-responsive-md">
                 <table class="table text-center">
                     <thead>
-                        <tr>
-                            <td class="text-center fs-2" colspan="100%">Lista de Clientes</td>
-                        </tr>
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
@@ -48,11 +46,11 @@
                                         {{-- <input type="hidden" name="user" value="{{$user}}"> --}}
                                     </button>
 
-                                    <form action="{{route('user.edit', $user)}}" method="post">
-                                        @csrf
+                                    {{-- <form action="{{route('user.edit', $user)}}" method="post">
+                                        @csrf --}}
                                         {{-- @method('put') --}}
-                                        <input type="submit" class="btn btn-primary text-white" value="Modificar">
-                                    </form>
+                                        <a href="{{route('user.edit', $user)}}" class="btn btn-primary text-white">Modificar</a>
+                                    {{-- </form> --}}
                                 </td>
                             </tr>
 

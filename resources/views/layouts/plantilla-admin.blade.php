@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title")</title>
-    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/jquery-3.6.3.js", "resources/js/font-awesome.js"])
+    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/jquery-3.6.3.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
 </head>
 <body class="d-flex flex-column vh-100">
     <nav class="navbar-admin navbar navbar-expand-lg align-items-center px-5">
@@ -19,7 +19,7 @@
                 {{-- USER INFO --}}
                 <div id="navbar_menu">
                     @if (Auth::check())
-                    <p class="m-0"><i class="bi bi-person"></i> {{Auth::user()->username}}</p>
+                    <p class="m-0 text-white"><i class="bi bi-person"></i> {{Auth::user()->username}}</p>
                     @endif
                     {{-- <div class="navbar-nav d-flex justify-content-center gap-4 flex-grow-1">
                         <div class="col-lg-7 nav-link">
@@ -38,12 +38,12 @@
 
     <main class="container-fluid flex-grow-1">
         <div class="row h-100">
-            <div class="col-3 col-lg-2 position-relative">
+            <div class="col-2 col-lg-2 position-relative">
                 <button class="border-0 fs-2 mt-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#navegacion">
                     <i class="bi bi-plus-lg"></i>
                 </button>
                 <!-- navegación -->
-                <div id="navegacion" class="offcanvas offcanvas-start bg-dark position-absolute show" data-bs-backdrop="false" data-bs-scroll="true">
+                <div id="navegacion" class="sidebar offcanvas offcanvas-start bg-dark show" data-bs-backdrop="false" data-bs-scroll="true">
                     <!-- OffCanvas header -->
                     <div class="offcanvas-header py-3">
                         <h5 class="offcanvas-title text-white flex-grow-1 text-center">Hola, {{Auth::user()->username}}</h5>

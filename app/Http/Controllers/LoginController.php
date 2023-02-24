@@ -13,18 +13,27 @@ class LoginController extends Controller
     public function index(){
         return view("auth.login");
     }
+
     public function store(Request $request){
-        
+        // dd($request);
         // dd($request->input("remember"));
         $remember = $request->filled('remember');
+        // dd($request->filled('remember'));
         $request->validate([ //Validación de campos
             "username" => "required",
             "password" => "required"
         ]);
-
-        if (Auth::attempt($request->only('username', 'password'), $remember)) { //Si se loguea correctamente
+        
+        if (Auth::attempt($request->only('username', 'password', 'rol'), $remember)) { //Si se loguea correctamente
             $request->session()->regenerate(); //Me crea la sesión y la regeneramos para evitar problemas de seguridad
-            return redirect()->route('index'); 
+            $user = User::where('username', $request->username)->first(); //Obtenemos el usuario que ha iniciado sesión
+
+            if ($user->rol=="Administrador") { //Si el usuario es un admin lo redirigimos a la página de admins
+                return redirect()->route('admin.index');
+            }
+            else{
+                return redirect()->route('index'); 
+            }          
         }
         else{ //Si hay algún error
             $user = User::where('username', $request->username)->first();
@@ -54,7 +63,7 @@ class LoginController extends Controller
         // return redirect('index');
     }
 
-    public function logout(Request $request){
+    public function logout(Request $request){ //Función para cerrar sesión
         Auth::logout();        
         // Por seguridad, invalidamos la sesión del usuario y regeneramos el token
         $request->session()->invalidate();

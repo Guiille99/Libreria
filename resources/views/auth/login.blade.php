@@ -3,8 +3,6 @@
 
 @section('content')
 <div class="container-fluid vh-100 form__hero">
-   
-
     <div class="row flex-column gap-2 justify-content-center align-items-center h-100">
         <figure class="w-auto">
             <a href="{{route('index')}}">
@@ -17,7 +15,7 @@
             <form action="{{route("login.store")}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 <div class="form-floating mt-4">
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter email" required>
+                    <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}" placeholder="Enter email" required>
                     <label for="username" class="form-label">Usuario</label>
                     <div class="invalid-feedback">
                         <small>Introduzca un usuario</small> 
@@ -28,7 +26,7 @@
                 @enderror
 
                 <div class="form-floating mt-3">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Password" required>
                     <label for="password" class="form-label">Contraseña</label>
                     <div class="invalid-feedback">
                         <small>Introduzca una contraseña</small> 

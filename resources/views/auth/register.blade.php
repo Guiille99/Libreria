@@ -17,26 +17,32 @@
             <form action="{{route("register.store")}}" method="post" class="needs-validation" novalidate>
                 @csrf
                 <div class="form-floating mt-3">
-                    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" placeholder="Nombre">
+                    <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" placeholder="Nombre" required>
                     <label for="nombre" class="form-label">Nombre</label>
+                    <div class="invalid-feedback">
+                        <small>Nombre obligatorio</small> 
+                    </div>
                 </div>
                 @error('nombre')
                     <small class="text-danger">* {{$message}}</small> <br>
                 @enderror
 
                 <div class="form-floating mt-3">
-                    <input type="text" name="apellidos" id="apellidos" class="form-control" value="{{old('apellidos')}}" placeholder="Apellidos">
+                    <input type="text" name="apellidos" id="apellidos" class="form-control" value="{{old('apellidos')}}" placeholder="Apellidos" required>
                     <label for="apellidos" class="form-label">Apellidos</label>
+                    <div class="invalid-feedback">
+                        <small>Apellidos obligatorio</small> 
+                    </div>
                 </div>
                 @error('apellidos')
                     <small class="text-danger">* {{$message}}</small> <br>
                 @enderror
 
                 <div class="form-floating mt-3">
-                    <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}" placeholder="Email">
+                    <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}" placeholder="Email" required>
                     <label for="email" class="form-label">Email</label>
                     <div class="invalid-feedback">
-                        <small>Formato email inválido</small> 
+                        <small>Formato de email inválido</small> 
                     </div>
                 </div>
                 @error('email')
@@ -44,16 +50,22 @@
                 @enderror
 
                 <div class="form-floating mt-4">
-                    <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}" placeholder="Usuario">
+                    <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}" placeholder="Usuario" required>
                     <label for="username" class="form-label">Usuario</label>
+                    <div class="invalid-feedback">
+                        <small>Usuario obligatorio</small> 
+                    </div>
                 </div>
                 @error('username')
                     <small class="text-danger">* {{$message}}</small> <br>
                 @enderror
 
                 <div class="form-floating mt-3">
-                    <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Contraseña">
+                    <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Contraseña" required>
                     <label for="password" class="form-label">Contraseña</label>
+                    <div class="invalid-feedback">
+                        <small>Contraseña obligatoria</small> 
+                    </div>
                 </div>
                 @error('password')
                     <small class="text-danger">* {{$message}}</small> <br>

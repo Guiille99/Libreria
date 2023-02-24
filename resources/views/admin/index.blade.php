@@ -42,14 +42,10 @@
                                 <td>{{$user->created_at}}</td>
                                 <td>{{$user->updated_at}}</td>
                                 <td class="d-flex gap-2">
-                                    {{-- <form action="" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <input type="submit" value="Eliminar">
-                                    </form> --}}
-                                    <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#EliminaModal">
+                                    
+                                    <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$user->id}}" >
                                         Eliminar
-                                        <input type="hidden" name="curso" value="{{$curso}}">
+                                        {{-- <input type="hidden" name="user" value="{{$user}}"> --}}
                                     </button>
 
                                     <form action="" method="post">
@@ -60,38 +56,13 @@
                                 </td>
                             </tr>
 
-                            
+                            @include('admin.delete')
                         @endforeach
                         </tbody>
                         <tfoot>
                             <td colspan="100%">{{$users->links()}}</td>
                         </tfoot>
                 </table>
-
-                {{-- MODAL PARA CONFIRMAR BORRADO DE USUARIO --}}
-                <!-- Modal -->
-                <div class="modal fade" id="EliminaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Está seguro de que quiere eliminar el usuario?</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        {{-- <div class="modal-body">
-                        ...
-                        </div> --}}
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-                        <form action="{{route('user.destroy', $user)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-primary text-white">Confirmar</button>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

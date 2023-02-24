@@ -29,7 +29,9 @@ Route::post('libros', [LibroController::class, "getFiltro"])->name("libros.getFi
 Route::get('libro/{id}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
 
 Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')->name("admin.index");
-Route::delete('admin/{$user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy");
+Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy");
+Route::get('admin/edit/{user}', [UserController::class, "edit"])->middleware('checkadmin')->name("user.edit");
+Route::put('admin/edit/{user}', [UserController::class, "update"])->middleware('checkadmin')->name("user.update");
 // Route::get('admin/users', [::class, "index"])->middleware('checkadmin')->name("admin.users");
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");
@@ -46,5 +48,3 @@ Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS
 
     return "Mensaje enviado";
 });
-
-//CAMBIO DE PRUEBA COMMIT

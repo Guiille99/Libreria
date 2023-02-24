@@ -15,7 +15,15 @@ class UserController extends Controller
     }
 
     public function destroy(User $user){ 
-        $user->delete();
-        redirect()->back();
+        $user->delete(); //Elimina el usuario
+        return redirect()->back();
+    }
+
+    public function edit(){ 
+        
+    }
+
+    public function update(){ 
+        
     }
 }

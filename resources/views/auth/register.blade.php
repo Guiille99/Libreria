@@ -20,26 +20,44 @@
                     <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" placeholder="Nombre">
                     <label for="nombre" class="form-label">Nombre</label>
                 </div>
+                @error('nombre')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
 
                 <div class="form-floating mt-3">
                     <input type="text" name="apellidos" id="apellidos" class="form-control" value="{{old('apellidos')}}" placeholder="Apellidos">
                     <label for="apellidos" class="form-label">Apellidos</label>
                 </div>
+                @error('apellidos')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
 
                 <div class="form-floating mt-3">
                     <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}" placeholder="Email">
                     <label for="email" class="form-label">Email</label>
+                    <div class="invalid-feedback">
+                        <small>Formato email inválido</small> 
+                    </div>
                 </div>
+                @error('email')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
 
                 <div class="form-floating mt-4">
-                    <input type="text" name="usuario" id="usuario" class="form-control" value="{{old('usuario')}}" placeholder="Usuario">
-                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" name="username" id="username" class="form-control" value="{{old('username')}}" placeholder="Usuario">
+                    <label for="username" class="form-label">Usuario</label>
                 </div>
+                @error('username')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
 
                 <div class="form-floating mt-3">
                     <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Contraseña">
                     <label for="password" class="form-label">Contraseña</label>
                 </div>
+                @error('password')
+                    <small class="text-danger">* {{$message}}</small> <br>
+                @enderror
 
 
                 <div class="mt-4">
@@ -50,5 +68,24 @@
         </div>
     </div>
 </div>
+<script>
+        (() => {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 @endsection

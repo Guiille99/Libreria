@@ -9,6 +9,20 @@ function inicio() {
     // prueba.style.backgroundColor="yellow";
 	ellipsis_box(".libro__titulo", 18);
 
+
+    // $("#toggler-sidebar").click(function(){
+    //     let sidebar =  $("#sidebar__container");
+    //     let display=sidebar.css('display');
+    //     let offcanva=$("#navegacion");
+    //     if (display=="none") {
+    //         $("#sidebar__container").css('display', 'block');
+    //         $("#navegacion").addClass("show");
+    //     }
+    //     else{
+    //         $("#sidebar__container").css('display', 'none');
+    //     }
+    // })
+
 }
 function ellipsis_box(elemento, max_chars){
 	let titulos = $(elemento);

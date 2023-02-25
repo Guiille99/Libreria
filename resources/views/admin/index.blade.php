@@ -8,7 +8,7 @@
     {{-- DATOS --}}
     <div id="registros__container" class="col col-lg-10 pt-3">
         <div class="registros row">
-            <div class="col-md-10">
+            <div class="col">
                 <div class="header__container">
                     <h3 class="title text-center">Lista de Usuarios</h3>
                     <a href="{{route('user.create')}}" class="btn-add"> <i class="bi bi-plus"></i> Nuevo usuario</a>

@@ -49,6 +49,20 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user){ 
+        $request->validate([ //Validación de campos
+            "nombre" => "required|min:2|max:80|",
+            "apellidos" => "required|min:2|max:80|",
+            // "email" => "required|unique:users",
+            "username" => "required|min:5|max:25|unique:users",
+            "password" => "required|min:5|max:80"
+        ]);
+        $emails = User::all('email'); //Obtengo todos los emails
+
+        foreach ($emails as $email) {
+            if ($email==$request->email && $email!=$user->email) {
+                return redirect()->route('user.edit')->withErrors('email', 'El email ya está en uso');
+            }
+        }
         $user->nombre = $request->nombre;
         $user->apellidos = $request->apellidos;
         $user->username = $request->username;
@@ -60,6 +74,6 @@ class UserController extends Controller
         $user->rol = $request->rol;
 
         $user->save();
-        return redirect()->route('admin.users')->with('userUpdate', 'El usuario ha sido actualizado');
+        return redirect()->route('admin.users');
     }
 }

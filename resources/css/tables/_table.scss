@@ -2,25 +2,29 @@
 @use "../mixins" as m;
 @use "sass:color";
 
-.registros{
-    // display: flex;
-    justify-content: center;
-
-    @include m.desktop{
-        justify-content: flex-start;
-    }
-    // padding: 0 20px;
-    // justify-content-space-around py-3
-    .header__container{
-        background-color: v.$nav-dark;
-        padding: 10px;
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        align-items: center;
-        .title{
-            color: v.$white;
-            margin: 0;
+#registros__container{
+    margin: 0 auto;
+    .registros{
+        // display: flex;
+        justify-content: center;
+    
+        @include m.desktop{
+            justify-content: flex-start;
+        }
+        // padding: 0 20px;
+        // justify-content-space-around py-3
+        .header__container{
+            background-color: v.$nav-dark;
+            padding: 10px;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            .title{
+                color: v.$white;
+                margin: 0;
+            }
         }
     }
+
 }

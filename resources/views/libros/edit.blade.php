@@ -60,9 +60,6 @@
                     <div class="invalid-feedback">
                         <small>Email inválido</small> 
                     </div>
-                    @error('email')
-                        <small class="text-danger">* {{$message}}</small> <br>
-                    @enderror
                 </div>
 
                 <div class="mt-3">
@@ -81,6 +78,9 @@
                             <option value="Administrador">Aministrador</option>
                         @endif
                     </select>
+                    @error('email')
+                        <small class="text-danger">* {{$message}}</small> <br>
+                    @enderror
                 </div>
         
         

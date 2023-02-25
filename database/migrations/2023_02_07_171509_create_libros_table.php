@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("editorial", 80);
             $table->string("portada");
             $table->string("isbn", 17)->unique();
-            $table->timestamp("fecha_publicacion");
+            $table->date("fecha_publicacion");
             $table->double("precio");
             $table->string("genero", 40);
             $table->text("descripcion");

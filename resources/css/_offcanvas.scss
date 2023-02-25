@@ -7,9 +7,9 @@
         width: calc(100% / 6);
     }
 }
-.sidebar{
-    position: fixed;
-    @include m.desktop{
-        position: absolute !important;
-    }
-}
+// .sidebar{
+//     position: fixed;
+//     @include m.desktop{
+//         position: absolute !important;
+//     }
+// }

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', [HomeController::class, "index"])->name("index"); //Página principal 
-Route::get('libros/{filtro}', [LibroController::class, "index"])->name("libros.index"); //Página para mostrar los libros filtrados por título, autor o género
+Route::get('libros/{filtro}', [LibroController::class, "filter"])->name("libros.filter"); //Página para mostrar los libros filtrados por título, autor o género
 Route::post('libros', [LibroController::class, "getFiltro"])->name("libros.getFiltro"); //Página para mostrar los libros filtrados por título, autor o género
 //Route::get('libros/categoria/{categoria}', [LibroController::class, "indexCategoria"])->name("libros.categoria");
 Route::get('libro/{id}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
@@ -32,9 +32,15 @@ Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')-
 Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario
 Route::get('admin/{user}/edit', [UserController::class, "edit"])->middleware('checkadmin')->name("user.edit"); //Página para mostrar el formulario de actualización de usuario
 Route::put('admin/{user}/edit', [UserController::class, "update"])->middleware('checkadmin')->name("user.update"); //Página para actualizar el usuario
-Route::get('admin/usuarios', [UserController::class, "index"])->middleware('checkadmin')->name("admin.users");
+Route::get('admin/usuarios', [UserController::class, "index"])->middleware('checkadmin')->name("admin.users"); //Página que muestra los registros de los usuarios
 Route::get('admin/user/create', [UserController::class, "create"])->middleware('checkadmin')->name("user.create");
 Route::post('admin/user', [UserController::class, "store"])->middleware('checkadmin')->name("user.store");
+
+Route::get('admin/libros', [LibroController::class, "index"])->middleware('checkadmin')->name("libros.index"); //Página para mostar todos los libros
+Route::delete('admin/libros/{libro}', [LibroController::class, "destroy"])->middleware('checkadmin')->name("libro.destroy"); //Página para eliminar un usuario
+Route::get('admin/libros/{libro}/edit', [LibroController::class, "edit"])->middleware('checkadmin')->name("libro.edit"); //Página para mostrar el formulario de actualización de usuario
+Route::put('admin/libros/{libro}/edit', [LibroController::class, "update"])->middleware('checkadmin')->name("libro.update"); 
+
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");
 Route::post('/login', [LoginController::class, "store"])->name("login.store");

@@ -1,0 +1,8 @@
+@use "variables" as v;
+@use "mixins" as m;
+@use "sass:color" as color;
+
+.btn-modify{
+    @include m.btn(v.$blue, v.$white);
+    border-radius: 0.4rem;
+}

@@ -26,4 +26,24 @@ function ellipsis_box(elemento, max_chars){
     //     }
     // });
 }
-	
+
+// OJO DE LOS CAMPOS PASSWORD
+const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#password');
+
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    if (type=='password') {
+        $(this).removeClass('bi-eye-slash');
+        $(this).addClass('bi-eye');
+    }
+    else{
+        $(this).removeClass('bi-eye');
+        $(this).addClass('bi-eye-slash');
+    }
+    // $(this).toggleClass('bi-eye-slash', 'bi-eye');
+    // this.classList.toggle('bi-eye-slash', 'bi-eye');
+});

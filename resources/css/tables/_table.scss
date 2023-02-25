@@ -1,0 +1,9 @@
+@use "../variables" as v;
+@use "../mixins" as m;
+@use "sass:color" as color;
+
+.registros{
+    .header__container{
+        display: flex;
+    }
+}

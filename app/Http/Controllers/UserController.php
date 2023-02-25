@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -23,7 +23,18 @@ class UserController extends Controller
         return view("users.edit", compact('user'));
     }
 
-    public function update(){ 
-        
+    public function update(Request $request, User $user){ 
+        $user->nombre = $request->nombre;
+        $user->apellidos = $request->apellidos;
+        $user->username = $request->username;
+
+        if ($request->password != null) { //Si el campo contraseña no se ha dejado vacío y desea cambiarla
+            $user->password =  Hash::make($request->password); //Codificamos la contraseña
+        }
+        $user->email = $request->email;
+        $user->rol = $request->rol;
+
+        $user->save();
+        return redirect()->route('admin.users')->with('userUpdate', 'El usuario ha sido actualizado');
     }
 }

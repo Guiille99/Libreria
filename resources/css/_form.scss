@@ -64,3 +64,20 @@
         font-size: 1.1rem;
     }
 }
+
+// Formulario de registro
+.form__modify__container{
+    .title{
+        text-align: center;
+    }
+    margin: 0 auto;
+}
+
+input[type="password"]{
+    position: relative;
+}
+.bi-eye, .bi-eye-slash{
+    position: absolute;
+    right: 40px;
+    top: 30%;
+}

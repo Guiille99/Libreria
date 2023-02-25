@@ -1,18 +1,28 @@
 @extends('layouts.plantilla-admin')
+@section('title', 'Books | Admin')
 @section('content')
 {{-- {{$users}} --}}
+{{-- @if (Session::has('userUpdate'))
+    <p class="text-danger">{{Session::get('userUpdate')}}</p>
+@endif --}}
     {{-- DATOS --}}
     <div class="col col-lg-10 pt-3">
-        <h1 class="text-center py-3">Administración de Usuarios</h1>
-        <div class="row justify-content-center">
+        {{-- <div class="titulo__container">
+            <h1 class="text-center py-3">Administración de Usuarios</h1>
+
+        </div> --}}
+        {{-- <div class="row justify-content-center">
             <div class="col-7 col-md-3 bg-success text-center text-white d-flex flex-column py-4 position-relative">
                 <a href="panel_admin_nuevo_cliente.html" class="h-100 w-100 d-block position-absolute top-0 start-0"></a>
                 <i class="bi bi-plus-lg fs-1"></i>
                 <p class="m-0">Nuevo</p>
             </div>
-        </div>
-        <div class="row justify-content-center py-3">
-            <h3 class="text-center">Lista de Usuarios</h3>
+        </div> --}}
+        <div class="registros row justify-content-center py-3">
+            <div class="header__container">
+                <h3 class="text-center">Lista de Usuarios</h3>
+                <a href="">Nuevo usuario</a>
+            </div>
             <div class="col-md-10 table-responsive-md">
                 <table class="table text-center">
                     <thead>

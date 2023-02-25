@@ -1,6 +1,12 @@
 @use "variables" as v;
 @use "mixins" as m;
 /*Sidebar de la vista admin*/
+#sidebar__container{
+    width: 0;
+    @include m.tablet{
+        width: calc(100% / 6);
+    }
+}
 .sidebar{
     position: fixed;
     @include m.desktop{

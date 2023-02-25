@@ -33,6 +33,8 @@ Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('c
 Route::get('admin/{user}/edit', [UserController::class, "edit"])->middleware('checkadmin')->name("user.edit"); //Página para mostrar el formulario de actualización de usuario
 Route::put('admin/{user}/edit', [UserController::class, "update"])->middleware('checkadmin')->name("user.update"); //Página para actualizar el usuario
 Route::get('admin/usuarios', [UserController::class, "index"])->middleware('checkadmin')->name("admin.users");
+Route::get('admin/user/create', [UserController::class, "create"])->middleware('checkadmin')->name("user.create");
+Route::post('admin/user', [UserController::class, "store"])->middleware('checkadmin')->name("user.store");
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");
 Route::post('/login', [LoginController::class, "store"])->name("login.store");

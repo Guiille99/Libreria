@@ -9,28 +9,21 @@
 <body class="d-flex flex-column vh-100">
     <nav class="navbar-admin navbar navbar-expand-lg align-items-center px-5">
         <div class="container-fluid justify-content-around">
+            <button class="border-0 fs-2 toggler-admin" type="button" data-bs-toggle="offcanvas" data-bs-target="#navegacion">
+                <i class="bi bi-plus-lg"></i>
+            </button>
             <figure class="my-0 mx-auto">
                 <a href="{{ route('index')}}"><img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO" class="img-fluid"></a>
                 </figure>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_menu" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_menu" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> --}}
 
                 {{-- USER INFO --}}
                 <div id="navbar_menu">
                     @if (Auth::check())
                     <p class="m-0 text-white"><i class="bi bi-person"></i> {{Auth::user()->username}}</p>
                     @endif
-                    {{-- <div class="navbar-nav d-flex justify-content-center gap-4 flex-grow-1">
-                        <div class="col-lg-7 nav-link">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                            </form>
-                        </div>
-                        <div class="col-lg-3 nav-link align-self-center">
-                            <button class="btn btn-success text-white px-5">Perfil</button>
-                        </div>
-                    </div> --}}
                 </div>
         </div>
     </nav>
@@ -38,10 +31,7 @@
 
     <main class="container-fluid flex-grow-1">
         <div class="row h-100">
-            <div class="col-2 col-lg-2 position-relative">
-                <button class="border-0 fs-2 mt-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#navegacion">
-                    <i class="bi bi-plus-lg"></i>
-                </button>
+            <div id="sidebar__container" class="col-2 col-lg-2 position-relative">
                 <!-- navegación -->
                 <div id="navegacion" class="sidebar offcanvas offcanvas-start bg-dark show" data-bs-backdrop="false" data-bs-scroll="true">
                     <!-- OffCanvas header -->
@@ -63,6 +53,7 @@
                     </div>
                 </div>
             </div>
+            
 
             @yield('content')
 

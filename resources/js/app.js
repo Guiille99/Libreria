@@ -8,6 +8,7 @@ function inicio() {
     // let prueba=document.getElementById("prueba");
     // prueba.style.backgroundColor="yellow";
 	ellipsis_box(".libro__titulo", 18);
+
 }
 function ellipsis_box(elemento, max_chars){
 	let titulos = $(elemento);
@@ -47,3 +48,4 @@ const togglePassword = document.querySelector('#togglePassword');
     // $(this).toggleClass('bi-eye-slash', 'bi-eye');
     // this.classList.toggle('bi-eye-slash', 'bi-eye');
 });
+

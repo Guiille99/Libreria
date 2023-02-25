@@ -14,6 +14,31 @@ class UserController extends Controller
         return view("admin.index", compact('users'));
     }
 
+    public function create(){
+        return view("users.create");
+    }
+
+    public function store(Request $request){
+        $request->validate([ //Validación de campos
+            "nombre" => "required|min:2|max:80|",
+            "apellidos" => "required|min:2|max:80|",
+            "email" => "required|unique:users",
+            "username" => "required|min:5|max:25|unique:users",
+            "password" => "required|min:5|max:80"
+        ]);
+        $user = new User();
+        $user->nombre = $request->nombre;
+        $user->apellidos = $request->apellidos;
+        $user->username = $request->username;
+        $user->password =  Hash::make($request->password); //Codificamos la contraseña
+        $user->email = $request->email;
+        $user->rol = $request->rol;
+
+        $user->save();
+        return redirect()->route('admin.users');
+        // return view("users.create");
+    }
+
     public function destroy(User $user){ 
         $user->delete(); //Elimina el usuario
         return redirect()->back();

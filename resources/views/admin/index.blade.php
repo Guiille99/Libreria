@@ -6,71 +6,61 @@
     <p class="text-danger">{{Session::get('userUpdate')}}</p>
 @endif --}}
     {{-- DATOS --}}
-    <div class="col col-lg-10 pt-3">
-        {{-- <div class="titulo__container">
-            <h1 class="text-center py-3">Administración de Usuarios</h1>
-
-        </div> --}}
-        {{-- <div class="row justify-content-center">
-            <div class="col-7 col-md-3 bg-success text-center text-white d-flex flex-column py-4 position-relative">
-                <a href="panel_admin_nuevo_cliente.html" class="h-100 w-100 d-block position-absolute top-0 start-0"></a>
-                <i class="bi bi-plus-lg fs-1"></i>
-                <p class="m-0">Nuevo</p>
-            </div>
-        </div> --}}
-        <div class="registros row justify-content-center py-3">
-            <div class="header__container">
-                <h3 class="text-center">Lista de Usuarios</h3>
-                <a href="">Nuevo usuario</a>
-            </div>
-            <div class="col-md-10 table-responsive-md">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Usuario</th>
-                            <th>Email</th>
-                            <th>Rol</th>
-                            <th>Fecha creación</th>
-                            <th>Última modificación</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $user)
+    <div id="registros__container" class="col col-lg-10 pt-3">
+        <div class="registros row">
+            <div class="col-md-10">
+                <div class="header__container">
+                    <h3 class="title text-center">Lista de Usuarios</h3>
+                    <a href="{{route('user.create')}}" class="btn-add"> <i class="bi bi-plus"></i> Nuevo usuario</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-center table-striped table-hover">
+                        <thead>
                             <tr>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->nombre}}</td>
-                                <td>{{$user->apellidos}}</td>
-                                <td>{{$user->username}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>{{$user->rol}}</td>
-                                <td>{{$user->created_at}}</td>
-                                <td>{{$user->updated_at}}</td>
-                                <td class="d-flex gap-2">
-                                    
-                                    <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$user->id}}" >
-                                        Eliminar
-                                        {{-- <input type="hidden" name="user" value="{{$user}}"> --}}
-                                    </button>
-
-                                    {{-- <form action="{{route('user.edit', $user)}}" method="post">
-                                        @csrf --}}
-                                        {{-- @method('put') --}}
-                                        <a href="{{route('user.edit', $user)}}" class="btn btn-primary text-white">Modificar</a>
-                                    {{-- </form> --}}
-                                </td>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Fecha creación</th>
+                                <th>Última modificación</th>
+                                <th>Acciones</th>
                             </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->nombre}}</td>
+                                    <td>{{$user->apellidos}}</td>
+                                    <td>{{$user->username}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->rol}}</td>
+                                    <td>{{$user->created_at}}</td>
+                                    <td>{{$user->updated_at}}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <button type="button" class="d-flex gap-2 btn-delete text-white" data-bs-toggle="modal" data-bs-target="#modal-delete-{{$user->id}}" >
+                                                <i class="bi bi-trash3"></i> Eliminar
+                                            </button>
 
-                            @include('admin.delete')
-                        @endforeach
-                        </tbody>
-                        <tfoot>
-                            <td colspan="100%">{{$users->links()}}</td>
-                        </tfoot>
-                </table>
+                                            <a href="{{route('user.edit', $user)}}" class="d-flex gap-2 btn-modify text-white">
+                                                <i class="bi bi-pencil-square"></i> Modificar</a>
+                                        </div>
+                                    </td>
+                                </tr>
+    
+                                @include('admin.delete') {{-- Añado el modal de confirmación para el borrado de registros --}}
+                            @endforeach
+                            </tbody>
+                    </table>
+
+                </div>
+
+                <div class="w-100">
+                    {{$users->links()}}
+                </div>
             </div>
         </div>
     </div>

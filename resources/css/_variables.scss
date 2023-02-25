@@ -1,4 +1,6 @@
+@use "sass:color";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Work+Sans&display=swap');
+
 //Colores
 $green: #219250;
 $dark-green: #0F7238;
@@ -7,7 +9,7 @@ $black: #111111;
 $boder-input: #85e1ab;
 $nav-dark: #1f1f1f;
 $blue: #5796e8;
-$red: #ff4747;
+$red: #c80f0f;
 
 //RESETEO BOOTSTRAP
 // NAV
@@ -38,6 +40,10 @@ $input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width
 //Inputs
 $input-border-color: $boder-input;
 $input-focus-border-color: $boder-input;
+
+// Table
+$table-bg: color.scale($green, $lightness: 70%);
+$table-striped-bg: color.scale($green, $lightness: 60%);
 
 //Tamaños
 $tamNavIcon: 25px;

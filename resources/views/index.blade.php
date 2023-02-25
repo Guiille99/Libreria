@@ -54,13 +54,14 @@
                     @foreach ($libros_recomendados as $libro)
                     <div class="card">
                         <figure class="m-0">
-                            <img src="{{$libro->portada}}" alt="{{$libro->portada}}" class="img-fluid">
+                           <a href="{{route('libros.show', $libro)}}"><img src="{{$libro->portada}}" alt="{{$libro->titulo}}" class="img-fluid"></a>  
                         </figure>
                         <div class="libro__info">
                             <h4 class="libro__titulo" title="{{$libro->titulo}}">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             {{-- <button class="boton">Comprar</button> --}}
+                            @if ($libro->stock>0)
                             <form action="" method="get">
                                 @csrf
                                 @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
@@ -69,6 +70,7 @@
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
                             </form>
+                            @endif
                         </div>
                     </div>
                     @endforeach
@@ -88,13 +90,14 @@
                     @foreach ($libros_recientes as $libro)
                     <div class="card">
                         <figure class="m-0">
-                            <img src="{{$libro->portada}}" alt="" class="img-fluid">
+                            <a href="{{route('libros.show', $libro)}}"><img src="{{$libro->portada}}" alt="{{$libro->titulo}}" class="img-fluid"></a> 
                         </figure>
                         <div class="libro__info">
                             <h4 class="libro__titulo">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             {{-- <button>Comprar</button> --}}
+                            @if ($libro->stock>0)
                             <form action="" method="get">
                                 @csrf
                                 @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
@@ -103,6 +106,9 @@
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
                             </form>
+                            @else
+                            <span class="btn-delete">Fuera de Stock</span>
+                            @endif
                         </div>
                     </div>
                     @endforeach

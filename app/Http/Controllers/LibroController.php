@@ -17,9 +17,8 @@ class LibroController extends Controller
     public function filter($filtro){
         $generos = Libro::select('genero')->distinct()->get();
         $filtraGenero=false;
-        // dd(mb_stripos($filtro, "/"));
         foreach ($generos as $genero) {
-            if ($genero->genero == $filtro) {   
+            if (strtolower($genero->genero) == strtolower($filtro)) {   
                 $filtraGenero=true;
             }
             if (strpos($genero->genero, "/")!="") { //Si se encuentra / en el nombre del género lo sustituiremos para evitar errores
@@ -27,17 +26,18 @@ class LibroController extends Controller
             }
         }
     
+
         if ($filtraGenero) { //Si se quiere filtrar por categoría
-            $libros = Libro::where('genero', $filtro)->get(); //Libros de una determinada categoría
+            $libros = Libro::where('genero', $filtro)->paginate(5); //Libros de una determinada categoría
         }
         else{
-            $libros = Libro::where('titulo', $filtro)->orWhere('autor', $filtro)->get(); //Libros filtrados por título o autor
+            $libros = Libro::where('titulo', 'like', '%'.$filtro.'%')->orWhere('autor', 'like', '%'.$filtro.'%')->paginate(5); //Libros filtrados por título o autor
         }
-        return view("libros.index", compact("generos", "libros"));
+        return view("libros.index", compact("generos", "libros", "filtro"));
     }
 
     public function getFiltro(Request $request){
-        return redirect()->route('libros.index', $request->filtro); //Envío el filtro recogido en la barra de búsqueda y lo envío
+        return redirect()->route('libros.filter', $request->filtro); //Envío el filtro recogido en la barra de búsqueda y lo envío
     }
 
     // public function indexCategoria($categoria){
@@ -71,7 +71,8 @@ class LibroController extends Controller
         return redirect()->route('admin.users')->with('userUpdate', 'El usuario ha sido actualizado');
     }
 
-    public function show(){
-        return view("libros.show");
+    public function show(Libro $libro){
+        $generos = Libro::select('genero')->distinct()->get();
+        return view("libros.show", compact('libro', 'generos'));
     }
 }

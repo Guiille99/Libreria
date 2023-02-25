@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(5)->create();
-        Libro::factory(10)->create();
+        Libro::factory(40)->create();
         $libros=Libro::all();
         foreach ($libros as $libro) {
             if (strpos($libro->portada, "public/")!="") {

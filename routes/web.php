@@ -26,7 +26,7 @@ Route::get('/', [HomeController::class, "index"])->name("index"); //Página prin
 Route::get('libros/{filtro}', [LibroController::class, "filter"])->name("libros.filter"); //Página para mostrar los libros filtrados por título, autor o género
 Route::post('libros', [LibroController::class, "getFiltro"])->name("libros.getFiltro"); //Página para mostrar los libros filtrados por título, autor o género
 //Route::get('libros/categoria/{categoria}', [LibroController::class, "indexCategoria"])->name("libros.categoria");
-Route::get('libro/{id}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
+Route::get('libro/{libro}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
 
 Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')->name("admin.index"); //Página principal del admin
 Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario

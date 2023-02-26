@@ -1,26 +1,23 @@
 @use "variables" as v;
 
-main{
-    .title__container{
-        text-align: center;
-        h1{
-            display: inline-block;
-            position: relative;
-            &::after{
-                content: "";
-                display: block;
-                position: absolute;
-                bottom: 0px;
-                background-color: v.$green;
-                height: 2px;
-                width: 100%;
-            }
+.title__container{
+text-align: center;
+    h1{
+        display: inline-block;
+        position: relative;
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0px;
+            background-color: v.$green;
+            height: 2px;
+            width: 100%;
         }
     }
+}
     // h1{
     //     border: 1px solid red;
     //     position: relative;
     //     padding-bottom: 3px;
     // }
-}
-

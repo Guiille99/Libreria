@@ -104,7 +104,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Novedades</a>
+                <a class="nav-link" href="{{route('libros.filter', 'novedades')}}">Novedades</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="">Blog</a>
@@ -184,7 +184,10 @@
     {{-- FOOTER --}}
     <footer class="mt-5 @yield('footer-class')">
       <figure>
-        <img src="{{asset('uploads/logo-xl.png')}}" alt="Logo" class="img-fluid">
+        <picture>
+          <source media="(min-width: 768px)" srcset="{{asset('uploads/logo-xl.png')}}">
+          <img src="{{asset('uploads/logo.png')}}" alt="Logo" class="img-fluid">
+        </picture>
       </figure>
 
       <div class="info__container">

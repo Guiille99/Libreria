@@ -16,7 +16,11 @@
     <div class="container-fluid mt-5">
         <div class="row mt-5">
             <div class="title__container">
-                <h1 class="text-center">Libros de {{$filtro}}</h1>
+                @if ($filtro=="novedades")
+                    <h1 class="text-center">Libros más recientes</h1>
+                @else
+                    <h1 class="text-center">Libros de {{$filtro}}</h1>
+                @endif
             </div>
             <div class="recomendados__container col-6 col-md-10 m-auto">
                 <div class="libros__container mt-3">

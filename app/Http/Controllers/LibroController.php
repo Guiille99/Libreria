@@ -31,6 +31,9 @@ class LibroController extends Controller
         if ($filtraGenero) { //Si se quiere filtrar por categoría
             $libros = Libro::where('genero', $filtro)->paginate(5); //Libros de una determinada categoría
         }
+        else if (strtolower($filtro)=="novedades") {
+            $libros = Libro::orderby('fecha_publicacion', 'desc')->take(100)->paginate(12); //Si se quieren obtener los libros más recientes   
+        }
         else{
             $libros = Libro::where('titulo', 'like', '%'.$filtro.'%')->orWhere('autor', 'like', '%'.$filtro.'%')->paginate(5); //Libros filtrados por título o autor
         }
@@ -166,4 +169,5 @@ class LibroController extends Controller
         $generos = Libro::select('genero')->distinct()->get();
         return view("libros.show", compact('libro', 'generos'));
     }
+
 }

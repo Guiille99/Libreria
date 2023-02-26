@@ -21,7 +21,8 @@ footer{
 
     figure{
         width: 30%;
-        @include m.desktop{
+        max-width: 140px;
+        @include m.tablet{
             width: 10%;
         }
         img{

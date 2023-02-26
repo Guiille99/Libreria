@@ -28,7 +28,7 @@ function ellipsis_box(elemento, max_chars){
 	let titulos = $(elemento);
     for (let i = 0; i < titulos.length; i++) {
         if (titulos[i].innerHTML.length > max_chars) {
-            let limite = titulos[i].innerHTML.substr(0, max_chars)+" ...";
+            let limite = titulos[i].innerHTML.substr(0, max_chars)+"...";
             titulos[i].innerHTML= limite;
         }
         

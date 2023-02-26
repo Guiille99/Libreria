@@ -40,6 +40,8 @@ Route::get('admin/libros', [LibroController::class, "index"])->middleware('check
 Route::delete('admin/libros/{libro}', [LibroController::class, "destroy"])->middleware('checkadmin')->name("libro.destroy"); //Página para eliminar un usuario
 Route::get('admin/libros/{libro}/edit', [LibroController::class, "edit"])->middleware('checkadmin')->name("libro.edit"); //Página para mostrar el formulario de actualización de usuario
 Route::put('admin/libros/{libro}/edit', [LibroController::class, "update"])->middleware('checkadmin')->name("libro.update"); 
+Route::get('admin/libros/create', [LibroController::class, "create"])->middleware('checkadmin')->name('libro.create');
+Route::post('admin/libros', [LibroController::class, "store"])->middleware('checkadmin')->name("libro.store");
 
 
 Route::get('/login', [LoginController::class, "index"])->name("login.index");

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string("portada");
             $table->string("isbn", 17)->unique();
             $table->date("fecha_publicacion");
-            $table->double("precio");
+            $table->double("precio",4,2);
             $table->string("genero", 40);
             $table->text("descripcion");
             $table->double("valoracion");

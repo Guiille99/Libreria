@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Libro;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
@@ -56,19 +57,109 @@ class LibroController extends Controller
         return view("libros.edit", compact('libro'));
     }
 
-    public function update(Request $request, Libro $libro){ 
-        $libro->nombre = $request->nombre;
-        $libro->apellidos = $request->apellidos;
-        $libro->username = $request->username;
+    public function create(){
+        return view("libros.create");
+    }
 
-        if ($request->password != null) { //Si el campo contraseña no se ha dejado vacío y desea cambiarla
-            $libro->password =  Hash::make($request->password); //Codificamos la contraseña
+    public function store(Request $request){
+        $request->validate([ //Validación de campos
+            "titulo" => "required|min:2|max:150",
+            "autor" => "required|min:2|max:100",
+            "editorial" => "required|min:2|max:80",
+            "isbn" => "required|unique:libros",
+            "portada" => "required",
+            "fecha_publicacion" => "required",
+            "precio" => "required",
+            "genero" => "required|min:5|max:40",
+            "descripcion" => "required|min:5|max:200",
+            "valoracion" => "numeric|min:1|max:10",
+            "paginas" => "required",
+            "stock" => "required",
+        ]);
+
+
+        $libro = new Libro();
+
+        if($request->hasFile('portada')){
+            $file = $request->file('portada');//Obtenemos los datos del archivo subido
+            $destinationPath = "uploads/libros/";//Se define la ruta donde se guardará el archivo subido
+            $filename = time() . "-" . $file->GetClientOriginalName() ;//concatenamos el nombre del archivo con el tiempo en ms para que no se repita ningún archivo
+            $uploadSuccess = $request->file('portada')->move($destinationPath, $filename);//Movemos el archivo a la carpeta correspondiente
+            $libro->portada = $destinationPath . $filename;//Subimos el archivo a la base de datos
         }
-        $libro->email = $request->email;
-        $libro->rol = $request->rol;
+
+        
+        $libro->titulo = $request->titulo;
+        $libro->autor = $request->autor;
+        $libro->editorial = $request->editorial;
+        $libro->isbn = $request->isbn;
+        $libro->fecha_publicacion = $request->fecha_publicacion;
+        $libro->precio = $request->precio;
+        $libro->genero = $request->genero;
+        $libro->descripcion = $request->descripcion;
+        $libro->valoracion = $request->valoracion;
+        $libro->paginas = $request->paginas;
+        $libro->stock = $request->stock;
 
         $libro->save();
-        return redirect()->route('admin.users')->with('userUpdate', 'El usuario ha sido actualizado');
+        return redirect()->route('libros.index');
+    }
+
+
+
+    public function update(Request $request, Libro $libro){ 
+        $request->validate([ //Validación de campos
+            "titulo" => "required|min:2|max:150",
+            "autor" => "required|min:2|max:100",
+            "editorial" => "required|min:2|max:80",
+            "isbn" => "required",
+            "fecha_publicacion" => "required",
+            "precio" => "required|min:5|max:50",
+            "genero" => "required|min:5|max:40",
+            "descripcion" => "required|min:5|max:200",
+            "valoracion" => "numeric|min:1|max:10",
+            "paginas" => "required",
+            "stock" => "required",
+        ]);
+
+
+        $isbns = Libro::all('isbn');
+
+        foreach ($isbns as $isbn) {
+            if ($isbn->isbn==$request->isbn && $isbn->isbn!=$libro->isbn) {
+                return redirect()->route('libro.edit', $libro)->withErrors([
+                    "isbn" => "ISBN está en uso"
+                ]);
+            }
+        }
+
+        
+        if($request->hasFile('portada')){
+            unlink($libro->portada);//Borra la anterior foto registrada
+            $file = $request->file('portada');//Obtenemos los datos del archivo subido
+            $destinationPath = "uploads/libros/";//Se define la ruta donde se guardará el archivo subido
+            $filename = time() . "-" . $file->GetClientOriginalName() ;//concatenamos el nombre del archivo con el tiempo en ms para que no se repita ningún archivo
+            $uploadSuccess = $request->file('portada')->move($destinationPath, $filename);//Movemos el archivo a la carpeta correspondiente
+            $libro->portada = $destinationPath . $filename;//Subimos el archivo a la base de datos
+        }
+
+        
+        
+        $libro->titulo = $request->titulo;
+        $libro->autor = $request->autor;
+        $libro->editorial = $request->editorial;
+        $libro->isbn = $request->isbn;
+        $libro->fecha_publicacion = $request->fecha_publicacion;
+        $libro->precio = $request->precio;
+        $libro->genero = $request->genero;
+        $libro->descripcion = $request->descripcion;
+        $libro->valoracion = $request->valoracion;
+        $libro->paginas = $request->paginas;
+        $libro->stock = $request->stock;
+
+
+        $libro->save();
+        return redirect()->route('libros.index');
     }
 
     public function show(Libro $libro){

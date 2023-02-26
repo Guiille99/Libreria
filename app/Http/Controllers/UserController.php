@@ -51,23 +51,42 @@ class UserController extends Controller
     public function update(Request $request, User $user){ 
         $request->validate([ //Validación de campos
             "nombre" => "required|min:2|max:80|",
-            "apellidos" => "required|min:2|max:80|",
+            "apellidos" => "required|min:2|max:80|"
             // "email" => "required|unique:users",
-            "username" => "required|min:5|max:25|unique:users",
-            "password" => "required|min:5|max:80"
+            // "password" => "min:5|max:80"
         ]);
+
+
+        //RECORDAR MIRAR EL TEMA DE EL DOBLE ERROR
+        
         $emails = User::all('email'); //Obtengo todos los emails
 
         foreach ($emails as $email) {
-            if ($email==$request->email && $email!=$user->email) {
-                return redirect()->route('user.edit')->withErrors('email', 'El email ya está en uso');
+            if ($email->email==$request->email && $email->email!=$user->email) {
+                return redirect()->route('user.edit', $user)->withErrors([
+                    "email" => "Este Email está en uso"
+                ]);
             }
         }
+
+        $usuarios = User::all('username');
+        foreach ($usuarios as $usuario){
+            if($usuario->username==$request->username && $usuario->username!=$user->username){
+                return redirect()->route('user.edit', $user)->withErrors([
+                    "username" => "Este usuario está en uso"
+                ]);
+            }
+        }
+
+
         $user->nombre = $request->nombre;
         $user->apellidos = $request->apellidos;
         $user->username = $request->username;
 
         if ($request->password != null) { //Si el campo contraseña no se ha dejado vacío y desea cambiarla
+            $request->validate([
+                "password" => "min:5|max:80"
+            ]);
             $user->password =  Hash::make($request->password); //Codificamos la contraseña
         }
         $user->email = $request->email;

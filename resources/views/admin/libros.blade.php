@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="header__container">
                     <h3 class="title text-center">Lista de Libros</h3>
-                    <a href="{{-- route('user.create') --}}" class="btn-add"> <i class="bi bi-plus"></i> Nuevo usuario</a>
+                    <a href="{{route('libro.create')}}" class="btn-add"> <i class="bi bi-plus"></i> Nuevo libro</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table text-center table-striped table-hover">

@@ -33,6 +33,9 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    @if (Auth::user()->rol=="Administrador")
+                    <li><a class="dropdown-item" href="{{route('admin.index')}}"><i class="bi bi-tools"></i> Panel Administración</a></li>
+                    @endif
                     <li>
                       <form action="{{route('login.logout')}}" method="post">
                         @method('put')
@@ -125,9 +128,17 @@
                     <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    @if (Auth::user()->rol=="Administrador")
+                    <li><a class="dropdown-item" href="{{route('admin.index')}}"><i class="bi bi-tools"></i> Panel Administración</a></li>
+                    @endif
+                    <li>
+                      <form action="{{route('login.logout')}}" method="post">
+                        @method('put')
+                        @csrf
+                        {{-- Cuando haga click en el enlace hará un submit --}}
+                        <a class="dropdown-item" href="#" onclick="this.closest('form').submit()"><i class="bi bi-box-arrow-left"></i> Cerrar sesión</a></li>
+                      </form>
                   </ul>
                 </div>
   

@@ -7,9 +7,23 @@
         width: calc(100% / 6);
     }
 }
-// .sidebar{
-//     position: fixed;
-//     @include m.desktop{
-//         position: absolute !important;
-//     }
-// }
+
+.offcanvas{
+    .offcanvas-body{
+        li{
+            font-size: 1.3rem;
+            padding: 5px;
+            &:hover{
+                background-color: v.$white;
+                a{
+                    color: v.$black;
+                }
+            }
+            a{
+                color: v.$white;
+                text-decoration: none;
+            }
+            
+        }
+    }
+}

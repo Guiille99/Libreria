@@ -47,6 +47,9 @@
         background-color: color.scale($bgcolor, $lightness: -30%);
         cursor: pointer;
     }
+    &:disabled{
+        background-color: color.scale($bgcolor, $lightness: 60%);
+    }
 }
 
 //Mixin para crear iconos del footer

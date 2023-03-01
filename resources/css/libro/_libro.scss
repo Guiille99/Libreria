@@ -28,6 +28,10 @@
     }
 
     .precio__carrito{
+        text-align: center;
+        @include m.tablet{
+            text-align: unset;
+        }
         .precio__container{
             .precio{
                 margin: 0;

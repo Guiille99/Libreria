@@ -9,8 +9,10 @@
 {{-- <h1 class="text-center">Página para mostrar el listado de libros</h1> --}}
 
     @if (count($libros)==0)
-    <h1 class="text-center fw-bold">No se ha encontrado ningún artículo :(</h1>
-    @section('footer-class', 'position-absolute bottom-0 w-100') {{-- Cambiamos los atributos del footer --}}
+    @section('body-class', 'd-flex flex-column justify-content-between vh-100')
+
+    <h1 class="text-center fw-bold p-5 p-md-0">No se ha encontrado ningún artículo :(</h1>
+    {{-- @section('footer-class', 'position-absolute bottom-0 w-100') Cambiamos los atributos del footer --}}
     @else
 
     <div class="container-fluid mt-5">

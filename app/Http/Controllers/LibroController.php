@@ -44,12 +44,6 @@ class LibroController extends Controller
         return redirect()->route('libros.filter', $request->filtro); //Envío el filtro recogido en la barra de búsqueda y lo envío
     }
 
-    // public function indexCategoria($categoria){
-    //     $generos = Libro::select('genero')->distinct()->get(); //Envío tamién los géneros de libros que hay
-    //     $libros = Libro::where('genero', $categoria)->get(); //Libros de una determinada categoría
-    //     return view("libros.index", compact("libros", "generos"));
-    // }
-
     public function destroy(Libro $libro){ 
         // dd($libro);
         $libro->delete(); //Elimina el libro

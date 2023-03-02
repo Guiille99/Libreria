@@ -93,7 +93,7 @@
                             <a href="{{route('libros.show', $libro)}}"><img src="{{$libro->portada}}" alt="{{$libro->titulo}}" class="img-fluid"></a> 
                         </figure>
                         <div class="libro__info">
-                            <h4 class="libro__titulo">{{$libro->titulo}}</h4>
+                            <h4 class="libro__titulo" title="{{$libro->titulo}}">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             {{-- <button>Comprar</button> --}}

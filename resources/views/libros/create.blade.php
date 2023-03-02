@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="form-floating mt-3 col-md-4">
-                    <input type="number" name="precio" id="precio" class="form-control" value="{{old('precio')}}"  placeholder="Precio" required>
+                    <input type="number" name="precio" id="precio" class="form-control" step="0.01" value="{{old('precio')}}"  placeholder="Precio" required>
                     <label for="precio" class="form-label ms-1">Precio</label>
                     <div class="invalid-feedback">
                         <small>Precio obligatorio</small> 

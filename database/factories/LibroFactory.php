@@ -24,7 +24,7 @@ class LibroFactory extends Factory
             'isbn' => $this->faker->unique()->bothify("###-##-####-###-#"),
             'fecha_publicacion' => $this->faker->dateTimeThisDecade(), //Fechas aleatorias de la última década
             'precio' => $this->faker->randomFloat(2, 2, 50), //2 decimales, número minimo 2 y número máximo 50
-            'genero' => $this->faker->randomElement(["Infantil y juvenil", "Aventuras", "Comedia", "Misterio", "Terror", "Amor", "Artes", "Ficción", "Deporte", "Fantasía", "Gastronomía", "Hitoria", "Idiomas", "Clásicos", "Piscología-Autoayuda", "Informática", "Ciencia"]),
+            'genero' => $this->faker->randomElement(["Infantil y juvenil", "Aventuras", "Comedia", "Misterio", "Terror", "Amor", "Artes", "Ficción", "Deporte", "Fantasía", "Gastronomía", "Historia", "Idiomas", "Clásicos", "Psicología-Autoayuda", "Informática", "Ciencia"]),
             'descripcion' => $this->faker->paragraph(),
             'valoracion' => $this->faker->numberBetween(1, 10),
             'paginas' => $this->faker->numberBetween(80, 400),

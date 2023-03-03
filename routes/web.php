@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
@@ -50,6 +51,10 @@ Route::put('/logout', [LoginController::class, "logout"])->name("login.logout");
 
 Route::get('/register', [RegisterController::class, "index"])->name("register.index");
 Route::post('/register', [RegisterController::class, "store"])->name("register.store");
+
+Route::get('/contacto', [ContactoController::class, "index"])->name("contacto");
+
+
 
 Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS
     $correo = new ContactanosMailable;

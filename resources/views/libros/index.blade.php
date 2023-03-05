@@ -12,7 +12,6 @@
     @section('body-class', 'd-flex flex-column justify-content-between vh-100')
 
     <h1 class="text-center fw-bold p-5 p-md-0">No se ha encontrado ningún artículo :(</h1>
-    {{-- @section('footer-class', 'position-absolute bottom-0 w-100') Cambiamos los atributos del footer --}}
     @else
 
     <div class="container-fluid mt-5">
@@ -35,7 +34,6 @@
                             <h4 class="libro__titulo" title="{{$libro->titulo}}">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
-                            {{-- <button class="boton">Comprar</button> --}}
                             <form action="" method="get">
                                 @csrf
                                 @if (Auth::check()) {{-- Si hay una sesión iniciada --}}

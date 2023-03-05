@@ -36,7 +36,6 @@ class UserController extends Controller
 
         $user->save();
         return redirect()->route('admin.users');
-        // return view("users.create");
     }
 
     public function destroy(User $user){ 
@@ -52,12 +51,9 @@ class UserController extends Controller
         $request->validate([ //Validación de campos
             "nombre" => "required|min:2|max:80|",
             "apellidos" => "required|min:2|max:80|"
-            // "email" => "required|unique:users",
-            // "password" => "min:5|max:80"
         ]);
 
 
-        //RECORDAR MIRAR EL TEMA DE EL DOBLE ERROR
         
         $emails = User::all('email'); //Obtengo todos los emails
 

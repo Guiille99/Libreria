@@ -6,7 +6,6 @@
         <form action="{{route('user.destroy', $user)}}" method="post">
             @csrf
             @method('delete')
-            {{-- <input type="submit" value="Eliminar"> --}}
         
             <div class="modal-content">
                 <div class="modal-header">
@@ -19,11 +18,7 @@
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
-                {{-- <form action="{{route('user.destroy', $user)}}" method="post"> --}}
-                    {{-- @csrf --}}
-                    {{-- @method('delete') --}}
                 <button type="submit" class="btn btn-primary text-white">Confirmar</button>
-                {{-- </form> --}}
                 </div>
             </div>  
         </form>

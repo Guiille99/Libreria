@@ -15,10 +15,8 @@ class LoginController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request);
-        // dd($request->input("remember"));
         $remember = $request->filled('remember');
-        // dd($request->filled('remember'));
+
         $request->validate([ //Validación de campos
             "username" => "required",
             "password" => "required"
@@ -44,23 +42,6 @@ class LoginController extends Controller
                 return redirect()->route('login.index')->withErrors(["password"=>"Contraseña incorrecta"]);
             }
         }
-
-
-        // if (Auth::attempt($credentials)) { //Si se loguea correctamente
-        //     request()->session()->regenerate(); //Regeneramos la sesión para evitar problemas de seguridad
-        //     return redirect()->route('index');
-        // }
-        
-        // else{
-        //     throw ValidationException::withMessages([
-        //         'username' => 'Usuario incorrecto',
-        //         'password' => 'Contraseña incorrecta'
-        //     ]);
-        //     return redirect()->route('login.index')->withErrors(["usuario"=>trans('auth.failed')])->withInput(request(request(['usuario'])));
-        // }
-
-        // $request->session()->regenerate();
-        // return redirect('index');
     }
 
     public function logout(Request $request){ //Función para cerrar sesión

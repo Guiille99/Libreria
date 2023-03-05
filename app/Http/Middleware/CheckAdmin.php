@@ -16,7 +16,6 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        // dd(auth()->user());
         
         if (auth()->user() == null || auth()->user()->rol != "Administrador") { //Si intenta acceder sin loguearse o sin ser admin
             return redirect()->route('login.index');

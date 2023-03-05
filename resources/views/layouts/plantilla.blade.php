@@ -87,8 +87,6 @@
             <img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            {{-- <span class="navbar-toggler-icon"></span> --}}
-            {{-- <span class="bi bi-list"></i></span> --}}
             <img src="{{asset('uploads/toggler.svg')}}" alt="Toggler button" class="toggler__button">
           </button>
           <div class="collapse navbar-collapse justify-content-center gap-5" id="navbarNav">
@@ -161,7 +159,6 @@
               @if (!Auth::check()) {{-- Si no se ha iniciado sesión --}}
                 <div class="register__container"> {{-- REGISTER CONTAINER --}}
                   <a href="{{route('register.index')}}" class="nav-link register-link">
-                    {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
                     <span>@yield("miCuenta")Regístrate</span>
                   </a>
                 </div>

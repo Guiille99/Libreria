@@ -45,7 +45,6 @@ class LibroController extends Controller
     }
 
     public function destroy(Libro $libro){ 
-        // dd($libro);
         $libro->delete(); //Elimina el libro
         return redirect()->route('libros.index');
     }

@@ -4,24 +4,9 @@ import * as bootstrap from 'bootstrap'
 
 addEventListener("load", inicio);
 function inicio() {
-    // $("#prueba").css("background-color", "yellow");
-    // let prueba=document.getElementById("prueba");
-    // prueba.style.backgroundColor="yellow";
+
 	ellipsis_box(".libro__titulo", 18);
 
-
-    // $("#toggler-sidebar").click(function(){
-    //     let sidebar =  $("#sidebar__container");
-    //     let display=sidebar.css('display');
-    //     let offcanva=$("#navegacion");
-    //     if (display=="none") {
-    //         $("#sidebar__container").css('display', 'block');
-    //         $("#navegacion").addClass("show");
-    //     }
-    //     else{
-    //         $("#sidebar__container").css('display', 'none');
-    //     }
-    // })
 
 }
 function ellipsis_box(elemento, max_chars){
@@ -33,13 +18,7 @@ function ellipsis_box(elemento, max_chars){
         }
         
     }
-    // titulos.forEach(titulo => {
-    //     if (titulo.text().length > max_chars)
-    //     {
-    //     let limite = limite_text.substr(0, max_chars)+" ...";
-    //     titulo.text(limite);
-    //     }
-    // });
+
 }
 
 // OJO DE LOS CAMPOS PASSWORD
@@ -59,7 +38,5 @@ const togglePassword = document.querySelector('#togglePassword');
         $(this).removeClass('bi-eye');
         $(this).addClass('bi-eye-slash');
     }
-    // $(this).toggleClass('bi-eye-slash', 'bi-eye');
-    // this.classList.toggle('bi-eye-slash', 'bi-eye');
 });
 

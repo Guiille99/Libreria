@@ -15,7 +15,6 @@
         text-align: center;
         transition: transform 500ms ease;
         gap: 10px;
-        // padding: 15px;
         overflow: hidden;
         .libro__info{
             display: flex;
@@ -44,20 +43,12 @@
             position: absolute;
             bottom: 0;
             width: 90%;
-            // border: 1px solid red;
             border-radius: 0.7rem;
             transform: translateY(101%);
             transition: transform 1s ease;
         }
         .boton{
-            // border: 1px solid blue;
             @include m.btn(v.$green, v.$white);
-            // position: absolute;
-            // bottom: 0;
-            // width: 90%;
-            // transform: translateY(101%);
-            /* transition: all 1s ease; */
-            // transition: transform 1s ease;
             width: 100%;
 
             &:hover{

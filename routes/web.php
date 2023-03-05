@@ -26,7 +26,6 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/', [HomeController::class, "index"])->name("index"); //Página principal 
 Route::get('libros/{filtro}', [LibroController::class, "filter"])->name("libros.filter"); //Página para mostrar los libros filtrados por título, autor o género
 Route::post('libros', [LibroController::class, "getFiltro"])->name("libros.getFiltro"); //Página para mostrar los libros filtrados por título, autor o género
-//Route::get('libros/categoria/{categoria}', [LibroController::class, "indexCategoria"])->name("libros.categoria");
 Route::get('libro/{libro}', [LibroController::class, "show"])->name("libros.show"); //Página para mostrar un libro concreto
 
 Route::get('admin', [UserController::class, "index"])->middleware('checkadmin')->name("admin.index"); //Página principal del admin
@@ -56,10 +55,10 @@ Route::get('/contacto', [ContactoController::class, "index"])->name("contacto");
 
 
 
-Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS
-    $correo = new ContactanosMailable;
+// Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS
+//     $correo = new ContactanosMailable;
 
-    Mail::to('alejandro.reina-martagon@iesruizgijon.com')->send($correo);
+//     Mail::to('alejandro.reina-martagon@iesruizgijon.com')->send($correo);
 
-    return "Mensaje enviado";
-});
+//     return "Mensaje enviado";
+// });

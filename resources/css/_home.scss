@@ -52,9 +52,6 @@
 
 /*Ventajas*/
 .ventajas__container{
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-around;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: center;

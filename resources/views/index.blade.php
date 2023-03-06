@@ -123,7 +123,8 @@
             <div class="col suscribe__container">
                 <div class="suscribe__info">
                     <h2 class="suscribe__title">Suscríbete para conocer nuestras últimas noticas</h2>
-                    <form action="" method="post">
+                    <form action="{{ route('enviar-correo') }}" method="POST">
+                        @csrf
                         <input type="email" name="mail" id="mail" class="form-control" placeholder="Introduce tu email">
                         <input type="submit" value="Suscribirse">
                     </form>

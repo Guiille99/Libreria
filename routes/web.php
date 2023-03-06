@@ -8,8 +8,10 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Mail\ContactanosMailable;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\EnviarCorreo;
 
 
 /*
@@ -54,11 +56,8 @@ Route::post('/register', [RegisterController::class, "store"])->name("register.s
 Route::get('/contacto', [ContactoController::class, "index"])->name("contacto");
 
 
-
-// Route::get('contactanos', function() {//RUTA PROSIVISONAL REQUIERE CAMBIOS
-//     $correo = new ContactanosMailable;
-
-//     Mail::to('alejandro.reina-martagon@iesruizgijon.com')->send($correo);
-
-//     return "Mensaje enviado";
-// });
+Route::post('enviar-correo', function() 
+{
+    Mail::to(request()->mail)->send(new EnviarCorreo);
+    return "Correo enviado exitosamente";
+})->name('enviar-correo');

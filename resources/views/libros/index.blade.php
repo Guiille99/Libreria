@@ -34,16 +34,18 @@
                             <h4 class="libro__titulo" title="{{$libro->titulo}}">{{$libro->titulo}}</h4>
                             <p class="libro__autor">{{$libro->autor}}</p>
                             <p class="libro__precio">{{$libro->precio}}€</p>
+                            @if ($libro->stock>0)
                             <form action="" method="get">
                                 @csrf
-                                @if ($libro->stock==0)
-                                    <span class="btn-delete">Fuera de Stock</span>
-                                @elseif (Auth::check()) {{-- Si hay una sesión iniciada --}}
+                                @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
                                     <input type="submit" value="Comprar" class="boton">
-                                @else
+                                 @else
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
                             </form>
+                            @else
+                            <span class="btn-delete">Fuera de Stock</span>
+                            @endif
                         </div>
                     </div>
                     @endforeach

@@ -1,5 +1,5 @@
-@use "variables" as v;
-@use "mixins" as m;
+@use "base/variables" as v;
+@use "base/mixins" as m;
 
 nav:has(.pagination){
     div:nth-child(2){

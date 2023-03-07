@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title")</title>
     <link rel="shortcut icon" href="{{asset('uploads/logo.ico')}}" type="image/x-icon">
-    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/jquery-3.6.3.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
+    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/index.js", "resources/js/jquery-3.6.3.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
 </head>
 <body class="d-flex flex-column vh-100">
     <nav class="navbar-admin navbar navbar-expand-lg align-items-center px-5">

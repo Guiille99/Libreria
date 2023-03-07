@@ -36,7 +36,7 @@
                     <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" href="{{route('user.editPerfil')}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
                     @if (Auth::user()->rol=="Administrador")
                     <li><a class="dropdown-item" href="{{route('admin.index')}}"><i class="bi bi-tools"></i> Panel Administración</a></li>
                     @endif
@@ -51,7 +51,7 @@
                 </div>
   
               @else
-                <a href="{{route('login.index')}}" class="nav-link login-link">
+                <a href="{{route('login')}}" class="nav-link login-link">
                   {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
                   <span>Iniciar Sesión</span>
                 </a>
@@ -134,7 +134,7 @@
                     <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" href="{{route('user.editPerfil')}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
                     @if (Auth::user()->rol=="Administrador")
                     <li><a class="dropdown-item" href="{{route('admin.index')}}"><i class="bi bi-tools"></i> Panel Administración</a></li>
                     @endif
@@ -149,7 +149,7 @@
                 </div>
   
                 @else
-                  <a href="{{route('login.index')}}" class="nav-link login-link">
+                  <a href="{{route('login')}}" class="nav-link login-link">
                     {{-- <img src="{{asset('uploads/person.svg')}}" alt="Mi cuenta" class="img-fluid"> --}}
                     <span>Iniciar Sesión</span>
                   </a>

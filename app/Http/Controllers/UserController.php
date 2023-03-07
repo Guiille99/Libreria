@@ -47,14 +47,18 @@ class UserController extends Controller
         return view("users.edit", compact('user'));
     }
 
+    public function editPerfil(User $user){ 
+        return view("users.editPerfil", compact('user'));
+    }
+
+
     public function update(Request $request, User $user){ 
+        // dd($request->rol);
         $request->validate([ //Validación de campos
             "nombre" => "required|min:2|max:80|",
             "apellidos" => "required|min:2|max:80|"
         ]);
 
-
-        
         $emails = User::all('email'); //Obtengo todos los emails
 
         foreach ($emails as $email) {
@@ -74,7 +78,6 @@ class UserController extends Controller
             }
         }
 
-
         $user->nombre = $request->nombre;
         $user->apellidos = $request->apellidos;
         $user->username = $request->username;
@@ -86,9 +89,16 @@ class UserController extends Controller
             $user->password =  Hash::make($request->password); //Codificamos la contraseña
         }
         $user->email = $request->email;
-        $user->rol = $request->rol;
+
+        if ($request->rol!=null) { //Si es nulo significa que viene de actualizar el perfil desde la vista principal, no desde admin
+            $user->rol = $request->rol;
+        }
 
         $user->save();
+
+        if ($request->rol==null) { 
+            return redirect()->route('index');
+        }
         return redirect()->route('admin.users');
     }
 }

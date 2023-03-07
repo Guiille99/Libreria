@@ -36,10 +36,10 @@ class LoginController extends Controller
         else{ //Si hay algún error
             $user = User::where('username', $request->username)->first();
             if ($user==null) { //Si el usuario no existe en la BD
-                return redirect()->route('login.index')->withErrors(["username"=>"El usuario no existe"]);
+                return redirect()->route('login')->withErrors(["username"=>"El usuario no existe"]);
             }
             else{
-                return redirect()->route('login.index')->withErrors(["password"=>"Contraseña incorrecta"]);
+                return redirect()->route('login')->withErrors(["password"=>"Contraseña incorrecta"]);
             }
         }
     }
@@ -50,6 +50,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.index');
+        return redirect()->route('login');
     }
 }

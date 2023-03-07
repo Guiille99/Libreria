@@ -1,14 +1,12 @@
 @extends('layouts.plantilla')
 @section("title", "Books | Inicio")
-@section("generos_libros")
+{{-- @section("generos_libros")
     @foreach ($generos as $genero)
         <li><a class="dropdown-item" href="{{route('libros.filter', $genero->genero)}}">{{$genero->genero}}</a></li>
     @endforeach
-@endsection
+@endsection --}}
 
 @section('content')
-{{-- {{Auth::user()}} --}}
-{{-- {{Auth::check()}} --}}
 
     <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -70,6 +68,8 @@
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
                             </form>
+                            @else
+                            <span class="btn-delete">Fuera de Stock</span>
                             @endif
                         </div>
                     </div>

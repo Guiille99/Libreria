@@ -36,7 +36,7 @@
                     <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('user.editPerfil')}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" href="{{route('user.editPerfil', Auth::user())}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
                     @if (Auth::user()->rol=="Administrador")
                     <li><a class="dropdown-item" href="{{route('admin.index')}}"><i class="bi bi-tools"></i> Panel Administración</a></li>
                     @endif
@@ -101,7 +101,10 @@
                 </a>
                 <ul class="dropdown-menu">
 
-                  @yield('generos_libros')
+                  {{-- @yield('generos_libros') --}}
+                  @foreach ($generos as $genero)
+                  <li><a class="dropdown-item" href="{{route('libros.filter', $genero->genero)}}">{{$genero->genero}}</a></li>
+                  @endforeach
                   
                 </ul>
               </li>
@@ -134,7 +137,7 @@
                     <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('user.editPerfil')}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
+                    <li><a class="dropdown-item" href="{{route('user.editPerfil', Auth::user())}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
                     @if (Auth::user()->rol=="Administrador")
                     <li><a class="dropdown-item" href="{{route('admin.index')}}"><i class="bi bi-tools"></i> Panel Administración</a></li>
                     @endif

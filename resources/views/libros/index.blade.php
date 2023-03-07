@@ -1,10 +1,10 @@
 @extends('layouts.plantilla')
 @section("title", "Books | Listado")
-@section("generos_libros")
+{{-- @section("generos_libros")
     @foreach ($generos as $genero)
         <li><a class="dropdown-item" href="{{route('libros.filter', $genero->genero)}}">{{$genero->genero}}</a></li>
     @endforeach
-@endsection
+@endsection --}}
 @section('content')
 {{-- <h1 class="text-center">Página para mostrar el listado de libros</h1> --}}
 
@@ -36,9 +36,11 @@
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             <form action="" method="get">
                                 @csrf
-                                @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
+                                @if ($libro->stock==0)
+                                    <span class="btn-delete">Fuera de Stock</span>
+                                @elseif (Auth::check()) {{-- Si hay una sesión iniciada --}}
                                     <input type="submit" value="Comprar" class="boton">
-                                 @else
+                                @else
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
                             </form>

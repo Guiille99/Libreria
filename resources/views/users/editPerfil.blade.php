@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="form__modify__container col-12 col-md-6 col-lg-5 pt-4">
         <h1 class="title">Modificación de <strong>{{Auth::user()->nombre}}</strong></h1>
-        <form action="{{route('user.update', Auth::user())}}" method="post" class="needs-validation" novalidate>
+        <form action="{{route('user.updatePerfil', Auth::user())}}" method="post" class="needs-validation" novalidate>
             @csrf
             @method('put')
             <div class="container-fluid">

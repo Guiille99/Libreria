@@ -15,6 +15,17 @@ class LibroController extends Controller
         return view("admin.libros", compact('libros'));
     }
 
+    public static function getGeneros(){
+        $generos = Libro::select('genero')->distinct()->get();
+        foreach ($generos as $genero) {
+            if (strpos($genero->genero, "/")!="") { //Si se encuentra / en el nombre del género lo sustituiremos para evitar errores
+                $genero->genero = str_replace(["/"], "-", $genero->genero);
+            }
+        }
+
+        return $generos;
+    }
+
     public function filter($filtro){
         $generos = Libro::select('genero')->distinct()->get();
         $filtraGenero=false;
@@ -45,6 +56,7 @@ class LibroController extends Controller
     }
 
     public function destroy(Libro $libro){ 
+        unlink($libro->portada);//Borra la anterior foto registrada
         $libro->delete(); //Elimina el libro
         return redirect()->route('libros.index');
     }
@@ -118,7 +130,6 @@ class LibroController extends Controller
             "stock" => "required",
         ]);
 
-
         $isbns = Libro::all('isbn');
 
         foreach ($isbns as $isbn) {
@@ -129,7 +140,6 @@ class LibroController extends Controller
             }
         }
 
-        
         if($request->hasFile('portada')){
             unlink($libro->portada);//Borra la anterior foto registrada
             $file = $request->file('portada');//Obtenemos los datos del archivo subido
@@ -138,9 +148,7 @@ class LibroController extends Controller
             $uploadSuccess = $request->file('portada')->move($destinationPath, $filename);//Movemos el archivo a la carpeta correspondiente
             $libro->portada = $destinationPath . $filename;//Subimos el archivo a la base de datos
         }
-
-        
-        
+                
         $libro->titulo = $request->titulo;
         $libro->autor = $request->autor;
         $libro->editorial = $request->editorial;

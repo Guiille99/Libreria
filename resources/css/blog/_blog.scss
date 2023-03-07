@@ -1,0 +1,39 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.imagenes__principales{
+    width: 95%;
+    margin: 0 auto;
+    height: 100rem;
+    @include m.grid(1, 10px);
+
+    @include m.tablet{
+        height: 50rem
+    }
+    .children{
+        @include m.bg-image("children.jpg");
+    }
+    .dia__mujer{
+        @include m.bg-image("dia-mujer.jpg");
+    }
+    .dia__sanvalentin{
+        @include m.bg-image("heart.jpg");
+    }
+    // display: flex;
+    // width: 50%;
+
+    figure, img{
+        margin: 0;
+        width: 100%;
+    }
+
+    .dias__especiales{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @include m.tablet{
+            flex-direction: row;
+        }
+    }
+}

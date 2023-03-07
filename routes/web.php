@@ -47,6 +47,10 @@ Route::put('admin/libros/{libro}/edit', [LibroController::class, "update"])->mid
 Route::get('admin/libros/create', [LibroController::class, "create"])->middleware('checkadmin')->name('libro.create');
 Route::post('admin/libros', [LibroController::class, "store"])->middleware('checkadmin')->name("libro.store");
 
+Route::get('blog', function(){
+    $generos = LibroController::getGeneros();
+    return view('blog', compact('generos'));
+})->name('blog');
 
 Route::get('/login', [LoginController::class, "index"])->name("login");
 Route::post('/login', [LoginController::class, "store"])->name("login.store");

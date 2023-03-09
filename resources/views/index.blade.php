@@ -133,7 +133,7 @@
         </section>
 
         {{-- VENTAJAS --}}
-        <section class="row mt-5">
+        <section class="row py-5">
             <div class="col-10 col-md-9 ventajas__container">
                 <div class="ventaja">
                     <i class="bi bi-bag-check"></i>

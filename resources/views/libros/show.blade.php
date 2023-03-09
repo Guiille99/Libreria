@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 {{-- {{$libro}} --}}
-    <div class="libro__container mt-4">
+    <div class="libro__container py-4">
         <div class="portada__container">
             <figure>
                 <img src="{{asset($libro->portada)}}" alt="{{$libro->titulo}}" class="d-block img-fluid">

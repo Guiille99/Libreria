@@ -112,7 +112,7 @@
                 <a class="nav-link" href="{{route('libros.filter', 'novedades')}}">Novedades</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Blog</a>
+                <a class="nav-link" href="{{route('blog')}}">Blog</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{route('contacto')}}">Contacto</a>
@@ -190,7 +190,7 @@
 
 
     {{-- FOOTER --}}
-    <footer class="mt-5 @yield('footer-class')">
+    <footer class="@yield('footer-class')">
       <figure>
         <picture>
           <source media="(min-width: 768px)" srcset="{{asset('uploads/logo-xl.png')}}">

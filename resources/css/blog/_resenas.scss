@@ -1,0 +1,36 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.resenas{
+    background-color: v.$bg-dark-green;
+    padding: v.$separation 0;
+    color: v.$white;
+    figure{
+        margin: 0;
+    }
+    h1{
+        text-align: center;
+    }
+
+    &__grid{
+        width: 95%;
+        margin: 0 auto;
+        @include m.grid(1, 10px);
+        justify-content: center;
+    }
+
+    .resena{
+        &__info{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            background-color: v.$black-card;
+
+            &__publicacion{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}

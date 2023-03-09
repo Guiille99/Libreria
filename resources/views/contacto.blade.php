@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <main class="contacto__container py-3 row justify-content-center gap-5">
+    <main class="contacto__container py-5 row justify-content-center gap-5">
         <div class="contacto col-md-5 col-lg-4">
             <h1 class="contacto__titulo">Contacte con nosotros</h1>
     

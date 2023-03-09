@@ -52,63 +52,63 @@
     
                 <div class="resena">
                     <figure>
-                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                        <img src="{{asset('uploads/resena2.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
                     <div class="resena__info">
-                        <h5>Consejos para escribir una novela en tercera persona</h5>
+                        <h5>Crítica a 'La niebla de los bosques'</h5>
     
                         <div class="resena__info__publicacion">
-                            <p class="resena__autor">Antonio Ramírez</p>
-                            <p class="resena__fecha">02/03/2022</p>
+                            <p class="resena__autor">José García</p>
+                            <p class="resena__fecha">20/05/2022</p>
                         </div>
                     </div>
                 </div>
     
                 <div class="resena">
                     <figure>
-                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                        <img src="{{asset('uploads/resena3.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
                     <div class="resena__info">
-                        <h5>Consejos para escribir una novela en tercera persona</h5>
+                        <h5>Podcast con la escritora Sofía González</h5>
     
                         <div class="resena__info__publicacion">
                             <p class="resena__autor">Antonio Ramírez</p>
-                            <p class="resena__fecha">02/03/2022</p>
+                            <p class="resena__fecha">23/05/2022</p>
                         </div>
                     </div>
                 </div>
     
                 <div class="resena">
                     <figure>
-                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                        <img src="{{asset('uploads/resena4.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
                     <div class="resena__info">
-                        <h5>Consejos para escribir una novela en tercera persona</h5>
+                        <h5>Antonio recomienda, 'Recuerda su nombre', de Ricardo Samosa</h5>
     
                         <div class="resena__info__publicacion">
                             <p class="resena__autor">Antonio Ramírez</p>
-                            <p class="resena__fecha">02/03/2022</p>
+                            <p class="resena__fecha">01/06/2022</p>
                         </div>
                     </div>
                 </div>
     
                 <div class="resena">
                     <figure>
-                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                        <img src="{{asset('uploads/resena5.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
                     <div class="resena__info">
-                        <h5>Consejos para escribir una novela en tercera persona</h5>
+                        <h5>Paula recomienda 'Paz mental', de Marta López</h5>
     
                         <div class="resena__info__publicacion">
-                            <p class="resena__autor">Antonio Ramírez</p>
-                            <p class="resena__fecha">02/03/2022</p>
+                            <p class="resena__autor">Paula Sánchez</p>
+                            <p class="resena__fecha">20/06/2022</p>
                         </div>
                     </div>
                 </div>
     
                 <div class="resena">
                     <figure>
-                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                        <img src="{{asset('uploads/resena6.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
                     <div class="resena__info">
                         <h5>Consejos para escribir una novela en tercera persona</h5>
@@ -123,13 +123,9 @@
         </div>
 
         {{-- VENTAJAS --}}
-        {{-- <section class="row py-5"> --}}
             <div class="ventajas__container col-10 col-md-9">
                 <div class="ventaja">
                     <i class="bi bi-bag-check"></i>
-                    {{-- <figure>
-                        <img src="uploads/bag-check.svg" alt="Compra segura" class="img-fluid">
-                    </figure> --}}
                     <p>Compra segura</p>
                 </div>
 
@@ -148,6 +144,5 @@
                     <p>Devolución gratis hasta 30 días</p>
                 </div>
             </div>
-        {{-- </section> --}}
     </main>
 @endsection

@@ -31,93 +31,123 @@
     </div>
 
     {{-- ÚLTIMAS RESEÑAS --}}
-    <div class="resenas">
-        <h1>ÚLTIMAS RESEÑAS</h1>
-
-        <div class="resenas__grid col-md-10 col-lg-9">
-            <div class="resena">
-                <figure>
-                    <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
-                </figure>
-                <div class="resena__info">
-                    <h3>Consejos para escribir una novela en tercera persona</h3>
-
-                    <div class="resena__info__publicacion">
-                        <p class="resena__autor">Antonio Ramírez</p>
-                        <p class="resena__fecha">02/03/2022</p>
+    <main class="resenas__container py-3 pb-5">
+        <div class="resenas">
+            <h1>ÚLTIMAS RESEÑAS</h1>
+    
+            <div class="resenas__grid col-10 col-lg-9">
+                <div class="resena">
+                    <figure>
+                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                    </figure>
+                    <div class="resena__info">
+                        <h5>Consejos para escribir una novela en tercera persona</h5>
+    
+                        <div class="resena__info__publicacion">
+                            <p class="resena__autor">Antonio Ramírez</p>
+                            <p class="resena__fecha">02/03/2022</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="resena">
-                <figure>
-                    <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
-                </figure>
-                <div class="resena__info">
-                    <h3>Consejos para escribir una novela en tercera persona</h3>
-
-                    <div class="resena__info__publicacion">
-                        <p class="resena__autor">Antonio Ramírez</p>
-                        <p class="resena__fecha">02/03/2022</p>
+    
+                <div class="resena">
+                    <figure>
+                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                    </figure>
+                    <div class="resena__info">
+                        <h5>Consejos para escribir una novela en tercera persona</h5>
+    
+                        <div class="resena__info__publicacion">
+                            <p class="resena__autor">Antonio Ramírez</p>
+                            <p class="resena__fecha">02/03/2022</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="resena">
-                <figure>
-                    <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
-                </figure>
-                <div class="resena__info">
-                    <h3>Consejos para escribir una novela en tercera persona</h3>
-
-                    <div class="resena__info__publicacion">
-                        <p class="resena__autor">Antonio Ramírez</p>
-                        <p class="resena__fecha">02/03/2022</p>
+    
+                <div class="resena">
+                    <figure>
+                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                    </figure>
+                    <div class="resena__info">
+                        <h5>Consejos para escribir una novela en tercera persona</h5>
+    
+                        <div class="resena__info__publicacion">
+                            <p class="resena__autor">Antonio Ramírez</p>
+                            <p class="resena__fecha">02/03/2022</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="resena">
-                <figure>
-                    <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
-                </figure>
-                <div class="resena__info">
-                    <h3>Consejos para escribir una novela en tercera persona</h3>
-
-                    <div class="resena__info__publicacion">
-                        <p class="resena__autor">Antonio Ramírez</p>
-                        <p class="resena__fecha">02/03/2022</p>
+    
+                <div class="resena">
+                    <figure>
+                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                    </figure>
+                    <div class="resena__info">
+                        <h5>Consejos para escribir una novela en tercera persona</h5>
+    
+                        <div class="resena__info__publicacion">
+                            <p class="resena__autor">Antonio Ramírez</p>
+                            <p class="resena__fecha">02/03/2022</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="resena">
-                <figure>
-                    <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
-                </figure>
-                <div class="resena__info">
-                    <h3>Consejos para escribir una novela en tercera persona</h3>
-
-                    <div class="resena__info__publicacion">
-                        <p class="resena__autor">Antonio Ramírez</p>
-                        <p class="resena__fecha">02/03/2022</p>
+    
+                <div class="resena">
+                    <figure>
+                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                    </figure>
+                    <div class="resena__info">
+                        <h5>Consejos para escribir una novela en tercera persona</h5>
+    
+                        <div class="resena__info__publicacion">
+                            <p class="resena__autor">Antonio Ramírez</p>
+                            <p class="resena__fecha">02/03/2022</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="resena">
-                <figure>
-                    <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
-                </figure>
-                <div class="resena__info">
-                    <h3>Consejos para escribir una novela en tercera persona</h3>
-
-                    <div class="resena__info__publicacion">
-                        <p class="resena__autor">Antonio Ramírez</p>
-                        <p class="resena__fecha">02/03/2022</p>
+    
+                <div class="resena">
+                    <figure>
+                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                    </figure>
+                    <div class="resena__info">
+                        <h5>Consejos para escribir una novela en tercera persona</h5>
+    
+                        <div class="resena__info__publicacion">
+                            <p class="resena__autor">Antonio Ramírez</p>
+                            <p class="resena__fecha">02/03/2022</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        {{-- VENTAJAS --}}
+        {{-- <section class="row py-5"> --}}
+            <div class="ventajas__container col-10 col-md-9">
+                <div class="ventaja">
+                    <i class="bi bi-bag-check"></i>
+                    {{-- <figure>
+                        <img src="uploads/bag-check.svg" alt="Compra segura" class="img-fluid">
+                    </figure> --}}
+                    <p>Compra segura</p>
+                </div>
+
+                <div class="ventaja">
+                    <i class="bi bi-truck"></i>
+                    <p>Envío gratis a partir de 15€</p>
+                </div>
+
+                <div class="ventaja">
+                    <i class="bi bi-shop"></i>
+                    <p>Recogida en tienda gratis</p>
+                </div>
+
+                <div class="ventaja">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    <p>Devolución gratis hasta 30 días</p>
+                </div>
+            </div>
+        {{-- </section> --}}
+    </main>
 @endsection

@@ -77,6 +77,21 @@
     background: linear-gradient(#{$deg}deg, color.scale($color, $lightness: -30%), color.scale($color, $lightness: 30%));
 }
 
+//Mixin para subrayado de los títulos
+@mixin title-border($color){
+    // display: inline-block;
+        position: relative;
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0px;
+            background-color: $color;
+            height: 2px;
+            width: 100%;
+        }
+}
+
 //Media-query
 // Media queries
 @mixin mobile{

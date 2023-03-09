@@ -1,18 +1,10 @@
 @use "../base/variables" as v;
+@use "../base/mixins" as m;
 
 .title__container{
-text-align: center;
     h1{
-        display: inline-block;
-        position: relative;
-        &::after{
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: 0px;
-            background-color: v.$green;
-            height: 2px;
-            width: 100%;
-        }
+        @include m.title-border(v.$green);
+        width: fit-content;
+        margin: 0 auto;
     }
 }

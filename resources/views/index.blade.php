@@ -47,7 +47,7 @@
             <div class="title__container">
                 <h1 class="text-center">Recomendados</h1>
             </div>
-            <div class="recomendados__container col-6 col-md-10 m-auto">
+            <div class="recomendados__container col-6 col-md-10 m-auto py-3">
                 <div class="libros__container mt-3">
                     @foreach ($libros_recomendados as $libro)
                     <div class="card">
@@ -85,7 +85,7 @@
             <div class="title__container">
                 <h1 class="text-center">Más recientes</h1>
             </div>
-            <div class="recomendados__container col-6 col-md-10 m-auto">
+            <div class="recomendados__container col-6 col-md-10 m-auto py-3">
                 <div class="libros__container mt-3">
                     @foreach ($libros_recientes as $libro)
                     <div class="card">

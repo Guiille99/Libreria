@@ -59,14 +59,14 @@
                     </div>
                 </div>
                 <div class="datos__container datos__tlfn">
-                    <i class="bi bi-telephone-fill"></i>
+                    <i class="bi bi-geo-alt-fill"></i>
                     <div class="datos__text">
                         <p class="datos__titulo">Teléfono</p>
                         <p class="datos__descripcion">623456789</p>
                     </div>
                 </div>
                 <div class="datos__container datos__email">
-                    <i class="bi bi-envelope-fill"></i>
+                    <i class="bi bi-geo-alt-fill"></i>
                     <div class="datos__text">
                         <p class="datos__titulo">Email</p>
                         <p class="datos__descripcion">info@book.com</p>

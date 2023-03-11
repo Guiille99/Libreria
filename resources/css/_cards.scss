@@ -3,7 +3,6 @@
 @use "sass:color" as color;
 
 /*LIBROS CONTAINER*/
-//MIRAR CARDS
 .libros__container{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));

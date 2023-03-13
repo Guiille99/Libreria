@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Mail\ContactanosMailable;
@@ -59,8 +60,13 @@ Route::put('/logout', [LoginController::class, "logout"])->name("login.logout");
 Route::get('/register', [RegisterController::class, "index"])->name("register.index");
 Route::post('/register', [RegisterController::class, "store"])->name("register.store");
 
+
 Route::get('/contacto', [ContactoController::class, "index"])->name("contacto");
 
+Route::controller(PasswordResetController::class)->group(function(){
+    Route::get('forgot-password', 'create')->name('password.request');
+    Route::post('forgot-password', 'store')->name('password.email');
+});
 
 Route::post('enviar-correo', function() 
 {

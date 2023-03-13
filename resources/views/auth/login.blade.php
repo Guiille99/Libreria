@@ -27,6 +27,7 @@
 
                 <div class="form-floating mt-3">
                     <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Password" required>
+                    <i id="togglePassword" class="bi bi-eye"></i>
                     <label for="password" class="form-label">Contraseña</label>
                     <div class="invalid-feedback">
                         <small>Introduzca una contraseña</small> 
@@ -45,7 +46,10 @@
                         <input class="form-check-input" type="checkbox" role="switch" id="checkRemember" name="remember">
                     </div>
 
-                    <a href="{{route('register.index')}}" class="nocount-link">¿No tienes cuenta? Regístrate</a>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="{{route('register.index')}}" class="nocount-link">¿No tienes cuenta? Regístrate</a>
+                        <a href="{{route('password.request')}}" class="nocount-link">¿Olvidaste la contraseña?</a>
+                    </div>
                 </div>
 
                 <div class="mt-4">

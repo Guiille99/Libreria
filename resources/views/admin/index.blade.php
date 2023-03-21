@@ -5,6 +5,10 @@
     <div id="registros__container" class="col col-lg-10 py-3">
         <div class="registros row">
             <div class="col">
+                {{-- Alerta si se ha añadido, actualizado o eliminado un usuario --}}
+                @if (session("message")) 
+                    <div class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
+                @endif
                 <div class="header__container mb-2">
                     <h3 class="title text-center">Lista de Usuarios</h3>
                     <a href="{{route('user.create')}}" class="btn-add"> <i class="bi bi-plus"></i> Nuevo usuario</a>

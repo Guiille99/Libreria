@@ -5,6 +5,11 @@ import * as bootstrap from 'bootstrap'
 $(document).ready(function(){
     ellipsis_box(".libro__titulo", 18);
     $("#togglePassword").click(togglerPassword);
+
+    //Alerta cuando actualiza el perfil en la página principal
+    setTimeout(function(){
+        $("#alert-index").fadeOut(2000);
+    }, 3000)
 })
 
 // addEventListener("load", inicio);

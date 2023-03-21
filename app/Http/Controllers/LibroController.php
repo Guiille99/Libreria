@@ -75,7 +75,7 @@ class LibroController extends Controller
     public function destroy(Libro $libro){ 
         unlink($libro->portada);//Borra la anterior foto registrada
         $libro->delete(); //Elimina el libro
-        return redirect()->route('libros.index');
+        return redirect()->route('libros.index')->with("message", "Libro eliminado correctamente");
     }
 
     public function edit(Libro $libro){ 
@@ -127,9 +127,8 @@ class LibroController extends Controller
         $libro->stock = $request->stock;
 
         $libro->save();
-        return redirect()->route('libros.index');
+        return redirect()->route('libros.index')->with("message", "Libro añadido correctamente");
     }
-
 
 
     public function update(Request $request, Libro $libro){ 
@@ -180,7 +179,7 @@ class LibroController extends Controller
 
 
         $libro->save();
-        return redirect()->route('libros.index');
+        return redirect()->route('libros.index')->with("message", "Libro actualizado correctamente");
     }
 
     public function show(Libro $libro){

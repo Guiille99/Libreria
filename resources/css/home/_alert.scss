@@ -1,0 +1,16 @@
+@use "../base/mixins" as m;
+
+#alert-index{
+    position: fixed;
+    z-index: 999;
+    width: 90%;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    // margin: 0 auto;
+    @include m.desktop{
+        width: 40%;
+        left: 5px;
+        transform: unset;
+    }
+}

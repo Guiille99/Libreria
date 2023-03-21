@@ -52,14 +52,14 @@ class UserController extends Controller
         $user->rol = $request->rol;
 
         $user->save();
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users')->with("message", "Usuario añadido correctamente");
     }
 
     // public function destroy(User $user){ 
     public function destroy($id){ 
         $user=User::where('id', $id)->first();
         $user->delete(); //Elimina el usuario
-        return redirect()->back();
+        return redirect()->back()->with("message", "Usuario eliminado correctamente");
     }
 
     public function edit(User $user){ 
@@ -116,7 +116,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('index');
+        return redirect()->route('index')->with("message", "Usuario actualizado correctamente");
     }
 
     
@@ -177,6 +177,6 @@ class UserController extends Controller
         if ($request->rol==null) { 
             return redirect()->route('index');
         }
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users')->with("message", "Usuario actualizado correctamente");
     }
 }

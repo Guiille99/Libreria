@@ -111,6 +111,7 @@
             </div>
         </main>
     </div>
+    <label for="toggler-sidebar" id="body-label"></label>
     @yield('script')
 </body>
 </html>

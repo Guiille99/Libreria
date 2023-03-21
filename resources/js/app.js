@@ -10,6 +10,11 @@ $(document).ready(function(){
     setTimeout(function(){
         $("#alert-index").fadeOut(2000);
     }, 3000)
+
+    $(document).click(function(){
+        // $(".sidebar").css("")
+        console.log("Hola")
+    })
 })
 
 // addEventListener("load", inicio);

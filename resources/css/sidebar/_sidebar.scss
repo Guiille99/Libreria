@@ -37,11 +37,32 @@
     transition: margin-left 300ms;
 }
 
+#body-label{
+    position: fixed;
+    top: 0;
+    right: 0%;
+    height: 100%;
+    // width: calc(100% - v.$sidebar-width);
+    width: 100%;
+    // margin-left: v.$sidebar-width;
+    background-color: v.$black;
+    opacity: 0.8;
+    z-index: 2;
+
+    @include m.desktop{
+        background-color: transparent;
+        z-index: -1;
+    }
+}
+
 #toggler-sidebar{
     display: none;
 }
 #toggler-sidebar:checked ~ .sidebar{
     left: -100%;
+}
+#toggler-sidebar:checked ~ #body-label{
+    right: -100%;
 }
 #toggler-sidebar:checked ~ .main-content{
     margin-left: 0;

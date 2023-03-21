@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield("title")</title>
     <link rel="shortcut icon" href="{{asset('uploads/logo.ico')}}" type="image/x-icon">
-    @vite(["resources/css/app.scss", "resources/js/jquery-3.6.3.js", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
+    <script src="{{asset('build/assets/jquery-3.6.3.js')}}"></script>
+    <script src="{{asset('build/assets/moment.min.js')}}"></script>
+    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/validation_form.js", "resources/js/datatables.min.js"])
 </head>
-<body class="d-flex flex-column vh-100">
+<body>
     <nav class="navbar-admin navbar navbar-expand-lg align-items-center px-5">
         <div class="container-fluid justify-content-around">
             <button id="toggler-sidebar" class="border-0 fs-2 toggler-admin" type="button" data-bs-toggle="offcanvas" data-bs-target="#navegacion">
@@ -72,5 +74,6 @@
 
         </div>
     </main>
+    @yield('script')
 </body>
 </html>

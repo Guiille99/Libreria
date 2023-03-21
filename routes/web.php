@@ -38,6 +38,7 @@ Route::put('admin/{user}/edit', [UserController::class, "update"])->middleware('
 Route::get('admin/usuarios', [UserController::class, "index"])->middleware('checkadmin')->name("admin.users"); //Página que muestra los registros de los usuarios
 Route::get('admin/user/create', [UserController::class, "create"])->middleware('checkadmin')->name("user.create");
 Route::post('admin/user', [UserController::class, "store"])->middleware('checkadmin')->name("user.store");
+Route::get('admin/user/getUser', [UserController::class, "getUser"])->middleware('checkadmin')->name("user.get");
 Route::get('perfil/{user}', [UserController::class, "editPerfil"])->middleware('auth')->name("user.editPerfil"); //Página para mostrar el formulario de actualización de usuario desde la página principal
 Route::put('perfil/{user}', [UserController::class, "updatePerfil"])->middleware('auth')->name("user.updatePerfil"); //Página para mostrar el formulario de actualización de usuario desde la página principal
 

@@ -9,9 +9,25 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index(){ //Listado de todos los usuarios
+    public function index(Request $request){ //Listado de todos los usuarios
         $users = User::paginate(5);
         // dd($users);
+        if ($request->ajax()) {
+            $users = User::all();
+            return datatables()->of($users)
+        ->addColumn('action', function($user){
+            $btn="<div class='d-flex align-items-center gap-2'>
+            <button type='button' id='btn-delete' data-id='$user->id' data-username='$user->username' class='d-flex gap-2 btn-delete text-white btn-delete-user' data-bs-toggle='modal' data-bs-target='#modal-delete' >
+                <i class='bi bi-trash3'></i> 
+            </button>
+
+            <a href='". route('user.edit', $user) ."' class='d-flex gap-2 btn-modify text-white'>
+                <i class='bi bi-pencil-square'></i></a>
+        </div>";
+            return $btn;
+        })
+        ->toJson();
+        }
         return view("admin.index", compact('users'));
     }
 
@@ -39,7 +55,9 @@ class UserController extends Controller
         return redirect()->route('admin.users');
     }
 
-    public function destroy(User $user){ 
+    // public function destroy(User $user){ 
+    public function destroy($id){ 
+        $user=User::where('id', $id)->first();
         $user->delete(); //Elimina el usuario
         return redirect()->back();
     }

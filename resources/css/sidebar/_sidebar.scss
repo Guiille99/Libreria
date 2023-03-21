@@ -1,0 +1,48 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.sidebar{
+    background-color: v.$sidebar-bg;
+    width: v.$sidebar-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100%;
+    transition: left 300ms;
+
+    .sidebar-body{
+        li{
+            padding: 5px;
+            &:hover{
+                background-color: v.$white;
+                a{
+                    color: v.$black;
+                }
+            }
+        }
+        a{
+            color: v.$white;
+            text-decoration: none;
+        }
+    }
+
+    .btn-close{
+        position: absolute;
+        top: 5px;  
+        right: 5px;      
+    }
+}
+.main-content{
+    transition: margin-left 300ms;
+}
+
+#toggler-sidebar{
+    display: none;
+}
+#toggler-sidebar:checked ~ .sidebar{
+    left: -100%;
+}
+#toggler-sidebar:checked ~ .main-content{
+    margin-left: 0;
+}

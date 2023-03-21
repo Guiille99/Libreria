@@ -2,7 +2,7 @@
 @section('title', 'Books | Admin')
 @section('content')
     {{-- DATOS --}}
-    <div id="registros__container" class="col col-lg-10 py-3">
+    <div id="registros__container" class="col col-lg-12 py-3">
         <div class="registros row">
             <div class="col">
                 {{-- Alerta si se ha añadido, actualizado o eliminado un usuario --}}

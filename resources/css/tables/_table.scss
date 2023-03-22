@@ -14,9 +14,16 @@
             background-color: v.$nav-dark;
             padding: 10px;
             display: flex;
+            flex-direction: column;
+            gap: 5px;
             width: 100%;
-            justify-content: space-around;
+            // justify-content: space-around;
             align-items: center;
+
+            @include m.tablet{
+                flex-direction: row;
+                justify-content: space-around;
+            }
             .title{
                 color: v.$white;
                 margin: 0;

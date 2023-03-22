@@ -5,16 +5,12 @@ import * as bootstrap from 'bootstrap'
 $(document).ready(function(){
     ellipsis_box(".libro__titulo", 18);
     $("#togglePassword").click(togglerPassword);
+    $("#togglePasswordConfirm").click(togglerPasswordConfirm);
 
     //Alerta cuando actualiza el perfil en la página principal
     setTimeout(function(){
         $("#alert-index").fadeOut(2000);
     }, 3000)
-
-    $(document).click(function(){
-        // $(".sidebar").css("")
-        console.log("Hola")
-    })
 })
 
 // addEventListener("load", inicio);
@@ -40,6 +36,20 @@ function ellipsis_box(elemento, max_chars){
 // OJO DE LOS CAMPOS PASSWORD
 function togglerPassword(e){
     const password = $('#password');
+    const type = password.attr('type') === 'password' ? 'text' : 'password';
+    password.attr('type', type);
+    // toggle the eye slash icon
+    if (type=='password') {
+        $(this).removeClass('bi-eye-slash');
+        $(this).addClass('bi-eye');
+    }
+    else{
+        $(this).removeClass('bi-eye');
+        $(this).addClass('bi-eye-slash');
+    }
+}
+function togglerPasswordConfirm(e){
+    const password = $('#password_confirmation');
     const type = password.attr('type') === 'password' ? 'text' : 'password';
     password.attr('type', type);
     // toggle the eye slash icon

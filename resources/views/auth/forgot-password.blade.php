@@ -6,10 +6,15 @@
     <div class="row flex-column gap-2 justify-content-center align-items-center h-100">
         <figure class="w-auto">
             <a href="{{route('index')}}">
-                <img src="uploads/logo-nombre2.svg" alt="Logo">
+                <img src="{{asset('uploads/logo-nombre2.svg')}}" alt="Logo">
             </a>
         </figure>
-        <div class="col-10 col-md-8 col-lg-4 login">
+        {{-- Session status --}}
+        @if (session('status'))
+            <div class="alert alert-success col-10 col-md-8 col-lg-4"><i class="bi bi-check-circle"></i> {{session('status')}}</div>
+        @endif
+
+        <div class="col-10 col-md-8 col-lg-5 login">
             <h2 class="login__title">Recuperar contraseña</h2>
             
             <form action="{{route('password.email')}}" method="post" class="needs-validation" novalidate>

@@ -30,7 +30,11 @@
     .btn-close{
         position: absolute;
         top: 5px;  
-        right: 5px;      
+        right: 5px;
+        
+        @include m.desktop{
+            display: none;
+        }
     }
 }
 .main-content{

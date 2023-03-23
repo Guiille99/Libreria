@@ -11,6 +11,22 @@ $(document).ready(function(){
     setTimeout(function(){
         $("#alert-index").fadeOut(2000);
     }, 3000)
+
+    //Al hacer scroll el sub-nav no se verá
+    $(document).scroll(function(){
+        if (scrollY>3) {
+            $('header').attr('class', 'header-2');
+            $('.nav-top').attr('class', 'nav-top container-fluid position-fixed top-0 w-100 z-3');
+        }
+        else{
+            $('header').attr('class', '');
+            $('.nav-top').attr('class', 'nav-top container-fluid');
+        }
+    });
+    if (scrollY>3) { //Lo pongo de nuevo para que cuando se pulse en el botón de comprar siga apareciendo el navbar sin la necesidad de hacer scroll
+        $('header').attr('class', 'header-2');
+        $('.nav-top').attr('class', 'nav-top container-fluid position-fixed top-0 w-100 z-3');
+    }
 })
 
 // addEventListener("load", inicio);

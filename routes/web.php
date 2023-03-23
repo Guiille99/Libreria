@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
@@ -63,11 +64,17 @@ Route::post('/register', [RegisterController::class, "store"])->name("register.s
 
 Route::get('/contacto', [ContactoController::class, "index"])->name("contacto");
 
+// RUTAS DE RESETEO DE CONTRASEÑA
 Route::controller(PasswordResetController::class)->group(function(){
     Route::get('forgot-password', 'create')->name('password.request'); //Muestra el formulario para solicitar el reseto de contraseña
     Route::post('forgot-password', 'store')->name('password.email'); //Envía la solicitud
     Route::get('forgot-password/reset/{token}', 'showResetForm')->name('password.reset'); //Muestra el formulario para cambiar la contraseña
     Route::post('forgot-password/reset', 'reset')->name('password.update'); //Actualiza la contraseña
+});
+
+// RUTAS DE MANEJO DEL CARRITO
+Route::controller(CarritoController::class)->group(function(){
+    Route::post('add-to-cart', 'addCarrito')->name('add_to_cart');
 });
 
 Route::post('enviar-correo', function() 

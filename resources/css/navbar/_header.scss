@@ -1,0 +1,11 @@
+@use "../base/mixins" as m;
+
+.header-2{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    @include m.desktop{
+        position: unset;
+        padding-top: 60px;
+    }
+}

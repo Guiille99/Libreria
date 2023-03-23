@@ -5,9 +5,8 @@
         <li><a class="dropdown-item" href="{{route('libros.filter', $genero->genero)}}">{{$genero->genero}}</a></li>
     @endforeach
 @endsection --}}
-
+{{-- {{var_dump(session()->get('carrito'))}} --}}
 @section('content')
-
     @if (session('message'))
         <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
     @endif
@@ -64,10 +63,10 @@
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             {{-- <button class="boton">Comprar</button> --}}
                             @if ($libro->stock>0)
-                            <form action="" method="get">
+                            <form action="{{--{{route('add_to_cart', $libro)}}--}}" method="get" class="form-add-to-cart">
                                 @csrf
                                 @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
-                                    <input type="submit" value="Comprar" class="boton">
+                                    <input type="submit" value="Comprar" class="boton" data-id="{{$libro->id}}">
                                  @else
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
@@ -102,10 +101,10 @@
                             <p class="libro__precio">{{$libro->precio}}€</p>
                             {{-- <button>Comprar</button> --}}
                             @if ($libro->stock>0)
-                            <form action="" method="get">
+                            <form action="" method="get" class="form-add-to-cart">
                                 @csrf
                                 @if (Auth::check()) {{-- Si hay una sesión iniciada --}}
-                                    <input type="submit" value="Comprar" class="boton">
+                                    <input type="submit" value="Comprar" class="boton" data-id="{{$libro->id}}">
                                  @else
                                     <input type="submit" value="Comprar" class="boton" disabled>
                                 @endif
@@ -164,5 +163,39 @@
             </div>
         </section>
     </div>
+@endsection
+@section('script')
+<script>
+    $(document).ready(function(){
+   
+        $(".form-add-to-cart").submit(function(e){
+            e.preventDefault();
+            let url = "{{route('add_to_cart')}}";
+            let id = $(this)[0][1].attributes[3].value; //ID del libro
+            let token = $("input[name='_token']").val();
 
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+            $.ajax({
+                async: true, //Indica si la comunicación será asincrónica (true)
+                method: "POST", //Indica el método que se envían los datos (GET o POST)
+                dataType: "html", //Indica el tipo de datos que se va a recuperar
+                contentType: "application/x-www-form-urlencoded", //cómo se
+                url: url, //el nombre de la página que procesará la petición
+                data: {
+                    "token": token,
+                    "id": id
+                },
+                success: function(){
+                    // alert("He vuelto");
+                    location.reload();
+                }
+                });
+             return false;
+        })
+    })
+</script>
 @endsection

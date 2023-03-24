@@ -171,7 +171,7 @@
         $(".form-add-to-cart").submit(function(e){
             e.preventDefault();
             let url = "{{route('add_to_cart')}}";
-            let id = $(this)[0][1].attributes[3].value; //ID del libro
+            let id = $(this)[0][1].attributes['data-id'].value; //ID del libro
             let token = $("input[name='_token']").val();
 
             $.ajaxSetup({
@@ -190,8 +190,14 @@
                     "id": id
                 },
                 success: function(){
-                    // alert("He vuelto");
-                    location.reload();
+                    $(".carrito__cantidad").load("{{route('cantidadCarrito')}}"); //Actualizamos solo el número del carrito
+                    // location.reload();
+                    $('#add-to-cart__message').css("display", "block");
+
+                    setTimeout(function(){ //Degradado al desaparecer la alerta
+                         $("#add-to-cart__message").fadeOut(2000);
+                    }, 3000)
+
                 }
                 });
              return false;

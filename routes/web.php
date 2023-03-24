@@ -75,6 +75,7 @@ Route::controller(PasswordResetController::class)->group(function(){
 // RUTAS DE MANEJO DEL CARRITO
 Route::controller(CarritoController::class)->group(function(){
     Route::post('add-to-cart', 'addCarrito')->name('add_to_cart');
+    Route::get('cantidadCarrito', 'getCantidad')->name('cantidadCarrito');
 });
 
 Route::post('enviar-correo', function() 

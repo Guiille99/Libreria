@@ -12,8 +12,9 @@
 </head>
 <body class="@yield('body-class')">
     <header>
+      {{-- TOP-NAV --}}
       <div class="nav-top container-fluid">
-        <div class="row bg-success align-items-center d-none d-lg-flex">
+        <div class="row bg-success align-items-center d-none d-lg-flex position-relative">
           <div class="col-3">
             <figure class="m-0">
               <a href="{{ route('index')}}"><img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO" class="img-fluid"></a>
@@ -78,6 +79,11 @@
             </div>
             @endif
           </div>
+
+          {{-- Mensaje cuando añades un libro al carrito --}}
+          {{-- <div style="border: 1px solid black; position: absolute; bottom: -120%; right: 5px; z-index: 999; width: 20%">
+            <p>Has añadido el libro a tu cesta</p>
+          </div> --}}
         </div>
       </div>
     
@@ -86,11 +92,28 @@
       <nav class="down-nav navbar navbar-expand-lg text-center pb-3 p-md-2">
         <div class="container-fluid">      
           <a class="navbar-brand d-block d-lg-none" href="{{ route('index')}}">
-            <img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO">
+            <picture>
+              <source media="(max-width: 375px)" srcset="{{asset('uploads/logo.png')}}">
+              <img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO" class="img-fluid">
+            </picture>
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="{{asset('uploads/toggler.svg')}}" alt="Toggler button" class="toggler__button">
-          </button>
+
+          <div class="d-flex gap-4">
+            {{-- Carrito --}}
+            @if (Auth::check())
+            <div class="carrito__container d-block d-lg-none">
+              <a href="" class="nav-link">
+                <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
+                <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+              </a>
+            </div>
+            @endif
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <img src="{{asset('uploads/toggler.svg')}}" alt="Toggler button" class="toggler__button">
+            </button>
+          </div>
+
           <div class="collapse navbar-collapse justify-content-center gap-5" id="navbarNav">
             {{-- Nav items --}}
             <ul class="nav__options navbar-nav gap-2 gap-lg-4 justify-content-center">
@@ -169,21 +192,18 @@
                 </div>
               @endif
               
-              @if (Auth::check())
-              <div class="carrito__container">
-                <a href="" class="nav-link">
-                  <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
-                  <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
-                </a>
-              </div>
-              @endif
+            
             </div>
           </div>
         </div>
       </nav>
+
     </header>
-
-
+    {{-- Mensaje cuando añades un libro al carrito --}}
+    <div id="add-to-cart__message">
+      <p class="m-0">Has añadido el libro a tu cesta</p>
+      <i class="bi bi-cart-check-fill"></i>
+    </div>
     @yield('content')
 
 

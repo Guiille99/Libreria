@@ -11,6 +11,7 @@ $(document).ready(function(){
     setTimeout(function(){
         $("#alert-index").fadeOut(2000);
     }, 3000)
+    
 
     //Al hacer scroll el sub-nav no se verá
     $(document).scroll(function(){

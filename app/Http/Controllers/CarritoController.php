@@ -28,4 +28,11 @@ class CarritoController extends Controller
         
         return redirect()->back()->with("message", "Libro añadido al carrito correctamente");
     }
+
+    public function getCantidad()
+    {
+        $carrito = session()->get('carrito', []); //Obtengo la sesión del carrito
+        // dd(count($carrito));
+        return count($carrito);
+    }
 }

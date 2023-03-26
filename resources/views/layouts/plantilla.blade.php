@@ -11,6 +11,8 @@
     @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
 </head>
 <body class="@yield('body-class')">
+{{-- {{var_dump(session()->get('carrito'))}}
+{{var_dump(session()->get('carrito-data'))}} --}}
     <header>
       {{-- TOP-NAV --}}
       <div class="nav-top container-fluid">
@@ -72,9 +74,13 @@
     
             @if (Auth::check())
             <div class="carrito__container">
-              <a href="" class="nav-link">
+              <a href="" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasRight">
                 <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
+                @if (session()->get('carrito'))
+                <span class="carrito__cantidad">{{session('carrito-data')["cantidad"]}}</span>
+                @else
                 <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+                @endif
               </a>
             </div>
             @endif
@@ -102,9 +108,13 @@
             {{-- Carrito --}}
             @if (Auth::check())
             <div class="carrito__container d-block d-lg-none">
-              <a href="" class="nav-link">
+              <a href="" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasRight">
                 <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
+                @if (session()->get('carrito'))
+                <span class="carrito__cantidad">{{session('carrito-data')["cantidad"]}}</span>
+                @else
                 <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+                @endif
               </a>
             </div>
             @endif
@@ -204,12 +214,67 @@
       <p class="m-0">Has añadido el libro a tu cesta</p>
       <i class="bi bi-cart-check-fill"></i>
     </div>
+
+    {{-- Offcanvas carrito --}}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCart">
+      <div class="offcanvas-header">
+        <button type="button" class="bi bi-x" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        
+        <div class="m-auto d-flex justify-content-center align-items-center gap-3">
+          <i class="bi bi-bag">
+            <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+          </i>
+          <h5 class="offcanvas-title" id="offcanvasCart">Mi carrito</h5>
+        </div>
+      </div>
+      <div class="offcanvas-content d-flex flex-column flex-grow-1">
+        <div class="offcanvas-body">
+          @if (session()->get('carrito'))
+            @foreach (session()->get('carrito') as $id=>$libro)
+                <div class="cart-book">
+                  <figure>
+                    <img src="{{asset($libro['portada'])}}" alt="portada" class="img-fluid">
+                  </figure>
+  
+                  <div class="book-data">
+                    <p>{{$libro["titulo"]}}</p>
+                    <div class="book-data__body">
+                      <p>{{$libro["cantidad"]}} x <span class="fw-bold">{{$libro["precio"]}}€</span></p>
+                    </div>
+                    <div class="book-data__footer">
+                      <p class="total-unidad">{{$libro["precio"]*$libro["cantidad"]}}€</p>
+                      <form action="{{route('delete_to_cart', $id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="bi bi-trash3 bg-transparent border-0"></button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+          @else
+              <p>El carrito está vacío</p>
+          @endif
+        </div>
+        @if (session()->get('carrito'))
+        <div class="offcanvas-footer">
+          <p id="total">Total: <span class="precio">{{session()->get('carrito-data')["total"]}}€</span></p>
+          <button>Finalizar compra</button>
+          <form action="{{route('vaciar-carrito')}}" method="post">
+            @csrf
+            @method('delete')
+            <input type="submit" class="w-100" value="Vaciar cesta">
+          </form>
+        </div>
+        @endif
+      </div>
+
+    </div>
+    @if (session('message'))
+        <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
+    @endif
+
     @yield('content')
-
-
-
-
-
 
     {{-- FOOTER --}}
     <footer class="@yield('footer-class')">
@@ -262,5 +327,55 @@
       </div>
     </footer>
 </body>
+<script>
+  $(document).ready(function(){
+ 
+      $(".form-add-to-cart").submit(function(e){
+          e.preventDefault();
+          let url = "{{route('add_to_cart')}}";
+          let id = $(this)[0][1].attributes['data-id'].value; //ID del libro
+          let token = $("input[name='_token']").val();
+
+          $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+          });
+          $.ajax({
+              async: true, //Indica si la comunicación será asincrónica (true)
+              method: "POST", //Indica el método que se envían los datos (GET o POST)
+              dataType: "html", //Indica el tipo de datos que se va a recuperar
+              contentType: "application/x-www-form-urlencoded", //cómo se
+              url: url, //el nombre de la página que procesará la petición
+              data: {
+                  "token": token,
+                  "id": id
+              },
+              success: function(){
+                  $(".carrito__cantidad").load("{{route('cantidadCarrito')}}"); //Actualizamos solo el número del carrito
+                  // location.reload();
+                  $('#add-to-cart__message').css("display", "block");
+                  //Obtenemos de nuevo el contenido del carrito a través de AJAX para que se actualice el offcanvas sin recargar la página
+                  $.ajax({
+                      type: "GET",
+                      url: "{{route('offcanvas-cart-content')}}",
+                      data:{
+                          "token": token
+                      },
+                      success: function(data){
+                          $(".offcanvas-content").html(data);
+                      }
+                  })
+                  
+                  setTimeout(function(){ //Degradado al desaparecer la alerta
+                       $("#add-to-cart__message").fadeOut(2000);
+                  }, 3000)
+
+              }
+              });
+           return false;
+      })
+  })
+</script>
 @yield('script')
 </html>

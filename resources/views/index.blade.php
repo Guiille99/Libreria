@@ -1,15 +1,9 @@
 @extends('layouts.plantilla')
 @section("title", "Books | Inicio")
-{{-- @section("generos_libros")
-    @foreach ($generos as $genero)
-        <li><a class="dropdown-item" href="{{route('libros.filter', $genero->genero)}}">{{$genero->genero}}</a></li>
-    @endforeach
-@endsection --}}
-{{-- {{var_dump(session()->get('carrito'))}} --}}
 @section('content')
-    @if (session('message'))
+    {{-- @if (session('message'))
         <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
-    @endif
+    @endif --}}
 
     <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -165,7 +159,7 @@
     </div>
 @endsection
 @section('script')
-<script>
+{{-- <script>
     $(document).ready(function(){
    
         $(".form-add-to-cart").submit(function(e){
@@ -193,7 +187,18 @@
                     $(".carrito__cantidad").load("{{route('cantidadCarrito')}}"); //Actualizamos solo el número del carrito
                     // location.reload();
                     $('#add-to-cart__message').css("display", "block");
-
+                    //Obtenemos de nuevo el contenido del carrito a través de AJAX para que se actualice el offcanvas sin recargar la página
+                    $.ajax({
+                        type: "GET",
+                        url: "{{route('offcanvas-cart-content')}}",
+                        data:{
+                            "token": token
+                        },
+                        success: function(data){
+                            $(".offcanvas-content").html(data);
+                        }
+                    })
+                    
                     setTimeout(function(){ //Degradado al desaparecer la alerta
                          $("#add-to-cart__message").fadeOut(2000);
                     }, 3000)
@@ -203,5 +208,5 @@
              return false;
         })
     })
-</script>
+</script> --}}
 @endsection

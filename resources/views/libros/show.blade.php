@@ -59,7 +59,7 @@
     </div>
 @endsection
 @section('script')
-<script>
+{{-- <script>
     $(document).ready(function(){
    
         $(".form-add-to-cart").submit(function(e){
@@ -96,5 +96,5 @@
              return false;
         })
     })
-</script>
+</script> --}}
 @endsection

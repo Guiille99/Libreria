@@ -1,0 +1,23 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.cart-container{
+    .productos__carrito{
+        figure{
+            width: 20%;
+            min-width: 60px;
+        }
+
+        a.boton{
+            @include m.btnCartTable(v.$white, v.$green);
+        }
+        input.boton{
+            @include m.btnCartTable(v.$green, v.$white);
+            
+            &:hover{
+                background-color: v.$dark-green;
+                color: v.$white;
+            }
+        }
+    }
+}

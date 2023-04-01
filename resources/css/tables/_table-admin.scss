@@ -30,6 +30,10 @@
             }
         }
         table{
+            background-color: color.scale(v.$green, $lightness: 72%);
+            tr.odd{
+                background-color: color.scale(v.$green, $lightness: 67%);
+            }
             th{
                 text-align: center;
             }

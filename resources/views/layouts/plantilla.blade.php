@@ -6,13 +6,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield("title")</title>
     <link rel="shortcut icon" href="{{asset('uploads/logo.ico')}}" type="image/x-icon">
-    <script src="{{asset('build/assets/jquery-3.6.3.js')}}"></script>
+    {{-- <script src="{{asset('build/assets/jquery-3.6.3.js')}}"></script> --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> --}}
-    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
+    @vite(["resources/js/jquery-3.6.3.js", "resources/css/app.scss", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
 </head>
 <body class="@yield('body-class')">
-{{-- {{var_dump(session()->get('carrito'))}}
-{{var_dump(session()->get('carrito-data'))}} --}}
+{{-- {{var_dump(session()->get('carrito'))}} --}}
+{{-- {{var_dump(session()->get('carrito-data'))}} --}}
     <header>
       {{-- TOP-NAV --}}
       <div class="nav-top container-fluid">
@@ -228,8 +228,8 @@
         </div>
       </div>
       <div class="offcanvas-content d-flex flex-column flex-grow-1">
+        @if (session()->get('carrito'))
         <div class="offcanvas-body">
-          @if (session()->get('carrito'))
             @foreach (session()->get('carrito') as $id=>$libro)
                 <div class="cart-book">
                   <figure>
@@ -253,13 +253,17 @@
                 </div>
                 @endforeach
           @else
-              <p>El carrito está vacío</p>
+              <div class="offcanvas-body d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <i class="bi bi-emoji-frown"></i>
+                  <p>El carrito está vacío</p>
+                </div>
           @endif
         </div>
         @if (session()->get('carrito'))
         <div class="offcanvas-footer">
           <p id="total">Total: <span class="precio">{{session()->get('carrito-data')["total"]}}€</span></p>
-          <button>Finalizar compra</button>
+          <a href="{{route('show-cart')}}" class="text-center text-decoration-none">Ver carrito</a>
           <form action="{{route('vaciar-carrito')}}" method="post">
             @csrf
             @method('delete')
@@ -327,7 +331,7 @@
       </div>
     </footer>
 </body>
-<script>
+{{-- <script>
   $(document).ready(function(){
  
       $(".form-add-to-cart").submit(function(e){
@@ -374,8 +378,8 @@
               }
               });
            return false;
-      })
+      });
   })
-</script>
+</script> --}}
 @yield('script')
 </html>

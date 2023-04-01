@@ -1,5 +1,6 @@
 @use "base/variables" as v;
 @use "base/mixins" as m;
+@use "sass:color";
 
 .offcanvas{
     &-header{
@@ -37,6 +38,10 @@
         overflow-y: auto;
     }
     &-body{
+        .bi-emoji-frown{
+            color: v.$green;
+            font-size: 4rem;
+        }
         .cart-book{
             display: flex;
             gap: 20px;
@@ -68,7 +73,9 @@
         flex-direction: column;
         gap: 5px;
         padding: 10px;
-        button, input[type=submit]{
+        a, input[type=submit]{
+            background-color: color.adjust(v.$white, $lightness: -10%);
+            color: v.$black;
             padding: 5px;
             border: none;
             font-size: 1.3rem;

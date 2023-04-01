@@ -167,7 +167,7 @@
             let url = "{{route('add_to_cart')}}";
             let id = $(this)[0][1].attributes['data-id'].value; //ID del libro
             let token = $("input[name='_token']").val();
-
+  
             $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -202,11 +202,19 @@
                     setTimeout(function(){ //Degradado al desaparecer la alerta
                          $("#add-to-cart__message").fadeOut(2000);
                     }, 3000)
-
+  
                 }
                 });
              return false;
-        })
+        });
     })
-</script> --}}
+  </script> --}}
+  <script>
+        //Definición de rutas
+        let url = "{{route('add_to_cart')}}";
+        let urlCartContent = "{{route('offcanvas-cart-content')}}";
+        let urlCantidadCarrito = "{{route('cantidadCarrito')}}";
+  </script>
+      @vite(['resources/js/cart.js'])
+  {{-- <script src="{{asset('build/assets/cart.js')}}"></script> --}}
 @endsection

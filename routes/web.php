@@ -77,7 +77,7 @@ Route::controller(CarritoController::class)->group(function(){
     Route::post('add-to-cart', 'addCarrito')->name('add_to_cart');
     Route::get('cantidadCarrito', 'showCantidad')->name('cantidadCarrito');
     Route::get('offcanvas-cart-content', 'getContent')->name('offcanvas-cart-content');
-    Route::post('update-cart', 'updateCart')->name('carrito.update');
+    Route::put('update-cart', 'updateCart')->name('carrito.update');
     Route::delete('delete-to-cart/{id}', 'deleteToCart')->name('delete_to_cart');
     Route::delete('delete-cart', 'vaciarCarrito')->name('vaciar-carrito');
     Route::get('carrito', 'showCart')->name('show-cart');

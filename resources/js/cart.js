@@ -1,5 +1,6 @@
 $(document).ready(function(){
    
+    //AÑADIR UN LIBRO AL CARRITO
     $(".form-add-to-cart").submit(function(e){
         e.preventDefault();
         // let url = "{{route('add_to_cart')}}";
@@ -45,4 +46,34 @@ $(document).ready(function(){
             });
          return false;
     });
+
+    //ELIMINAR UN LIBRO DEL CARRITO MEDIANTE AJAX
+    $('.btn-delete-to-cart').click(function(){
+        // let url = "{{route('delete_to_cart', 'num')}}";
+        let id = $(this).attr("data-idlibro");
+        url = url.replace('num', id);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            async: true,
+            url: url,
+            method: "DELETE",
+            beforeSend: function(){
+                $(".productos__carrito").prepend(
+                    "<div class='spinner-container position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center'>"+
+                    "<div class='spinner spinner-border' role='status'>"+
+                        "<span class='visually-hidden'>Loading...</span>"+
+                    "</div>"+
+                "</div>");
+            },
+            success: function (data) {
+                location.reload();
+                // $('#alert-index').text(data.message);
+                // $('#alert-index').css('display', 'block');
+            },
+        });
+    })
 })

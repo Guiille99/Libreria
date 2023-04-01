@@ -1,58 +1,99 @@
 @extends('layouts.plantilla')
-@section("title", "Books | Inicio")
+@section("title", "Carrito")
+@if (count((array) session('carrito')) < 2)
+@section('body-class', 'vh-100 d-flex flex-column justify-content-between')
+    
+@endif
+    
 @section('content')
-<div class="container py-4">
-    <div class="cart-container row">
+{{-- <div class="container py-4"> --}}
+    <div class="cart-container row py-4 m-auto col-md-10">
         @if (session()->get('carrito'))
-        <div class="productos__carrito col-12 col-md-7 border-end">
-            <form action="" method="post">
+        <div class="productos__carrito col-12 col-md-7 border-end position-relative">
+            <form action="{{route('carrito.update')}}" method="post">
                 @csrf
                 @method("put")
-                <table class="table">
-                    <thead class="border-3 border-bottom">
-                        <th>PRODUCTO</th>
-                        <th>PRECIO</th>
-                        <th>CANTIDAD</th>
-                        <th>SUBTOTAL</th>
-                    </thead>
-                    <tbody>
-                        @foreach (session()->get('carrito') as $id => $libro)
-                        <tr>
-                            <td class="d-flex align-items-center gap-3">
-                              <figure>
-                                  <img src="{{$libro["portada"]}}" alt="{{$libro["titulo"]}}" class="img-fluid">
-                              </figure>
-                              <p>{{$libro["titulo"]}}</p>
-                            </td>
-      
-                            <td>{{$libro["precio"]}} €</td>
-                            <td><input type="number" name="producto-cantidad" id="" value="{{$libro["cantidad"]}}" min="1" max="{{$libro["stock"]}}" data-idlibro="{{$id}}"></td>
-                            <td>{{$libro["precio"]*$libro["cantidad"]}} €</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="border-3 border-bottom">
+                            <th>PRODUCTO</th>
+                            <th>PRECIO</th>
+                            <th>CANTIDAD</th>
+                            <th>SUBTOTAL</th>
+                        </thead>
+                        <tbody>
+                            @foreach (session()->get('carrito') as $id => $libro)
+                            <tr>
+                                <td class="d-flex align-items-center gap-3">
+                                    <i class="btn-delete-to-cart bi bi-x-circle" data-idlibro="{{$id}}"></i>
+                                  <figure>
+                                      <img src="{{$libro["portada"]}}" alt="{{$libro["titulo"]}}" class="img-fluid">
+                                  </figure>
+                                  <p>{{$libro["titulo"]}}</p>
+                                </td>
+          
+                                <td>{{$libro["precio"]}} €</td>
+                                <td><input type="number" name="{{$id}}" id="{{$id}}-cantidad" value="{{$libro["cantidad"]}}" min="1" max="{{$libro["stock"]}}" data-idlibro="{{$id}}"></td>
+                                <td>{{$libro["precio"]*$libro["cantidad"]}} €</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="d-flex flex-column flex-md-row gap-2 gap-md-4">
-                    <a href="" class="boton text-center"><i class="bi bi-arrow-left"></i> Seguir comprando</a>
+                    <a href="{{route('index')}}" class="boton text-center"><i class="bi bi-arrow-left"></i> Seguir comprando</a>
                     <input type="submit" value="Actualizar carrito" class="boton">
                 </div>
             </form>
         </div>
-            @else
-                <h1 class="text-center">No hay productos en la cesta</h1>
-            @endif
+            
         <div class="col-12 col-md-5 border-start">
             <table class="table">
                 <thead class="border-3 border-bottom">
                     <th>Total del carrito</th>
                 </thead>
                 <tbody>
-                    <td><p>Total: <span class="fw-bold">{{session()->get('carrito-data')["total"]}} €</span></p> </td>
+                    <td><p>Total: <span class="fw-bold">{{session()->get('carrito-data')["total"]}} €</span><span id="iva-message"> (IVA incluido)</span></p> </td>
                 </tbody>
             </table>
         </div>
+        @else
+            <div class="d-flex flex-column align-items-center">
+                <i class="bi bi-cart-x fs-1"></i>
+                <h3 class="text-center">No hay productos en la cesta</h3>
+            </div>
+        @endif
     </div>
 
-</div>
+{{-- </div> --}}
+@endsection
+@section('script')
+    <script>
+        // $(document).ready(function(){
+        //     $('.btn-delete').click(function(){
+        //         let url = "{{route('delete_to_cart', 'num')}}";
+        //         let id = $(this).attr("data-idlibro");
+        //         url = url.replace('num', id);
+        //         $.ajaxSetup({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //             }
+        //         });
+        //         $.ajax({
+        //             async: true,
+        //             url: url,
+        //             method: "DELETE",
+        //             success: function (data) {
+        //                 location.reload();
+        //                 // $('#alert-index').text(data.message);
+        //                 // $('#alert-index').css('display', 'block');
+        //             },
+        //         });
+        //     })
+        // })
+
+        let url = "{{route('delete_to_cart', 'num')}}";
+    </script>
+    @vite(['resources/js/cart.js'])
 @endsection

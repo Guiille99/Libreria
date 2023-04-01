@@ -43,14 +43,24 @@ class CarritoController extends Controller
         return redirect()->back()->with('message', 'Has vaciado la cesta de la compra');
     }
 
-    // public function updateCart(Request $request){
-    //     $carrito = session()->get('carrito');
-    //     $carrito[$request->input("id")]["cantidad"] = $request->input("cantidad");
-    //     session()->put('carrito', $carrito);
-    //     return redirect()->back();
-    // }
+    public function updateCart(Request $request){
+        $carrito = session()->get('carrito');
+        foreach ($request->request as $id => $newCantidad) {
+            if (is_numeric($id) && $carrito[$id]["cantidad"] != $newCantidad) { //Si es un número y la cantidad es diferente a la que tenía
+                $carrito[$id]["cantidad"] = $newCantidad; //Modificamos la cantidad
+            }
+        }
+        
+        session()->put('carrito', $carrito);
+        $carritoData=session()->get('carrito-data');
+        $carritoData["total"] = CarritoController::getTotal();
+        $carritoData["cantidad"] = CarritoController::getCantidad();
+        session()->put("carrito-data", $carritoData);
 
-    public function deleteToCart($IDlibro){ //Eliminar un libro del carrito
+        return redirect()->back()->with('message', 'Carrito actualizado');
+    }
+
+    public function deleteToCart(Request $request, $IDlibro){ //Eliminar un libro del carrito
         $carrito = session()->get('carrito');
         $carritoData = session()->get('carrito-data');
         unset($carrito[$IDlibro]); //Eliminamos el libro del carrito
@@ -60,7 +70,13 @@ class CarritoController extends Controller
         session()->put("carrito-data", $carritoData);
         
         if ($carritoData["cantidad"]==0) { //Si se ha vaciado la cesta retornaremos la vista con un alert
+            if ($request->ajax()) { //Si es una petición AJAX
+                return response()->json(['message' => 'Has vaciado la cesta de la compra']);
+            }
             return redirect()->back()->with('message', 'Has vaciado la cesta de la compra');
+        }
+        if ($request->ajax()) {
+            return response()->json(['message'=>'Has vaciado la cesta de la compra']);
         }
         return redirect()->back();
     }

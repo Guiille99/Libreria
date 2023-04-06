@@ -6,6 +6,7 @@ $(document).ready(function(){
     ellipsis_box(".libro__titulo", 18);
     $("#togglePassword").click(togglerPassword);
     $("#togglePasswordConfirm").click(togglerPasswordConfirm);
+    $("#btnBack").click(goToUp);
 
     //Alerta cuando actualiza el perfil en la página principal
     setTimeout(function(){
@@ -13,8 +14,8 @@ $(document).ready(function(){
     }, 3000)
     
 
-    //Al hacer scroll el sub-nav no se verá
     $(document).scroll(function(){
+        //Al hacer scroll el sub-nav no se verá
         if (scrollY>3) {
             $('header').attr('class', 'header-2');
             $('.nav-top').attr('class', 'nav-top container-fluid position-fixed top-0 w-100 z-3');
@@ -22,6 +23,13 @@ $(document).ready(function(){
         else{
             $('header').attr('class', '');
             $('.nav-top').attr('class', 'nav-top container-fluid');
+        }
+        //Aparecerá el botón para volver hacia arriba de la página
+        if (scrollY>100) {
+            $("#btnBack").fadeIn();
+        }
+        else{
+            $("#btnBack").fadeOut();
         }
     });
     if (scrollY>3) { //Lo pongo de nuevo para que cuando se pulse en el botón de comprar siga apareciendo el navbar sin la necesidad de hacer scroll
@@ -37,6 +45,11 @@ $(document).ready(function(){
 
 
 // }
+
+function goToUp() {
+    scrollTo(0,0);
+}
+
 function ellipsis_box(elemento, max_chars){
 	let titulos = $(elemento);
 	// let titulos = document.getElementsByClassName(elemento);

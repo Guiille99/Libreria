@@ -24,3 +24,25 @@
     background-color: transparent;
     color: v.$white;
 }
+#btnBack{
+    display: none;
+    z-index: 1;
+    position: fixed;
+    top: 90vh;
+    right: 30px;
+    margin: 0 auto;
+    background-color: v.$green;
+    opacity: .5;
+    padding: 10px 15px;
+    border-radius: 50%;
+    border: none;  
+
+    &:hover{
+        background-color: v.$green;
+        opacity: 1;
+    }
+    .bi{
+        color: v.$white;
+        font-weight: bolder;
+    }
+}

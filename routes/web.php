@@ -81,6 +81,7 @@ Route::controller(CarritoController::class)->group(function(){
     Route::delete('delete-to-cart/{id}', 'deleteToCart')->name('delete_to_cart');
     Route::delete('delete-cart', 'vaciarCarrito')->name('vaciar-carrito');
     Route::get('carrito', 'showCart')->name('show-cart');
+    Route::get('detalles-envio', 'showDetallesEnvio')->name('show-detalles-envio');
 });
 
 Route::post('enviar-correo', function() 

@@ -222,7 +222,11 @@
         
         <div class="m-auto d-flex justify-content-center align-items-center gap-3">
           <i class="bi bi-bag">
+            @if (session()->get('carrito'))
+            <span class="carrito__cantidad">{{session('carrito-data')['cantidad']}}</span>
+            @else
             <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+            @endif
           </i>
           <h5 class="offcanvas-title" id="offcanvasCart">Mi carrito</h5>
         </div>
@@ -278,6 +282,8 @@
         <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
     @endif
 
+    
+    <button id="btnBack"><i class="bi bi-chevron-up"></i></button>
     @yield('content')
 
     {{-- FOOTER --}}

@@ -3,6 +3,17 @@
 @use "sass:color";
 
 .cart-container{
+    a.boton{
+        @include m.btnCartTable(v.$white, v.$green);
+    }
+    input.boton, tfoot a.boton{
+        @include m.btnCartTable(v.$green, v.$white);
+        
+        &:hover{
+            background-color: v.$dark-green;
+            color: v.$white;
+        }
+    }
     .productos__carrito{
         position: relative;
         figure{
@@ -10,17 +21,6 @@
             min-width: 60px;
         }
 
-        a.boton{
-            @include m.btnCartTable(v.$white, v.$green);
-        }
-        input.boton{
-            @include m.btnCartTable(v.$green, v.$white);
-            
-            &:hover{
-                background-color: v.$dark-green;
-                color: v.$white;
-            }
-        }
 
         .btn-delete-to-cart{
             opacity: .3;

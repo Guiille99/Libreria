@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Libro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class CarritoController extends Controller
 {
     public function addCarrito(Request $request){
+        // dd(Auth::id());
         if ($request->input("token")) { //Si se ha recibido el token
             $libro = Libro::where('id', $request->input('id'))->first();
             $carrito = session()->get('carrito', []); //Obtengo la sesión del carrito
@@ -31,15 +34,20 @@ class CarritoController extends Controller
             $carritoData["total"] = CarritoController::getTotal(); //Almacenamos el precio total
             $carritoData["cantidad"] = CarritoController::getCantidad(); //Almacenamos la cantidad total
             session()->put("carrito-data", $carritoData);
+            //Almacenamos los datos del carrito en cookies con fecha límite de 1 mes
+            Cookie::queue("cookie-cart-" . Auth::id(), serialize(session()->get('carrito')), 60*24*30);
+            Cookie::queue("cookie-cartData-" . Auth::id(), serialize(session()->get('carrito-data')), 60*24*30);
         }
         
         return redirect()->back();
     }
 
     public function vaciarCarrito(){
-        // dd("Hola");
         session()->forget('carrito'); //Eliminamos el carrito
         session()->forget('carrito-data'); //Eliminamos el precio total y la cantidad de libros almacenamos en el carrito
+        //Eliminamos las cookies
+        Cookie::queue(Cookie::forget('cookie-cart-'. Auth::id()));
+        Cookie::queue(Cookie::forget('cookie-cartData-'. Auth::id()));
         return redirect()->back()->with('message', 'Has vaciado la cesta de la compra');
     }
 
@@ -56,6 +64,8 @@ class CarritoController extends Controller
         $carritoData["total"] = CarritoController::getTotal();
         $carritoData["cantidad"] = CarritoController::getCantidad();
         session()->put("carrito-data", $carritoData);
+        Cookie::queue("cookie-cart-" . Auth::id(), serialize(session()->get('carrito')), 60*24*30);
+        Cookie::queue("cookie-cartData-" . Auth::id(), serialize(session()->get('carrito-data')), 60*24*30);
 
         return redirect()->back()->with('message', 'Carrito actualizado');
     }
@@ -68,7 +78,9 @@ class CarritoController extends Controller
         $carritoData["total"] = CarritoController::getTotal();
         $carritoData["cantidad"] = CarritoController::getCantidad();
         session()->put("carrito-data", $carritoData);
-        
+        Cookie::queue("cookie-cart-" . Auth::id(), serialize(session()->get('carrito')), 60*24*30);
+        Cookie::queue("cookie-cartData-" . Auth::id(), serialize(session()->get('carrito-data')), 60*24*30);
+
         if ($carritoData["cantidad"]==0) { //Si se ha vaciado la cesta retornaremos la vista con un alert
             if ($request->ajax()) { //Si es una petición AJAX
                 return response()->json(['message' => 'Has vaciado la cesta de la compra']);
@@ -118,5 +130,10 @@ class CarritoController extends Controller
             }
         }
         return $total;
+    }
+
+    public function showDetallesEnvio(){
+        $generos = LibroController::getGeneros();
+        return view("carrito.detalles-envio", compact("generos"));
     }
 }

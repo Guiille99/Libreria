@@ -7,6 +7,39 @@
     
 @section('content')
 {{-- <div class="container py-4"> --}}
+    <div class="shop-steps-container mt-3 col-11 col-md-8 col-lg-5 m-auto">
+        <ul class="m-0 p-0">
+            {{-- Step 1 --}}
+            <li class="active">
+                <a href="">
+                    <div class="step-circle">
+                        <span>1</span>
+                    </div>
+                    <p>Carrito</p>
+                </a>
+            </li>
+            <div class="separator"></div>
+            {{-- Step 2 --}}
+            <li>
+                <a>
+                    <div class="step-circle">
+                        <span>2</span>
+                    </div>
+                    <p>Detalles de envío</p>
+                </a>
+            </li>
+            <div class="separator"></div>
+            {{-- Step 3 --}}
+            <li>
+                <a>
+                    <div class="step-circle">
+                        <span>3</span>
+                    </div>
+                    <p>Método de pago</p>
+                </a>
+            </li>
+        </ul>
+    </div>
     <div class="cart-container row py-4 m-auto col-md-10">
         @if (session()->get('carrito'))
         <div class="productos__carrito col-12 col-md-7 border-end position-relative">
@@ -56,6 +89,10 @@
                 <tbody>
                     <td><p>Total: <span class="fw-bold">{{session()->get('carrito-data')["total"]}} €</span><span id="iva-message"> (IVA incluido)</span></p> </td>
                 </tbody>
+                <tfoot>
+                    {{-- <td><input type="button" value="Finalizar compra" class="boton"></td> --}}
+                    <td><a href="{{route('show-detalles-envio')}}" class="boton">Confirmar compra</a></td>
+                </tfoot>
             </table>
         </div>
         @else

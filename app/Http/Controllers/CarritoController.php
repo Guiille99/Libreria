@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Libro;
+use App\Models\Provincia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -134,6 +135,23 @@ class CarritoController extends Controller
 
     public function showDetallesEnvio(){
         $generos = LibroController::getGeneros();
-        return view("carrito.detalles-envio", compact("generos"));
+        $provincias = Provincia::select('nombre')->orderby('nombre', 'asc')->get();
+        return view("carrito.detalles-envio", compact("generos", "provincias"));
+    }
+
+    public function shop(Request $request){
+        $generos = LibroController::getGeneros();
+        foreach (session()->get('carrito') as $id => $libroCart) {
+            $libro = Libro::where("id", $id)->first();
+            $libro->stock -= $libroCart["cantidad"];
+            $libro->save();
+        }
+        session()->forget('carrito'); //Eliminamos el carrito
+        session()->forget('carrito-data'); //Eliminamos el precio total y la cantidad de libros almacenamos en el carrito
+        //Eliminamos las cookies
+        Cookie::queue(Cookie::forget('cookie-cart-'. Auth::id()));
+        Cookie::queue(Cookie::forget('cookie-cartData-'. Auth::id()));
+
+        return view("carrito.compra-finalizada", compact("generos"));
     }
 }

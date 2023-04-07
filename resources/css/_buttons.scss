@@ -46,3 +46,13 @@
         font-weight: bolder;
     }
 }
+
+.pedido__container{
+    button{
+        @include m.btnCartTable(v.$green, v.$white);
+        &:hover{
+            background-color: v.$dark-green;
+            color: v.$white;
+        }
+    }
+}

@@ -11,32 +11,32 @@
         <ul class="m-0 p-0">
             {{-- Step 1 --}}
             <li class="active">
-                <a href="">
+                <div>
                     <div class="step-circle">
                         <span>1</span>
                     </div>
                     <p>Carrito</p>
-                </a>
+                </div>
             </li>
             <div class="separator"></div>
             {{-- Step 2 --}}
             <li>
-                <a>
+                <div>
                     <div class="step-circle">
                         <span>2</span>
                     </div>
                     <p>Detalles de envío</p>
-                </a>
+                </div>
             </li>
             <div class="separator"></div>
             {{-- Step 3 --}}
             <li>
-                <a>
+                <div>
                     <div class="step-circle">
                         <span>3</span>
                     </div>
-                    <p>Método de pago</p>
-                </a>
+                    <p>Compra finalizada</p>
+                </div>
             </li>
         </ul>
     </div>

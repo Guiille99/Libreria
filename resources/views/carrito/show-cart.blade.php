@@ -6,7 +6,6 @@
 @endif
     
 @section('content')
-{{-- <div class="container py-4"> --}}
     <div class="shop-steps-container mt-3 col-11 col-md-8 col-lg-5 m-auto">
         <ul class="m-0 p-0">
             {{-- Step 1 --}}
@@ -40,9 +39,9 @@
             </li>
         </ul>
     </div>
-    <div class="cart-container row py-4 m-auto col-md-10">
+    <div class="cart-container row py-4 m-auto col-md-12 col-lg-10">
         @if (session()->get('carrito'))
-        <div class="productos__carrito col-12 col-md-7 border-end position-relative">
+        <div class="productos__carrito col-12 col-md-8 border-end position-relative">
             <form action="{{route('carrito.update')}}" method="post">
                 @csrf
                 @method("put")
@@ -81,7 +80,7 @@
             </form>
         </div>
             
-        <div class="col-12 col-md-5 border-start">
+        <div class="col-12 col-md-4 border-start">
             <table class="table">
                 <thead class="border-3 border-bottom">
                     <th>Total del carrito</th>
@@ -103,7 +102,6 @@
         @endif
     </div>
 
-{{-- </div> --}}
 @endsection
 @section('script')
     <script>

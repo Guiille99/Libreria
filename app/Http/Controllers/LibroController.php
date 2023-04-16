@@ -18,11 +18,11 @@ class LibroController extends Controller
         return datatables()->of($libros)
         ->addColumn('action', function($libro){
             $btn="<div class='d-flex align-items-center gap-2'>
-            <button type='button' class='d-flex gap-2 btn-delete text-white' data-id='$libro->id' data-titulo='$libro->titulo' data-bs-toggle='modal' data-bs-target='#modal-delete' >
+            <button type='button' class='d-flex gap-2 btn-delete text-white' title='Eliminar libro' data-id='$libro->id' data-titulo='$libro->titulo' data-bs-toggle='modal' data-bs-target='#modal-delete' >
                 <i class='bi bi-trash3'></i> 
             </button>
 
-            <a href='". route('libro.edit', $libro) ."' class='d-flex gap-2 btn-modify text-white'>
+            <a href='". route('libro.edit', $libro) ."' class='d-flex gap-2 btn-modify text-white' title='Editar libro'>
                 <i class='bi bi-pencil-square'></i></a>
         </div>";
             return $btn;

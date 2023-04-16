@@ -17,11 +17,11 @@ class UserController extends Controller
             return datatables()->of($users)
         ->addColumn('action', function($user){
             $btn="<div class='d-flex align-items-center gap-2'>
-            <button type='button' id='btn-delete' data-id='$user->id' data-username='$user->username' class='d-flex gap-2 btn-delete text-white btn-delete-user' data-bs-toggle='modal' data-bs-target='#modal-delete' >
+            <button type='button' id='btn-delete' data-id='$user->id' data-username='$user->username' class='d-flex gap-2 btn-delete text-white btn-delete-user' title='Eliminar usuario' data-bs-toggle='modal' data-bs-target='#modal-delete' >
                 <i class='bi bi-trash3'></i> 
             </button>
 
-            <a href='". route('user.edit', $user) ."' class='d-flex gap-2 btn-modify text-white'>
+            <a href='". route('user.edit', $user) ."' class='d-flex gap-2 btn-modify text-white' title='Editar usuario'>
                 <i class='bi bi-pencil-square'></i></a>
         </div>";
             return $btn;

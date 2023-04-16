@@ -10,9 +10,6 @@
     @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
 </head>
 <body class="@yield('body-class')">
-  {{-- {{count((array) session('carrito'))}} --}}
-{{-- {{var_dump(session()->get('carrito'))}} --}}
-{{-- {{var_dump(session()->get('carrito-data'))}} --}}
     <header>
       {{-- TOP-NAV --}}
       <div class="nav-top container-fluid">
@@ -93,7 +90,6 @@
         </div>
       </div>
     
-
       {{-- SUB-NAV --}}
       <nav class="down-nav navbar navbar-expand-lg text-center pb-3 p-md-2">
         <div class="container-fluid">      

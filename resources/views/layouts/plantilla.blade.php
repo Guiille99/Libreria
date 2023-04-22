@@ -7,7 +7,7 @@
     <title>@yield("title")</title>
     <link rel="shortcut icon" href="{{asset('uploads/logo.ico')}}" type="image/x-icon">
     <script src="{{asset('build/assets/jquery-3.6.3.js')}}"></script>
-    @vite(["resources/css/app.scss", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
+    @vite(["resources/css/app.scss","resources/js/color-theme.js", "resources/js/app.js", "resources/js/font-awesome.js", "resources/js/validation_form.js"])
 </head>
 <body class="@yield('body-class')">
     <header>
@@ -30,6 +30,33 @@
             </form>
           </div>
           <div class="cuenta-carrito col-3 d-flex justify-content-center gap-4">
+            {{-- Dropdown screen mode --}}
+            <div class="changeMode__container dropdown">
+              <button class="btnTheme dropdown-toggle bg-transparent border-0 text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="theme-icon"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="light-mode theme" data-theme-value="light">
+                  <button class="dropdown-item d-flex gap-2">
+                    <i class="bi bi-sun"></i>
+                    <span>Modo claro</span>
+                  </button>
+                </li>
+                <li class="dark-mode theme" data-theme-value="dark">
+                  <button class="dropdown-item d-flex gap-2">
+                    <i class="bi bi-moon-fill"></i>
+                    <span>Modo oscuro</span>
+                  </button>
+                </li>
+                <li class="auto-mode theme" data-theme-value="auto">
+                  <button class="dropdown-item d-flex gap-2">
+                    <i class="bi bi-circle-half"></i>
+                    <span>Auto</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
             <div class="login__container"> {{-- LOGIN CONTAINER --}}
               {{-- Si se ha iniciado sesión --}}
               @if (Auth::check())
@@ -159,7 +186,34 @@
               <button type="submit" class="d-none"></button>
             </form>
     
-            <div class="cuenta-carrito d-flex justify-content-center gap-4 mt-3 d-block d-lg-none">
+            <div class="cuenta-carrito d-flex align-items-center justify-content-center gap-4 mt-3 d-block d-lg-none">
+              {{-- Dropdown screen mode --}}
+              <div class="changeMode__container" class="dropdown">
+                <button class="btnTheme dropdown-toggle bg-transparent border-0 text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="theme-icon"></i>
+                </button>
+                <ul class="dropdown-menu left-auto">
+                  <li class="light-mode theme" data-theme-value="light">
+                    <button class="dropdown-item d-flex gap-2">
+                      <i class="bi bi-sun"></i>
+                      <span>Modo claro</span>
+                    </button>
+                  </li>
+                  <li class="dark-mode theme" data-theme-value="dark">
+                    <button class="dropdown-item d-flex gap-2">
+                      <i class="bi bi-moon-fill"></i>
+                      <span>Modo oscuro</span>
+                    </button>
+                  </li>
+                  <li class="auto-mode theme" data-theme-value="auto">
+                    <button class="dropdown-item d-flex gap-2">
+                      <i class="bi bi-circle-half"></i>
+                      <span>Auto</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
               <div class="login__container"> {{-- LOGIN CONTAINER --}}
                 {{-- Si se ha iniciado sesión --}}
                 @if (Auth::check()) 

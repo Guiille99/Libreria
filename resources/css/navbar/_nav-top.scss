@@ -1,5 +1,6 @@
 @use "../base/variables" as v;
 @use "../base/mixins" as m;
+@use "sass:color" as color;
 
 /*NAV-TOP*/
 .nav-top{
@@ -11,6 +12,7 @@
     .cuenta-carrito{
         color: v.$white;
         align-items: center;
+
         img{
             height: v.$tamNavIcon;
             width: v.$tamNavIcon;

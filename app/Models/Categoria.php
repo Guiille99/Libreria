@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Libro extends Model
+class Categoria extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
-    public function pedidos(){
-        return $this->belongsToMany(Pedido::class);
+    public function posts(){
+        return $this->hasMany(Post::class);
     }
 }

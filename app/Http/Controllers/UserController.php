@@ -71,13 +71,31 @@ class UserController extends Controller
         return view("users.editPerfil", compact('user', 'generos'));
     }
 
+    public function myData(User $user){
+        $generos=LibroController::getGeneros();
+        return view("users.editPerfil-datos", compact('user', 'generos'));
+    }
+
 
     public function updatePerfil(Request $request, User $user){ 
-        // dd($request->rol);
+        // dd($request);
         $request->validate([ //Validación de campos
             "nombre" => "required|min:2|max:80|",
-            "apellidos" => "required|min:2|max:80|"
+            "apellidos" => "required|min:2|max:100|",
+            "username" => "required|min:2|max:25|",
+            "email" => "required|email|max:255",
         ]);
+
+        if ($request->hasFile("avatar")) { //Si desea cambiar la imagen de perfil
+            $request->validate([
+                "avatar" => "image|mimes:jpeg,png|max:3000"
+            ]);
+            $file = $request->file("avatar");
+            $destinationPath = "uploads/avatars/";//Se define la ruta donde se guardará el archivo subido
+            $filename = time() . "-" . $file->GetClientOriginalName() ;//concatenamos el nombre del archivo con el tiempo en ms para que no se repita ningún archivo
+            $uploadSuccess = $request->file('avatar')->move($destinationPath, $filename);//Movemos el archivo a la carpeta correspondiente
+            $user->avatar = $destinationPath . $filename;//Subimos el archivo a la base de datos
+        }
 
         $emails = User::all('email'); //Obtengo todos los emails
 
@@ -116,7 +134,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('index')->with("message", "Usuario actualizado correctamente");
+        return redirect()->back()->with("message", "Usuario actualizado correctamente");
     }
 
     

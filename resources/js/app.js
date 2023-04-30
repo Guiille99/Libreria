@@ -5,6 +5,7 @@ import * as bootstrap from 'bootstrap'
 $(document).ready(function(){
     ellipsis_box(".libro__titulo", 18);
     $("#togglePassword").click(togglerPassword);
+    $(".togglePassword").click(togglerPassword);
     $("#togglePasswordConfirm").click(togglerPasswordConfirm);
     $("#btnBack").click(goToUp);
 
@@ -76,11 +77,11 @@ function ellipsis_box(elemento, max_chars){
 
 // OJO DE LOS CAMPOS PASSWORD
 function togglerPassword(e){
-    const password = $('#password');
+    const password = $(this).prev();
     const type = password.attr('type') === 'password' ? 'text' : 'password';
     password.attr('type', type);
-    // toggle the eye slash icon
-    if (type=='password') {
+
+    if (type =='password') {
         $(this).removeClass('bi-eye-slash');
         $(this).addClass('bi-eye');
     }

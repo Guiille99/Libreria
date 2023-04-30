@@ -259,6 +259,10 @@
       </nav>
 
     </header>
+
+    {{-- {{var_dump(session()->get('carrito'))}} --}}
+    {{-- {{var_dump(session()->get('carrito-data'))}} --}}
+
     {{-- Mensaje cuando añades un libro al carrito --}}
     <div id="add-to-cart__message">
       <p class="m-0">Has añadido el libro a tu cesta</p>

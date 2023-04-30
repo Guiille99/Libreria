@@ -19,7 +19,7 @@ class User extends Authenticatable
     }
 
     public function direcciones(){
-        return $this->belongsToMany(Direccion::class);
+        return $this->belongsToMany(Direccion::class)->withPivot("principal");
     }
 
     public function posts(){

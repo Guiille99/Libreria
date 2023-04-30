@@ -39,7 +39,8 @@ Route::put('admin/{user}/edit', [UserController::class, "update"])->middleware('
 Route::get('admin/usuarios', [UserController::class, "index"])->middleware('checkadmin')->name("admin.users"); //Página que muestra los registros de los usuarios
 Route::get('admin/user/create', [UserController::class, "create"])->middleware('checkadmin')->name("user.create");
 Route::post('admin/user', [UserController::class, "store"])->middleware('checkadmin')->name("user.store");
-Route::get('perfil/{user}', [UserController::class, "editPerfil"])->middleware('auth')->name("user.editPerfil"); //Página para mostrar el formulario de actualización de usuario desde la página principal
+Route::get('perfil/{user}', [UserController::class, "editPerfil"])->middleware('auth')->name("user.editPerfil"); //Página para mostrar la interfaz para editar el perfil
+Route::get('perfil/my-data/{user}', [UserController::class, "myData"])->middleware('auth')->name("user.editPerfil-datos");
 Route::put('perfil/{user}', [UserController::class, "updatePerfil"])->middleware('auth')->name("user.updatePerfil"); //Página para mostrar el formulario de actualización de usuario desde la página principal
 
 Route::get('admin/libros', [LibroController::class, "index"])->middleware('checkadmin')->name("libros.index"); //Página para mostar todos los libros

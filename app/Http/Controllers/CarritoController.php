@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Libro;
+use App\Models\Pedido;
 use App\Models\Provincia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -140,12 +141,21 @@ class CarritoController extends Controller
     }
 
     public function shop(Request $request){
+        dd($request);
         $generos = LibroController::getGeneros();
+        //Registramos el pedido
+        $pedido = new Pedido();
+        $pedido->fecha = now();
+        $pedido->total = session()->get('carrito-data')["total"];
+        $pedido->tipo_pago = $request["metodo"];
+        $pedido->user_id = Auth::id();
+
         foreach (session()->get('carrito') as $id => $libroCart) {
             $libro = Libro::where("id", $id)->first();
             $libro->stock -= $libroCart["cantidad"];
             $libro->save();
         }
+
         session()->forget('carrito'); //Eliminamos el carrito
         session()->forget('carrito-data'); //Eliminamos el precio total y la cantidad de libros almacenamos en el carrito
         //Eliminamos las cookies

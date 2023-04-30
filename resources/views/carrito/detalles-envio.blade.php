@@ -102,17 +102,17 @@
             <p class="fw-bold">Método de pago</p>
             <ul class="metodos-pago d-flex flex-column">
                 <div>
-                    <input type="radio" name="metodo" id="tarjeta" required>
+                    <input type="radio" name="metodo" id="tarjeta" value="Tarjeta de crédito" required>
                     <label for="tarjeta">Tarjeta de crédito</label>
                 </div>
 
                 <div>
-                    <input type="radio" name="metodo" id="paypal" required>
+                    <input type="radio" name="metodo" id="paypal" value="PayPal" required>
                     <label for="tarjeta">PayPal</label>
                 </div>
                 
                 <div>
-                    <input type="radio" name="metodo" id="bizum" required>
+                    <input type="radio" name="metodo" id="bizum" value="Bizum" required>
                     <label for="tarjeta">Bizum</label>
                 </div>
             </ul>

@@ -61,9 +61,13 @@
               {{-- Si se ha iniciado sesión --}}
               @if (Auth::check())
                 <div class="dropdown">
-                  <a class="username dropdown-toggle text-decoration-none" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
-                  </a>
+                  <div class="username dropdown-toggle d-flex align-items-center gap-2 text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{-- <i class="bi bi-person"></i>  --}}
+                    <figure class="m-0">
+                      <img src="{{asset(Auth::user()->avatar)}}" alt="Imagen de perfil" class="img-fluid">
+                    </figure>
+                    <span>{{Auth::user()->username}}</span>
+                  </div>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('user.editPerfil', Auth::user())}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
                     @if (Auth::user()->rol=="Administrador")
@@ -218,9 +222,12 @@
                 {{-- Si se ha iniciado sesión --}}
                 @if (Auth::check()) 
                 <div class="dropdown">
-                  <a class="username dropdown-toggle text-decoration-none" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person"></i> <span>{{Auth::user()->username}}</span>
-                  </a>
+                  <div class="username dropdown-toggle d-flex align-items-center gap-2 text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <figure class="m-0">
+                      <img src="{{asset(Auth::user()->avatar)}}" alt="Imagen de perfil" class="img-fluid">
+                    </figure> 
+                    <span>{{Auth::user()->username}}</span>
+                  </div>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('user.editPerfil', Auth::user())}}"><i class="bi bi-person-gear"></i> Perfil</a></li>
                     @if (Auth::user()->rol=="Administrador")

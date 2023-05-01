@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
@@ -41,6 +42,8 @@ Route::get('admin/user/create', [UserController::class, "create"])->middleware('
 Route::post('admin/user', [UserController::class, "store"])->middleware('checkadmin')->name("user.store");
 Route::get('perfil/{user}', [UserController::class, "editPerfil"])->middleware('auth')->name("user.editPerfil"); //Página para mostrar la interfaz para editar el perfil
 Route::get('perfil/my-data/{user}', [UserController::class, "myData"])->middleware('auth')->name("user.editPerfil-datos");
+Route::delete('perfil/my-data/{user}', [UserController::class, "deleteImageProfile"])->middleware('auth')->name("user.deleteImageProfile");
+Route::get('perfil/addresses/{user}', [UserController::class, "myAddresses"])->middleware('auth')->name("user.editPerfil-direcciones");
 Route::put('perfil/{user}', [UserController::class, "updatePerfil"])->middleware('auth')->name("user.updatePerfil"); //Página para mostrar el formulario de actualización de usuario desde la página principal
 
 Route::get('admin/libros', [LibroController::class, "index"])->middleware('checkadmin')->name("libros.index"); //Página para mostar todos los libros
@@ -84,6 +87,15 @@ Route::controller(CarritoController::class)->group(function(){
     Route::get('carrito', 'showCart')->name('show-cart');
     Route::get('detalles-envio', 'showDetallesEnvio')->name('show-detalles-envio');
     Route::post('carrito/compra-finalizada', 'shop')->name('compra-finalizada');
+});
+
+//RUTAS DE MANEJO DE LAS DIRECCIONES
+Route::controller(DireccionController::class)->group(function(){
+    Route::delete('perfil/deleteAddress/{user}/{direccion}', 'destroy')->name('delete-address');
+    Route::put('perfil/update-principal-address/{user}', 'updatePrincipalAddress')->name('update-principal-address');
+    Route::get('new_address_process', 'create')->name('address.create');
+    Route::post('perfil/new_address', 'store')->name('store.address');
+    Route::get('perfil/address/{user}/{direccion}', 'edit')->name('edit.address');
 });
 
 Route::post('enviar-correo', function() 

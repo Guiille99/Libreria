@@ -75,6 +75,10 @@ class UserController extends Controller
         $generos=LibroController::getGeneros();
         return view("users.editPerfil-datos", compact('user', 'generos'));
     }
+    public function myAddresses(User $user){
+        $generos=LibroController::getGeneros();
+        return view("users.editPerfil-direcciones", compact('user', 'generos'));
+    }
 
 
     public function updatePerfil(Request $request, User $user){ 
@@ -196,5 +200,12 @@ class UserController extends Controller
             return redirect()->route('index');
         }
         return redirect()->route('admin.users')->with("message", "Usuario actualizado correctamente");
+    }
+
+    public function deleteImageProfile(User $user){
+        unlink($user->avatar);//Borra la imagen de la carpeta
+        $user->avatar = "uploads/default.png";
+        $user->save();
+        return redirect()->back()->with("message", "Imagen eliminada correctamente");
     }
 }

@@ -17,4 +17,37 @@
             font-size: .6rem;
         }
     }
+    .profile-image-section{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        figure{
+            height: 100px;
+            width: 100px;
+            img{
+                height: 100%;
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+    }
+    .boton{
+        float: right;
+        @include m.btnCartTable(v.$green, v.$white);
+        padding: 5px 45px;
+        &:hover{
+            background-color: v.$dark-green;
+            color: v.$white;
+        }
+    }
+
+    .direcciones{
+        li>form{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid;
+        }
+    }
 }

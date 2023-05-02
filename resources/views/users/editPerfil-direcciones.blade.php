@@ -63,7 +63,7 @@
             </ul>
 
             @if (Auth::user()->direcciones->count() < 3)
-            <a href="{{route('address.create')}}" class="d-block mt-3"><i class="bi bi-plus"></i>Añadir dirección</a>
+            <a href="{{route('address.create')}}" class="d-block mt-3 add-address-link"><i class="bi bi-plus"></i>Añadir dirección</a>
             @endif
         </div>
 

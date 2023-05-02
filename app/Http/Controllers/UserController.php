@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Libro;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -55,6 +57,29 @@ class UserController extends Controller
         return redirect()->route('admin.users')->with("message", "Usuario añadido correctamente");
     }
 
+    public function destroyAccountView(User $user){
+        $generos = LibroController::getGeneros();
+        return view("users.editPerfil-deleteAccount", compact('user', 'generos'));
+    }
+
+    public function destroyAccountPerfil(Request $request, User $user){
+        // dd(Hash::check($request->password, $user->password));
+        if (Hash::check($request->password, $user->password)) {
+            DB::beginTransaction();
+            try {
+                $this->destroy($user->id);
+                DB::commit();
+                return redirect()->back()->with("message", "Usuario eliminado correctamente");
+            } catch (\Throwable $e) {
+                DB::rollBack();
+                return $e->getMessage();
+            }
+        }
+        else{
+            return redirect()->back()->withErrors(["password"=>"Contraseña incorrecta"]);
+        }
+    }
+
     // public function destroy(User $user){ 
     public function destroy($id){ 
         $user=User::where('id', $id)->first();
@@ -78,6 +103,11 @@ class UserController extends Controller
     public function myAddresses(User $user){
         $generos=LibroController::getGeneros();
         return view("users.editPerfil-direcciones", compact('user', 'generos'));
+    }
+
+    public function myAccountPassword(User $user){
+        $generos=LibroController::getGeneros();
+        return view("users.editPerfil-password", compact('user', 'generos'));
     }
 
 
@@ -207,5 +237,27 @@ class UserController extends Controller
         $user->avatar = "uploads/default.png";
         $user->save();
         return redirect()->back()->with("message", "Imagen eliminada correctamente");
+    }
+
+    public function updatePassword(Request $request){
+        if (Hash::check($request->current_password, Auth::user()->password)) { //Si la contraseña actual es correcta
+            $request->validate([ //Validación de campos
+                "password" => "required|min:5|confirmed",
+            ]);
+            DB::beginTransaction();
+            try {
+                $user = User::find(Auth::user()->id);
+                $user->password = Hash::make($request->password);
+                $user->save();
+                DB::commit();
+                return redirect()->back()->with("message", "Contraseña actualizada correctamente");
+            } catch (\Throwable $e) {
+                DB::rollBack();
+                return $e->getMessage();
+            }
+        }
+        else{
+            return redirect()->back()->withErrors(["current_password"=>"Contraseña incorrecta"]);
+        }
     }
 }

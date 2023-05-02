@@ -19,8 +19,12 @@ class DireccionController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request->has('principal'));
-        // dd($request);
+        $request->validate([ //Validación de campos
+            "calle" => "required|min:2|max:50|",
+            "num" => "required|numeric|max:999|",
+            "provincia" => "required",
+            "cp" => "required|min:5|max:6",
+        ]);
         $user = User::find(Auth::user()->id);
         if ($user->direcciones()->count()<3) {
             DB::beginTransaction();
@@ -49,7 +53,8 @@ class DireccionController extends Controller
                 return redirect()->route('user.editPerfil-direcciones', $user)->with("message", "Dirección agregada correctamente");
             } catch (\Throwable $e) {
                 DB::rollBack();
-                return $e->getMessage();
+                // return $e->getMessage();
+                return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
             }
         }
         else{
@@ -57,9 +62,35 @@ class DireccionController extends Controller
         }
     }
 
-    public function edit(){
+    public function edit(User $user, Direccion $direccion){
         $generos = LibroController::getGeneros();
-        return view('direcciones.edit', compact('generos'));
+        $provincias = Provincia::all();
+        return view('direcciones.edit', compact('generos', 'provincias', 'user', 'direccion'));
+    }
+
+    public function update(Request $request, Direccion $direccion){
+        // dd($request);
+        $request->validate([ //Validación de campos
+            "calle" => "required|min:2|max:50|",
+            "num" => "required|numeric|max:999|",
+            "provincia" => "required",
+            "cp" => "required|min:5|max:6",
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $direccion->calle = $request->calle;
+            $direccion->numero = $request->num;
+            $direccion->provincia_id = $request->provincia;
+            $direccion->cp = $request->cp;
+            $direccion->save();
+            DB::commit();
+            return redirect()->back()->with("message", "Dirección actualizada correctamente");
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            // return $e->getMessage();
+            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
+        }
     }
 
     public function updatePrincipalAddress(Request $request, User $user){
@@ -72,7 +103,8 @@ class DireccionController extends Controller
             return redirect()->back()->with("message", "La dirección principal ha sido modificada correctamente");
         } catch (\Throwable $e) {
             DB::rollBack();
-            return $e->getMessage();
+            // return $e->getMessage();
+            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }
 
@@ -89,7 +121,8 @@ class DireccionController extends Controller
             return redirect()->back()->with("message", "Dirección eliminada correctamente");
         } catch (\Throwable $e) {
             DB::rollBack();
-            return $e->getMessage();
+            // return $e->getMessage();
+            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }
 
@@ -101,4 +134,5 @@ class DireccionController extends Controller
         }
         return false;   
     }
+
 }

@@ -343,6 +343,13 @@
         <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
     @endif
 
+    @if (session('message_error'))
+      <div id="alert-error" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        <i class="bi bi-exclamation-circle"></i> 
+        {{session('message_error')}} 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    @endif
     
     <button id="btnBack"><i class="bi bi-chevron-up"></i></button>
     @yield('content')

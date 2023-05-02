@@ -4,12 +4,13 @@
 <div class="container">
     <nav class="pt-3" aria-label="breadcrumb">
         <ol class="breadcrumb">
-          {{-- <li class="breadcrumb-item"><a href="{{route('index')}}">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Mi cuenta</li> --}}
           @yield('breadcrumb-profile')
         </ol>
     </nav>
 
+    <div id="message_error">
+        
+    </div>
     <div class="account__container">
         <nav class="navbar navbar-expand-lg navbarMenuPerfil align-items-start" data-bs-theme="dark">
             <div class="navbar-header">
@@ -30,17 +31,17 @@
                                 <ul class="p-0">
                                     <li><a href="{{route('user.editPerfil-datos', Auth::user())}}">Mis Datos</a></li>
                                     <li><a href="{{route('user.editPerfil-direcciones', Auth::user())}}">Mis Direcciones</a></li>
-                                    <li><a href="">Contraseña</a></li>
-                                    <li><a href="">Eliminar Cuenta</a></li>
+                                    <li><a href="{{route('user.editPerfil-password', Auth::user())}}">Contraseña</a></li>
+                                    <li><a href="{{route('user.destroy-view', Auth::user())}}">Eliminar Cuenta</a></li>
                                 </ul>
                             </li>
                             <li class="menu-section">
-                                <a href="" class="section-title @yield('misPedidos-isActive')">
+                                <a href="{{route('show.orders')}}" class="section-title @yield('misPedidos-isActive')">
                                     <i class="bi bi-journal-text"></i>
                                     <span>MIS PEDIDOS</span>
                                 </a>
                                 <ul class="p-0">
-                                    <li><a href="">Mis pedidos</a></li>
+                                    <li><a href="{{route('show.orders')}}">Mis pedidos</a></li>
                                     <li><a href="">Pedidos cancelados</a></li>
                                 </ul>
                             </li>

@@ -15,7 +15,7 @@
             </div>
             <div class="data py-3 profile-image-section">
                 <figure class="m-0">
-                    <img src="{{asset(Auth::user()->avatar)}}" alt="" class="img-fluid">
+                    <img src="{{asset(Auth::user()->avatar)}}" alt="Imagen de perfil" class="img-fluid">
                 </figure>
 
                 <div class="form-floating col-md-6">

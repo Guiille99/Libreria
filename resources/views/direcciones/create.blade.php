@@ -10,6 +10,7 @@
     <div class="column account__details profile-section address__container">
         <div class="title">
             <p>NUEVA DIRECCIÓN</p>
+            <p class="require-data-message">* Dato obligatorio</p>
         </div>
         <div class="data py-2">
             <form action="{{route('store.address')}}" method="post">
@@ -24,7 +25,7 @@
                     </div>
 
                     <div class="form-floating mt-3 col-md-6">
-                        <input type="number" name="num" id="num" class="form-control" placeholder="Número" max="1000" required>
+                        <input type="number" name="num" id="num" class="form-control" placeholder="Número" max="999" required>
                         <label for="num" class="form-label ms-1">* Número</label>
                         @error('num')
                             <small class="text-danger">* {{$message}}</small> <br>

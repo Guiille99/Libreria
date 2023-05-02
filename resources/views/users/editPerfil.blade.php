@@ -33,24 +33,33 @@
                     <span>CONTRASEÑA</span>
                 </div>
                 <div class="info password__info">
-                    <form action="" method="post">
+                    <form action="{{route('change.password')}}" method="post">
                         @csrf
                         @method('put')
                         <div class="row row-gap-3">
                             <div class="form-floating col-lg-4">
-                                <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Password" required>
+                                <input type="password" name="current_password" id="current_password" class="form-control" value="{{old('password')}}" placeholder="Password" required>
                                 <i class="bi bi-eye togglePassword"></i>
-                                <label for="password" class="form-label ms-1">Contraseña</label>
+                                <label for="current_password" class="form-label ms-1">Contraseña</label>
+                                @error('current_password')
+                                    <small class="text-danger">* {{$message}}</small> <br>
+                                @enderror
                             </div>
                             <div class="form-floating col-lg-4">
                                 <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Password" required>
                                 <i class="bi bi-eye togglePassword"></i>
                                 <label for="password" class="form-label ms-1">Nueva contraseña</label>
+                                @error('password')
+                                    <small class="text-danger">* {{$message}}</small> <br>
+                                @enderror
                             </div>
                             <div class="form-floating col-lg-4">
-                                <input type="password" name="password" id="password" class="form-control" value="{{old('password')}}" placeholder="Password" required>
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" value="{{old('password')}}" placeholder="Password" required>
                                 <i class="bi bi-eye togglePassword"></i>
-                                <label for="password" class="form-label ms-1">Confirmar contraseña</label>
+                                <label for="password_confirmation" class="form-label ms-1">Confirmar contraseña</label>
+                                @error('password_confirmation')
+                                    <small class="text-danger">* {{$message}}</small> <br>
+                                @enderror
                             </div>
                         </div>
 
@@ -74,7 +83,9 @@
                             </li>
                         @endforeach
                     </ul>
-                    <a href="" class="d-block mt-3"><i class="bi bi-plus"></i>Añadir dirección</a>
+                    @if (Auth::user()->direcciones->count() < 3)
+                    <a href="{{route('address.create')}}" class="d-block mt-3 add-address-link"><i class="bi bi-plus"></i>Añadir dirección</a>
+                    @endif
                 </div>
             </div>
         </div>

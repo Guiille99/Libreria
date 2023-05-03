@@ -88,7 +88,6 @@ class DireccionController extends Controller
             return redirect()->back()->with("message", "Dirección actualizada correctamente");
         } catch (\Throwable $e) {
             DB::rollBack();
-            // return $e->getMessage();
             return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }

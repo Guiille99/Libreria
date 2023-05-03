@@ -1,5 +1,6 @@
 @use "../base/variables" as v;
 @use "../base/mixins" as m;
+
 [data-bs-theme="dark"]{
     .carousel-indicators>button{
         background: url("uploads/book-icon-dark.svg");
@@ -47,6 +48,13 @@
                 border-color: v.$white-dark-mode;
             }
         }
+    }
+    .require-data-message{
+        color: v.$red-dark-mode !important;
+    }
+    .btn-outline-danger{
+        border-color: v.$red-dark-mode;
+        color: v.$red-dark-mode;
     }
 }
 

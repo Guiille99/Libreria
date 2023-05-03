@@ -39,7 +39,7 @@
             </div>
 
             <ul class="direcciones">
-                @foreach (Auth::user()->direcciones as $direccion)
+                @foreach ($direcciones as $direccion)
                 <li>
                     <form action="{{route('delete-address', [$user, $direccion])}}" method="post">
                         @csrf

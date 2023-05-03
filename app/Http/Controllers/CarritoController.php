@@ -148,7 +148,6 @@ class CarritoController extends Controller
         try {
             //Registramos el pedido
             $pedido = new Pedido();
-            $pedido->fecha = now();
             $pedido->total = session()->get('carrito-data')["total"];
             $pedido->tipo_pago = $request->metodo;
             $pedido->user_id = Auth::user()->id;
@@ -171,7 +170,8 @@ class CarritoController extends Controller
             return view("carrito.compra-finalizada", compact("generos"));
         } catch (\Throwable $e) {
             DB::rollBack();
-            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
+            return $e->getMessage();
+            // return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }
 }

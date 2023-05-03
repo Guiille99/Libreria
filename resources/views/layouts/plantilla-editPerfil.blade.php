@@ -42,7 +42,7 @@
                                 </a>
                                 <ul class="p-0">
                                     <li><a href="{{route('show.orders')}}">Mis pedidos</a></li>
-                                    <li><a href="">Pedidos cancelados</a></li>
+                                    <li><a href="{{route('show.cancelOrders')}}">Pedidos cancelados</a></li>
                                 </ul>
                             </li>
                             <li class="menu-section">

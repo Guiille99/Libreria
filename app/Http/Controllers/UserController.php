@@ -102,7 +102,8 @@ class UserController extends Controller
     }
     public function myAddresses(User $user){
         $generos=LibroController::getGeneros();
-        return view("users.editPerfil-direcciones", compact('user', 'generos'));
+        $direcciones = $user->direcciones()->orderby('principal', 'desc')->get();
+        return view("users.editPerfil-direcciones", compact('user', 'generos', 'direcciones'));
     }
 
     public function myAccountPassword(User $user){

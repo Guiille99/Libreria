@@ -20,6 +20,10 @@
     padding: 10px 15px;
 }
 
+.btn-outline-green{
+    @include m.btn-outline(v.$white, v.$green);
+}
+
 .toggler-admin{
     background-color: transparent;
     color: v.$white;

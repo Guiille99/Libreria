@@ -11,6 +11,7 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishlistController;
 use App\Mail\ContactanosMailable;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +110,12 @@ Route::controller(PedidoController::class)->group(function(){
     Route::get("mis-pedidos", 'showPedidos')->middleware('auth')->name('show.orders');
     Route::get("pedidos-cancelados", "showPedidosCancelados")->middleware('auth')->name('show.cancelOrders');
     Route::put("cancelar-pedido/{idPedido}", "cancelaPedido")->middleware('auth')->name('order.cancel');
+});
+
+//RUTAS PARA MANEJO DE LA WISHLIST
+Route::controller(WishlistController::class)->group(function(){
+    Route::post('add-to-wishlist/{libro}', 'addToWishlist')->middleware('auth')->name('add_to_wishlist');
+    Route::delete('delete-to-wishlist/{libro}', 'deleteToWishlist')->middleware('auth')->name('delete_to_wishlist');
 });
 
 Route::post('enviar-correo', function() 

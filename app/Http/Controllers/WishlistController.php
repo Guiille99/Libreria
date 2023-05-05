@@ -34,9 +34,12 @@ class WishlistController extends Controller
 
     public function deleteToWishlist(Libro $libro){
         $wishlist = session()->get('wishlist');
-        unset($wishlist[$libro->id]);
-        session()->put('wishlist', $wishlist); //Actualizamos la wishlist
-        Cookie::queue("cookie-wishlist-" . Auth::id(), serialize(session()->get('wishlist')), 60*24*30);
-        return redirect()->back()->with("message", "El libro ha sido eliminado de la lista de deseos");
+        if (array_key_exists($libro->id, $wishlist)) {
+            unset($wishlist[$libro->id]);
+            session()->put('wishlist', $wishlist); //Actualizamos la wishlist
+            Cookie::queue("cookie-wishlist-" . Auth::id(), serialize(session()->get('wishlist')), 60*24*30);
+            return redirect()->back()->with("message", "El libro ha sido eliminado de la lista de deseos");
+        }
+        return redirect()->back();
     }
 }

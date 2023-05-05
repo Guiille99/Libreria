@@ -42,4 +42,22 @@ class WishlistController extends Controller
         }
         return redirect()->back();
     }
+
+    public function show(){
+        $generos = LibroController::getGeneros();
+        $wishlist = session()->get('wishlist');
+        $collection = collect($wishlist);
+
+        // Paginar la colección de datos
+        $perPage = 10;
+        $page = request()->get('page', 1);
+        $paginator = new \Illuminate\Pagination\LengthAwarePaginator(
+            $collection->forPage($page, $perPage),
+            $collection->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+        return view('wishlist.show', ['wishlist'=>$paginator], compact('generos'));
+    }
 }

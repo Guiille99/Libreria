@@ -36,8 +36,31 @@
                 padding: 5px;
                 &:hover{
                     background-color: v.$white;
-                    a{
+                    a,button{
                         color: v.$black;
+                    }
+                }
+            }
+            .accordion-item{
+                button{
+                    gap: 10px;
+                    &::after{
+                        margin-left: unset;
+                    }
+                }
+                .accordion-body{
+                    // background-color: v.$sidebar-bg;
+                    border: 1px solid v.$black;
+                    border-radius: 3px;
+                    ul{
+                        width: 100%;
+                        padding: 0;
+                        li:hover{
+                            background-color: v.$sidebar-bg;
+                            a{
+                                color: v.$white;
+                            }
+                        }
                     }
                 }
             }

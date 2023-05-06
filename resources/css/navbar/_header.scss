@@ -36,22 +36,6 @@
             border-radius: 50%;
         }
     }
-    .changeMode__container{
-        li.active{
-            background-color: v.$green;
-            &>a{
-                color: v.$white;
-            }
-        }
-        li:not(.active):hover{
-            background-color: v.$green;
-            opacity: .5;
-        }
-        .dropdown-menu{
-            left: auto;
-        }
-
-    }
     .dropdown-menu{
         .wishlist__container{
             a{

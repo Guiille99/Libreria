@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="{{asset('uploads/logo.ico')}}" type="image/x-icon">
     <script src="{{asset('build/assets/jquery-3.6.3.js')}}"></script>
     <script src="{{asset('build/assets/moment.min.js')}}"></script>
-    @vite(["resources/css/app.scss","resources/js/color-theme.js", "resources/js/app.js", "resources/js/validation_form.js", "resources/js/datatables.min.js", "resources/js/color-theme.js"])
+    @vite(["resources/css/app.scss","resources/js/color-theme.js", "resources/js/app.js", "resources/js/validation_form.js", "resources/js/color-theme.js"])
 </head>
 <body>
     <input type="checkbox" name="" id="toggler-sidebar">
@@ -38,16 +38,17 @@
                 <li class="py-1 px-2"><a href="{{route('admin.index')}}" class="text-decoration-none d-flex gap-2"><i class="bi bi-speedometer2"></i>Dashboard</a></li>
                 <li>
                     <div class="accordion-item">
-                        {{-- <h2 class="accordion-header" id="flush-headingOne"> --}}
-                          <button class="accordion-button collapsed dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <i class="bi bi-table"></i> Tablas
-                          </button>
-                        {{-- </h2> --}}
+                        <button class="accordion-button collapsed dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <i class="bi bi-table"></i> Tablas
+                        </button>
                         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                           <div class="accordion-body">
                             <ul>
-                                <li class="py-1 px-2 active"><a href="{{route('admin.users')}}" class="text-decoration-none d-flex gap-2"><i class="bi bi-person-circle"></i>Usuarios</a></li>
-                                <li class="py-1 px-2"><a href="{{route('libros.index')}}" class="text-decoration-none d-flex gap-2"><i class="bi bi-book"></i>Libros</a></li>
+                                <li class="py-1 px-2"><a href="{{route('admin.users')}}" class="d-flex gap-2"><i class="bi bi-person-circle"></i>Usuarios</a></li>
+                                <li class="py-1 px-2"><a href="{{route('libros.index')}}" class="d-flex gap-2"><i class="bi bi-book"></i>Libros</a></li>
+                                <li class="py-1 px-2"><a href="" class="d-flex gap-2"><i class="bi bi-box-seam"></i>Pedidos</a></li>
+                                <li class="py-1 px-2"><a href="" class="d-flex gap-2"><i class="bi bi-chat-left-text"></i>Blog</a></li>
+                                <li class="py-1 px-2"><a href="" class="d-flex gap-2"><i class="bi bi-geo-alt-fill"></i>Provincias</a></li>
                             </ul>
                           </div>
                         </div>
@@ -172,6 +173,7 @@
         </main>
     </div>
     <label for="toggler-sidebar" id="body-label"></label>
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
     @yield('script')
 </body>
 </html>

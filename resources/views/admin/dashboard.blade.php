@@ -34,14 +34,14 @@
         </div>
         <div class="charts__container mt-2">
             <div class="chart">
-                {!! $chart->container() !!}
+                {!! $ventaChart->container() !!}
             </div>
             <div class="chart">
                 {!! $userChart->container() !!}
             </div>
         </div>
 
-        {!! $chart->script() !!}
+        {!! $ventaChart->script() !!}
         {!! $userChart->script() !!}
     </div>
     <script src="{{asset('build/assets/chart.umd.js')}}"></script>

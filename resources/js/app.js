@@ -9,6 +9,16 @@ $(document).ready(function(){
     $("#togglePasswordConfirm").click(togglerPasswordConfirm);
     $("#btnBack").click(goToUp);
 
+    //Evento que se ejecuta cuando añado o elimino un libro a la wishlist
+    $(document).on('toggle-wishlist', function(){
+        $('body').append("<div id='alert-index' class='alert alert-success'><i class='bi bi-check-circle'></i> "+ event.detail.message +"</div>");
+        setTimeout(function(){
+        $(".alert-success").fadeOut(2000, function(){
+            $(".alert-success").remove();
+        });
+        }, 3000)
+    });
+
     //Cambio el contenido del modal dependiendo del método de pago seleccionado
     $(".metodos-pago input[type='radio']").click(modalMetodoPago);
 

@@ -34,7 +34,7 @@
                                 Añado el modal de confirmación para el borrado de registros
                             @endforeach                   --}}
 
-                            <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="modalEliminacionRegistro" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <form action="" method="post">
                                         @csrf
@@ -89,10 +89,6 @@
                 {data: 'updated_at'},
                 {data: 'action'},
             ],
-            // initComplete: function(data, settings, json){
-            //     $(".btn-delete-user").click(openDeleteModal);
-            //     // $(".dtr-control").click(resetBtnDelete);
-            // },
             lengthMenu: [5, 10, 15],
             columnDefs: [
                 {orderable: false, target:[8]},

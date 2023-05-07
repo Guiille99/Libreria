@@ -64,6 +64,15 @@
             color: v.$green;
         }
     }
+    .btn-outline-green{
+        &:disabled{
+            &:hover{
+                .spinner-border{
+                    color: v.$white-dark-mode !important;
+                }
+            }
+        }
+    }
 }
 
 

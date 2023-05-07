@@ -108,6 +108,7 @@ Route::controller(DireccionController::class)->group(function(){
 //RUTAS DE MANEJO DE LOS PEDIDOS
 Route::controller(PedidoController::class)->group(function(){
     Route::get("mis-pedidos", 'showPedidos')->middleware('auth')->name('show.orders');
+    Route::get("ultimos-pedidos", 'getUltimosPedidos')->middleware('auth')->middleware('checkadmin')->name('show.last-orders');
     Route::get("pedidos-cancelados", "showPedidosCancelados")->middleware('auth')->name('show.cancelOrders');
     Route::put("cancelar-pedido/{idPedido}", "cancelaPedido")->middleware('auth')->name('order.cancel');
 });

@@ -80,11 +80,10 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ¿Está seguro de que quiere eliminar el pedido?
+                                            ¿Está seguro de que quiere eliminar el pedido? Esta acción no podrá deshacerse.
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            
                                             <button type="submit" class="btn btn-danger text-white">Confirmar</button>
                                         </div>
                                     </div>  
@@ -279,7 +278,7 @@
     function openDeleteModal() {
         let id = $(this).attr("data-id");
         let token = $("input[name='_token']").val();
-        let url = "{{route('user.destroy', 'num')}}";
+        let url = "{{route('order.destroy', 'num')}}";
         url=url.replace('num', id);
 
         $("#modal-delete-form").attr("action", url); //Actualizo la url para eliminar el pedido    

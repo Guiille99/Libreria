@@ -5,10 +5,10 @@
     <div id="registros__container" class="col col-lg-12 py-3">
         <div class="registros row">
             <div class="col">
-                {{-- Alerta si se ha añadido, actualizado o eliminado un usuario --}}
+                {{-- Alerta si se ha añadido, actualizado o eliminado un usuario
                 @if (session("message")) 
                     <div class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
-                @endif
+                @endif --}}
                 <div class="header__container mb-2">
                     <h3 class="title text-center">Lista de Usuarios</h3>
                     <a href="{{route('user.create')}}" class="btn-add"> <i class="bi bi-plus"></i> Nuevo usuario</a>
@@ -41,7 +41,8 @@
                                         @method('delete')
                                     
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header d-flex gap-2">
+                                            <i class="bi bi-exclamation-circle"></i>
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminación de registro</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
@@ -51,7 +52,7 @@
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                             
-                                            <button type="submit" class="btn btn-primary text-white">Confirmar</button>
+                                            <button type="submit" class="btn btn-danger text-white">Confirmar</button>
                                             </div>
                                         </div>  
                                     </form>

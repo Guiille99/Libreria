@@ -9,6 +9,7 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
@@ -109,8 +110,11 @@ Route::controller(DireccionController::class)->group(function(){
 Route::controller(PedidoController::class)->group(function(){
     Route::get("mis-pedidos", 'showPedidos')->middleware('auth')->name('show.orders');
     Route::get("ultimos-pedidos", 'getUltimosPedidos')->middleware('auth')->middleware('checkadmin')->name('show.last-orders');
+    Route::get("/admin/pedido/{pedido}", "edit")->middleware('checkadmin')->name("edit.order");
     Route::get("pedidos-cancelados", "showPedidosCancelados")->middleware('auth')->name('show.cancelOrders');
     Route::put("cancelar-pedido/{idPedido}", "cancelaPedido")->middleware('auth')->name('order.cancel');
+    Route::put("/admin/actualizarEstado/{pedido}", "update")->middleware('checkadmin')->name("update.order");
+    Route::delete("/admin/delete-order/{pedido}", "destroy")->middleware("checkadmin")->name("order.destroy");
 });
 
 //RUTAS PARA MANEJO DE LA WISHLIST
@@ -118,6 +122,11 @@ Route::controller(WishlistController::class)->group(function(){
     Route::post('add-to-wishlist/{libro}', 'addToWishlist')->middleware('auth')->name('add_to_wishlist');
     Route::delete('delete-to-wishlist/{libro}', 'deleteToWishlist')->middleware('auth')->name('delete_to_wishlist');
     Route::get('wishlist', 'show')->middleware('auth')->name('show.wishlist');
+});
+
+//RUTAS PARA MANEJO DE LOS POSTS
+Route::controller(PostController::class)->group(function(){
+    
 });
 
 Route::post('enviar-correo', function() 

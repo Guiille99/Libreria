@@ -119,6 +119,23 @@
         }
 }
 
+//Estilo de título subrayado
+@mixin outline-title($color){
+    font-size: 1.3rem;
+    font-weight: bolder;
+    border-bottom: 1px solid $color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    @include tablet{
+        flex-direction: row;
+    }
+    p{
+        margin-bottom: 5px;
+    }
+}
+
 //Media-query
 // Media queries
 @mixin mobile{

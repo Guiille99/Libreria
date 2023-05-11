@@ -1,32 +1,42 @@
 @extends('layouts.plantilla')
 @section("title", "Books | Blog")
-{{-- @section('body-class', 'd-flex flex-column justify-content-between vh-100') --}}
 
 @section('content')
+    <div class="container">
+        <nav class="pt-3" aria-label="breadcrumb">
+            <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="{{route('index')}}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog</li> 
+            </ol>
+        </nav>
+    </div>
     {{-- IMÁGENES PRINCIPALES --}}
     <div class="imagenes__principales py-4 col-md-10 col-lg-9">
-        <div class="children blog__card">
+        <div class="destacada1 blog__card">
+            <a href="{{route('show.post', $postsDestacados[0]->slug)}}"></a>
             <figure>
-            <img src="{{asset('uploads/children.jpg')}}" alt="Libros para niños" class="img-fluid">
-        </figure>
-            <p>Recomendaciones para niños</p>
+                <img src="{{asset($postsDestacados[0]->portada)}}" alt="{{$postsDestacados[0]->nombre}}" class="img-fluid">
+            </figure>
+            <p>{{$postsDestacados[0]->nombre}}</p>
         </div>
 
-        <div class="dia__mujer blog__card">
+        <div class="destacada2 blog__card">
+            <a href="{{route('show.post', $postsDestacados[1]->slug)}}"></a>
             <figure>
-                <img src="{{asset('uploads/dia-mujer.jpg')}}" alt="Día de la mujer" class="img-fluid">
+                <img src="{{asset($postsDestacados[1]->portada)}}" alt="{{$postsDestacados[1]->nombre}}" class="img-fluid">
             </figure>
             <div class="mensaje__oferta">
                 <p> <span class="porcentaje">5%</span> de dto.</p>
             </div>
-            <p>Día de la mujer</p>
+            <p>{{$postsDestacados[1]->nombre}}</p>
         </div>
 
-        <div class="dia__sanvalentin blog__card">
+        <div class="destacada3 blog__card">
+            <a href="{{route('show.post', $postsDestacados[2]->slug)}}"></a>
             <figure>
-                <img src="{{asset('uploads/heart.jpg')}}" alt="Día de San Valentín" class="img-fluid"> 
+                <img src="{{asset($postsDestacados[2]->portada)}}" alt="{{$postsDestacados[2]->nombre}}" class="img-fluid"> 
             </figure>
-            <p>Día de San Valentín</p>
+            <p>{{$postsDestacados[2]->nombre}}</p>
         </div>
     </div>
 
@@ -36,21 +46,24 @@
             <h1>ÚLTIMAS RESEÑAS</h1>
     
             <div class="resenas__grid col-10 col-lg-9">
+                @foreach ($ultimasResenas as $resena)
                 <div class="resena">
+                    <a href="{{route('show.post', $resena->slug)}}"></a>
                     <figure>
-                        <img src="{{asset('uploads/resena1.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
+                        <img src="{{asset($resena->portada)}}" alt="{{$resena->nombre}}" class="img-fluid">
                     </figure>
                     <div class="resena__info">
-                        <h5>Consejos para escribir una novela en tercera persona</h5>
+                        <h5>{{$resena->nombre}}</h5>
     
                         <div class="resena__info__publicacion">
-                            <p class="resena__autor">Antonio Ramírez</p>
-                            <p class="resena__fecha">02/03/2022</p>
+                            <p class="resena__autor">{{$resena->user->nombre}} {{$resena->user->apellidos}}</p>
+                            <p class="resena__fecha">{{$resena->created_at->format("d/m/Y")}}</p>
                         </div>
                     </div>
                 </div>
+                @endforeach
     
-                <div class="resena">
+                {{-- <div class="resena">
                     <figure>
                         <img src="{{asset('uploads/resena2.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
@@ -62,9 +75,9 @@
                             <p class="resena__fecha">20/05/2022</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
     
-                <div class="resena">
+                {{-- <div class="resena">
                     <figure>
                         <img src="{{asset('uploads/resena3.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
@@ -76,9 +89,9 @@
                             <p class="resena__fecha">23/05/2022</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
     
-                <div class="resena">
+                {{-- <div class="resena">
                     <figure>
                         <img src="{{asset('uploads/resena4.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
@@ -90,9 +103,9 @@
                             <p class="resena__fecha">01/06/2022</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
     
-                <div class="resena">
+                {{-- <div class="resena">
                     <figure>
                         <img src="{{asset('uploads/resena5.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
@@ -104,9 +117,9 @@
                             <p class="resena__fecha">20/06/2022</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
     
-                <div class="resena">
+                {{-- <div class="resena">
                     <figure>
                         <img src="{{asset('uploads/resena6.jpg')}}" alt="Consejos para escribir en tercera persona" class="img-fluid">
                     </figure>
@@ -118,7 +131,7 @@
                             <p class="resena__fecha">02/03/2022</p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 

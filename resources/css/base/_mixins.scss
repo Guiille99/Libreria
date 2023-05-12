@@ -136,6 +136,20 @@
     }
 }
 
+//Estilo de los títulos de los post
+@mixin titulo-post{
+    color: v.$white;
+    padding: 3px;
+    background: linear-gradient(45deg, transparent, v.$black);
+    font-size: 2rem;
+    font-weight: bold;
+}
+@mixin efectoImgPost{
+    transform: scale(1.2);
+    filter: brightness(0.5);
+    cursor: pointer;
+}
+
 //Media-query
 // Media queries
 @mixin mobile{

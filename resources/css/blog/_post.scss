@@ -1,0 +1,71 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.post__container{
+    .portada__container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .portada{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            height: 396px;
+            padding: 20px;
+            display: flex;
+            .titulo{
+                color: v.$white;
+                align-self: end;
+                @include m.titulo-post;
+            }
+        }
+    
+        .portada__details{
+            display: flex;
+            gap: 40px;
+            font-size: .9rem;
+        }
+    }
+
+    .post-categoria__container{
+        display: flex;
+        justify-content: space-between;
+        .post__content{
+            width: 60%;
+            &-titulo{
+                font-weight: bolder;
+            }
+        }
+
+        .categoria__container{
+            width: 18%;
+            background-color: adjust-color($color: v.$bg-dark-green, $alpha: .7);
+            padding: 8px;
+            .titulo{
+                text-align: center;
+                color: v.$white;
+            }
+
+            ul{
+                list-style: none;
+                padding: 0;
+                li{
+                    display: flex;
+                    gap: 5px;
+                    figure{
+                        max-width: 131px;
+                        height: 88px;
+                    }
+                    .titulo-post{
+                        font-size: .7rem;
+                        color: v.$white;
+                        height: min-content;
+                        position: relative;
+                        @include m.efectoNavLinks(v.$white, 0.5px, 0px, 1s);
+                        
+                    }
+                }
+            }
+        }
+    }
+}

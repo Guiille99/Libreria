@@ -42,7 +42,21 @@
             }
             .post__content{
                 &-titulo{
+                    position: relative;
                     font-weight: bolder;
+                    .microfono-icon{
+                        position: absolute;
+                        right: 0;
+                        bottom: 8px;
+                        background-color: v.$white-dark-mode;
+                        font-size: 1.2rem;
+                        padding: 5px;
+                        border-radius: 50%;
+
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
             .comentarios__container{
@@ -65,6 +79,8 @@
                         figure{
                             min-height: 35px;
                             min-width: 35px;
+                            max-height: 35px;
+                            max-width: 35px;
                         }
                         .user__info{
                             &-username-date{
@@ -73,7 +89,6 @@
                                 align-items: center;
     
                                 .date{
-                                    // font-size: .8rem;
                                     font-weight: bolder;
                                 }
                             }

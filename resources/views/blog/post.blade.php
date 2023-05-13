@@ -27,7 +27,10 @@
             <div class="post-categoria__container">
                 <div class="post">
                     <div class="post__content">
-                        <h1 class="post__content-titulo">{{$post->nombre}}</h1>
+                        <div class="post__content-header">
+                            <h1 class="post__content-titulo">{{$post->nombre}} <i role="checkbox" aria-checked="false" class="microfono-icon bi bi-mic-fill"></i></h1>
+                            {{-- <i class="bi bi-mic-fill"></i> --}}
+                        </div>
                         <p class="post__content-body">{{$post->cuerpo}}</p>
                     </div>
                     <div class="comentarios__container">
@@ -46,7 +49,11 @@
                                         <div class="user__info">
                                             <div class="user__info-username-date">
                                                 <p class="username">{{$comentario->user->username}}</p>
-                                                <p class="date">{{ucfirst($comentario->created_at->diffForHumans())}}</p>
+                                                @if ($comentario->created_at->diffInDays() > 0)
+                                                    <p class="date">{{$comentario->created_at->format("d/m/Y")}}</p>
+                                                @else
+                                                    <p class="date">{{ucfirst($comentario->created_at->diffForHumans())}}</p>
+                                                @endif
                                             </div>
                                             <p>{{$comentario->cuerpo}}</p>
                                         </div>
@@ -64,12 +71,15 @@
                                     <figure>
                                         <img src="{{asset(Auth::user()->avatar)}}" alt="Imagen de perfil" class="img-fluid">
                                     </figure>
-                                    <form action="" method="post" class="w-100">
+                                    <form action="{{route('add.comment', $post)}}" method="post" class="w-100">
                                         @csrf
                                         <div class="form-floating mb-2">
-                                            <textarea id="comentarioTextarea" class="form-control" placeholder="Escriba aquí su comentario"></textarea>
+                                            <textarea id="comentarioTextarea" class="form-control" name="comentario" placeholder="Escriba aquí su comentario"></textarea>
                                             <label for="comentarioTextarea">Escriba aquí su comentario</label>
                                         </div>
+                                        @error('comentario')
+                                            <small class="text-danger mb-2">* {{$message}}</small> <br><br>
+                                        @enderror
                                         <input type="submit" value="Añadir comentario" class="btn-add">
                                     </form>
                                 </div>
@@ -95,4 +105,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    @vite(["resources/js/posts.js"]);
 @endsection

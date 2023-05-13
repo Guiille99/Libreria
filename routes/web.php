@@ -7,6 +7,8 @@ use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PostController;
@@ -123,17 +125,14 @@ Route::controller(WishlistController::class)->group(function(){
 Route::controller(PostController::class)->group(function(){
     Route::get('blog', 'showBlog')->name("blog");
     Route::get('blog/{slug}', 'showPost')->name("show.post");
+    Route::post('blog/{post}/add-comment', 'addComment')->name("add.comment");
 });
 
-// Route::get('blog', function(){
-//     $generos = LibroController::getGeneros();
-//     return view('blog', compact('generos'));
-// })->name('blog');
+//RUTAS PARA MANEJO DE EMAILS
+// Route::controller(MailController::class)->group(function(){
+//     Route::post('suscribe-newstler', 'sendEmailSuscribeNewstler')->name('suscribe.newstler');
+// });
 
-Route::post('enviar-correo', function() 
-{
-    Mail::to(request()->mail)->send(new EnviarCorreo);
-    // return "Correo enviado exitosamente";
-    $generos = LibroController::getGeneros();
-    return view('mails.confirmacion-correo', compact('generos'));
-})->name('enviar-correo');
+Route::controller(NewsletterController::class)->group(function(){
+    Route::post('suscribe-newstler', 'suscribeNewstler')->name('suscribe.newstler');
+});

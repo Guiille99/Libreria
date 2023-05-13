@@ -23,14 +23,62 @@
             </div>
         </div>
 
-        <div class="content__container mt-2">
+        <div class="content__container my-2">
             <div class="post-categoria__container">
-                <div class="post__content">
-                    <h1 class="post__content-titulo">{{$post->nombre}}</h1>
-                    <p class="post__content-body">{{$post->cuerpo}}</p>
+                <div class="post">
+                    <div class="post__content">
+                        <h1 class="post__content-titulo">{{$post->nombre}}</h1>
+                        <p class="post__content-body">{{$post->cuerpo}}</p>
+                    </div>
+                    <div class="comentarios__container">
+                        <div class="title">
+                            <p>Comentarios</p>
+                        </div>
+                        <div class="comentarios">
+                            @if (count($comentarios)==0)
+                                <p class="text-center">No hay comentarios en este post</p>
+                            @else
+                                @foreach ($comentarios as $comentario)
+                                    <div class="comentario">
+                                        <figure>
+                                            <img src="{{asset($comentario->user->avatar)}}" alt="Imagen de perfil de {{$comentario->user->username}}" class="img-fluid">
+                                        </figure>
+                                        <div class="user__info">
+                                            <div class="user__info-username-date">
+                                                <p class="username">{{$comentario->user->username}}</p>
+                                                <p class="date">{{ucfirst($comentario->created_at->diffForHumans())}}</p>
+                                            </div>
+                                            <p>{{$comentario->cuerpo}}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+
+                        @if (Auth::check())
+                            <div class="nuevo-comentario mt-5">
+                                <div class="title">
+                                    Añade un comentario
+                                </div>
+                                <div class="perfil-text">
+                                    <figure>
+                                        <img src="{{asset(Auth::user()->avatar)}}" alt="Imagen de perfil" class="img-fluid">
+                                    </figure>
+                                    <form action="" method="post" class="w-100">
+                                        @csrf
+                                        <div class="form-floating mb-2">
+                                            <textarea id="comentarioTextarea" class="form-control" placeholder="Escriba aquí su comentario"></textarea>
+                                            <label for="comentarioTextarea">Escriba aquí su comentario</label>
+                                        </div>
+                                        <input type="submit" value="Añadir comentario" class="btn-add">
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="categoria__container">
-                    <h4 class="titulo">Más artículos de esta categoría</h4>
+                    <h4 class="titulo">Más artículos de '{{$post->categoria->nombre}}'</h4>
                     <ul>
                         @foreach ($postsMismaCategoria as $post)
                             <li>
@@ -43,11 +91,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="comentarios">
-                <div class="title">
-                    <p>Comentarios</p>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

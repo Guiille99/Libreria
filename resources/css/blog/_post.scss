@@ -29,18 +29,102 @@
 
     .post-categoria__container{
         display: flex;
-        justify-content: space-between;
-        .post__content{
-            width: 60%;
-            &-titulo{
-                font-weight: bolder;
+        flex-direction: column;
+        gap: 40px;
+        @include m.desktop{
+            flex-direction: row;
+            justify-content: space-between;
+            gap: unset;
+        }
+        .post{
+            @include m.desktop{
+                width: 60%;
+            }
+            .post__content{
+                &-titulo{
+                    font-weight: bolder;
+                }
+            }
+            .comentarios__container{
+                margin-top: 20px;
+                .title{
+                    border-bottom: 1px solid v.$black;
+                    p{
+                        margin-bottom: 5px;
+                        font-size: 1.5rem;
+                    }
+                }
+                .comentarios{
+                    padding: 10px 0px;
+                    .comentario{
+                        display: flex;
+                        gap: 10px;
+                        padding: 10px;
+                        border-bottom: 1px solid v.$black;
+                        font-size: .8rem;
+                        figure{
+                            min-height: 35px;
+                            min-width: 35px;
+                        }
+                        .user__info{
+                            &-username-date{
+                                display: flex;
+                                gap: 20px;
+                                align-items: center;
+    
+                                .date{
+                                    // font-size: .8rem;
+                                    font-weight: bolder;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .nuevo-comentario{
+                    .title{
+                        font-size: 1.2rem;
+                    }
+                    .perfil-text{
+                        margin-top: 10px;
+                        display: flex;
+                        gap: 10px;
+
+                        figure{
+                            max-width: 35px;
+                            max-height: 35px;
+                        }
+
+                        textarea{
+                            height: 120px;
+                        }
+
+                        form{
+                            input[type="submit"]{
+                                width: 100%;
+                                @include m.tablet{
+                                    width: auto;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
         .categoria__container{
-            width: 18%;
             background-color: adjust-color($color: v.$bg-dark-green, $alpha: .7);
             padding: 8px;
+            min-width: 240px;
+            @include m.tablet{
+                max-height: 410px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            @include m.desktop{
+                width: 19%;
+                margin: unset;
+            }
             .titulo{
                 text-align: center;
                 color: v.$white;

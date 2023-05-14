@@ -107,6 +107,7 @@ Route::controller(DireccionController::class)->group(function(){
 Route::controller(PedidoController::class)->group(function(){
     Route::get("mis-pedidos", 'showPedidos')->middleware('auth')->name('show.orders');
     Route::get("ultimos-pedidos", 'getUltimosPedidos')->middleware('auth')->middleware('checkadmin')->name('show.last-orders');
+    Route::get("/admin/pedidos", "showAllOrders")->middleware("checkadmin")->name("showAll.orders");
     Route::get("/admin/pedido/{pedido}", "edit")->middleware('checkadmin')->name("edit.order");
     Route::get("pedidos-cancelados", "showPedidosCancelados")->middleware('auth')->name('show.cancelOrders');
     Route::put("cancelar-pedido/{idPedido}", "cancelaPedido")->middleware('auth')->name('order.cancel');
@@ -125,7 +126,13 @@ Route::controller(WishlistController::class)->group(function(){
 Route::controller(PostController::class)->group(function(){
     Route::get('blog', 'showBlog')->name("blog");
     Route::get('blog/{slug}', 'showPost')->name("show.post");
-    Route::post('blog/{post}/add-comment', 'addComment')->name("add.comment");
+    Route::get('admin/posts', 'showAllPosts')->middleware("checkadmin")->name("admin.posts");
+    Route::get('admin/posts/{post}', 'edit')->middleware("checkadmin")->name("edit.post");
+    Route::get('admin/ultimos-posts', 'getPosts')->middleware("checkadmin")->name("showAll.posts");
+    Route::get('admin/post/create', 'create')->middleware('checkadmin')->name("post.create");
+    Route::post('blog/{post}/add-comment', 'addComment')->middleware('auth')->name("add.comment");
+    Route::post('admin/posts/add-post', 'store')->middleware('checkadmin')->name('store.post');
+    Route::delete('admin/delete-post/{post}', 'destroy')->middleware('checkadmin')->name('post.destroy');
 });
 
 //RUTAS PARA MANEJO DE EMAILS

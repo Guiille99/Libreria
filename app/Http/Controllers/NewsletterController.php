@@ -19,7 +19,8 @@ class NewsletterController extends Controller{
             $email->email = $request->email;
             $email->save();
             DB::commit();
-            Mail::to($request->email)->send(new NewsletterSuscribe);
+            // Mail::to($request->email)->send(new NewsletterSuscribe);
+            MailController::sendEmailSuscribeNewstler($request);
             return redirect()->back()->with("message", "Tu suscripción a nuestro noticiero ha sido completada");
         } catch (\Throwable $e) {
             DB::rollBack();

@@ -1,7 +1,7 @@
 @use "../base/variables" as v;
 @use "../base/mixins" as m;
 
-.order__container{
+.register__section{
     .title{
         @include m.outline-title(v.$black);
         .message_info{

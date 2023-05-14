@@ -18,6 +18,10 @@ class PedidoController extends Controller
         return view('pedidos.mis-pedidos', compact('generos', 'user', 'pedidos'));
     }
 
+    public function showAllOrders(){
+        return view("admin.orders");
+    }
+
     public function edit(Pedido $pedido){
         $estados = Estado::all();
         return view("pedidos.edit", compact('pedido', 'estados'));

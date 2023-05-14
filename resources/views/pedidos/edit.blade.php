@@ -1,7 +1,7 @@
 @extends('layouts.plantilla-admin')
 @section('title', 'Admin | Edición de pedido')
 @section('content')
-    <div class="order__container mt-4">
+    <div class="order__container register__section mt-4">
         <div class="title">
             <p>Detalles del pedido # {{$pedido->id}}</p>
             <span class="message_info">* Únicamente se puede modificar el estado del pedido</span>

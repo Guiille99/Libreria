@@ -53,7 +53,7 @@
             <div class="header__container justify-content-start mb-2">
                 <h3 class="title">Últimas ventas</h3>
             </div>
-            <div>
+            <div class="registros">
                 <table id="last-orders" class="table text-center table-striped table-hover w-100">
                     <thead>
                         <th>Nº pedido</th>

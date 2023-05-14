@@ -46,8 +46,8 @@
                             <ul>
                                 <li class="py-1 px-2"><a href="{{route('admin.users')}}" class="d-flex gap-2"><i class="bi bi-person-circle"></i>Usuarios</a></li>
                                 <li class="py-1 px-2"><a href="{{route('libros.index')}}" class="d-flex gap-2"><i class="bi bi-book"></i>Libros</a></li>
-                                <li class="py-1 px-2"><a href="" class="d-flex gap-2"><i class="bi bi-box-seam"></i>Pedidos</a></li>
-                                <li class="py-1 px-2"><a href="" class="d-flex gap-2"><i class="bi bi-chat-left-text"></i>Blog</a></li>
+                                <li class="py-1 px-2"><a href="{{route('showAll.orders')}}" class="d-flex gap-2"><i class="bi bi-box-seam"></i>Pedidos</a></li>
+                                <li class="py-1 px-2"><a href="{{route('admin.posts')}}" class="d-flex gap-2"><i class="bi bi-chat-left-text"></i>Blog</a></li>
                                 <li class="py-1 px-2"><a href="" class="d-flex gap-2"><i class="bi bi-geo-alt-fill"></i>Provincias</a></li>
                             </ul>
                           </div>
@@ -84,19 +84,11 @@
     {{-- Contenido --}}
     <div class="main-content">
         <nav class="navbar-admin navbar navbar-expand-lg align-items-center px-5">
-            <div class="container-fluid justify-content-around gap-2 gap-lg-0">
-                {{-- <button id="toggler-sidebar" class="border-0 fs-2 toggler-admin" type="button">
-                    <i class="bi bi-plus-lg"></i>
-                </button> --}}
-
+            <div class="container-fluid justify-content-between gap-2 gap-lg-0">
                 <label for="toggler-sidebar"><i class="bi bi-plus-lg btn-toggler"></i></label>
     
-                <figure class="my-0 mx-auto">
-                    <a href="{{ route('admin.index')}}"><img src="{{asset('uploads/logo-nombre2.svg')}}" alt="LOGO" class="img-fluid"></a>
-                </figure>
-    
                 {{-- USER INFO --}}
-                <div id="navbar_menu" class="d-flex gap-4">
+                <div id="navbar_menu">
                     <div class="changeMode__container dropdown">
                         <button class="btnTheme dropdown-toggle bg-transparent border-0 text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="theme-icon"></i>
@@ -123,16 +115,20 @@
                         </ul>
                     </div>
                     @if (Auth::check())
-                    <p class="m-0 text-white"><i class="bi bi-person"></i> {{Auth::user()->username}}</p>
+                    <div class="user__info">
+                        <figure>
+                            <img src="{{asset(Auth::user()->avatar)}}" alt="" class="img-fluid">
+                        </figure>
+                        <span class="user__info-username">{{Auth::user()->username}}</span>
+                    </div>
                     @endif
                 </div>
             </div>
         </nav>
     
     
-        <main class="container-fluid flex-grow-1">
+        <main class="container-fluid flex-grow-1 py-3">
             <div class="row h-100">
-                {{-- <div id="sidebar__container"> --}}
                 {{-- Alerta si se ha añadido, actualizado o eliminado un usuario --}}
                 @if (session("message")) 
                     <div id="alert-success" class="alert alert-success mt-2"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
@@ -174,16 +170,11 @@
                     </div>
                 </div>
                 
-    
-                @yield('content')
-    
-    
-                
+                @yield('content')            
     
             </div>
         </main>
     </div>
-    <label for="toggler-sidebar" id="body-label"></label>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
     @yield('script')
 </body>

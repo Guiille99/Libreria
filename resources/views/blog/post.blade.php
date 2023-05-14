@@ -14,7 +14,7 @@
 
     <div class="post__container">
         <div class="portada__container">
-            <div class="portada mt-3" style="background-image: url({{asset($post->portada)}})">
+            <div class="portada mt-3" style="background-image: url('{{asset($post->portada)}}')">
                 <p class="titulo">{{$post->nombre}}</p>
             </div>
             <div class="portada__details">

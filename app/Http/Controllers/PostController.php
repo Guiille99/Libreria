@@ -132,7 +132,6 @@ class PostController extends Controller{
     }
 
     public function destroy(Post $post){
-        // dd($post);
         DB::beginTransaction();
         try {
             $portadaPublicId = $this->getPublicID($post->portada, true);

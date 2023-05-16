@@ -1,9 +1,11 @@
 @extends('layouts.plantilla-admin')
-@section('title', 'Modificación de usuario')
+@section('title', 'Books | Modificación de usuario')
 @section('content')
-<div class="form__modify__container col-12 col-md-6 col-lg-5 pt-4">
-    <h1 class="title">Modificación de {{$user->username}}</h1>
-    <form action="{{route('user.update', $user)}}" method="post" class="needs-validation" novalidate>
+<div class="form__modify__container register__section pt-4">
+    <div class="title">
+        <p>Modificación del usuario {{$user->username}}</p>
+    </div>
+    <form action="{{route('user.update', $user)}}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         @csrf
         @method('put')
         <div class="container-fluid">
@@ -65,8 +67,16 @@
                     @enderror
                 </div>
 
-                <div class="mt-3">
-                    <select name="rol" id="rol" class="form-select" aria-label="rol" required>
+                <div class="form-floating mt-3 col-md-6">
+                    <input type="file" name="avatar" id="avatar" class="form-control" placeholder="Imagen de perfil">
+                    <label for="avatar" class="form-label ms-1">Imagen de perfil</label>
+                    @error('avatar')
+                        <small class="text-danger">* {{$message}}</small>
+                    @enderror
+                </div>
+
+                <div class="mt-3 col-md-6">
+                    <select name="rol" id="rol" class="form-select h-100" aria-label="rol" required>
                         <option value="">-- Selecciona un rol --</option>
                         @if ($user->rol=="Usuario")
                             <option value="Usuario" selected>Usuario</option>

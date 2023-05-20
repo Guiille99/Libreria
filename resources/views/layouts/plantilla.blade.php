@@ -273,6 +273,7 @@
     </div>
 
     {{-- Offcanvas carrito --}}
+    @if (Auth::check())
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCart">
       <div class="offcanvas-header">
         <button type="button" class="bi bi-x" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -336,6 +337,7 @@
       </div>
 
     </div>
+    @endif
     @if (session('message'))
         <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
     @endif

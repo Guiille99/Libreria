@@ -126,6 +126,7 @@ Route::controller(WishlistController::class)->group(function(){
 Route::controller(PostController::class)->group(function(){
     Route::get('blog', 'showBlog')->name("blog");
     Route::get('blog/{slug}', 'showPost')->name("show.post");
+    Route::get('blog/categorias/{categoria}', 'showPostsCategory')->name("show.categoria");
     Route::get('admin/posts', 'showAllPosts')->middleware("checkadmin")->name("admin.posts");
     Route::get('admin/posts/{post}', 'edit')->middleware("checkadmin")->name("edit.post");
     Route::get('admin/ultimos-posts', 'getPosts')->middleware("checkadmin")->name("showAll.posts");

@@ -32,7 +32,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ¿Está seguro de que quiere eliminar este post? Esta acción no podrá deshacerse.
+                                    ¿Está seguro de que quiere eliminar este post? Al eliminar el post se eliminarán también sus comentarios. Esta acción no podrá deshacerse.
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

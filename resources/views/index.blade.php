@@ -165,7 +165,7 @@
         //Definición de rutas
         let url = "{{route('add_to_cart')}}";
         let urlCartContent = "{{route('offcanvas-cart-content')}}";
-        let urlCantidadCarrito = "{{route('cantidadCarrito')}}";
+        // let urlCantidadCarrito = "{{route('cantidadCarrito')}}";
   </script>
       @vite(['resources/js/cart.js'])
   {{-- <script src="{{asset('build/assets/cart.js')}}"></script> --}}

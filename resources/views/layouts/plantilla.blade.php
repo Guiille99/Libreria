@@ -107,10 +107,11 @@
             <div class="carrito__container">
               <a href="" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasRight">
                 <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
-                @if (session()->get('carrito'))
-                <span class="carrito__cantidad">{{session('carrito-data')["cantidad"]}}</span>
+                @if (Auth::user()->carrito != null)
+                  <span class="carrito__cantidad">{{Auth::user()->carrito->items->sum('cantidad')}}</span>
+                {{-- <span class="carrito__cantidad">{{session('carrito-data')["cantidad"]}}</span> --}}
                 @else
-                <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+                  <span class="carrito__cantidad">0</span>
                 @endif
               </a>
             </div>
@@ -136,10 +137,10 @@
             <div class="carrito__container d-block d-lg-none">
               <a href="" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" aria-controls="offcanvasRight">
                 <img src="{{asset('uploads/cart.svg')}}" alt="Carrito" class="img-fluid">
-                @if (session()->get('carrito'))
-                <span class="carrito__cantidad">{{session('carrito-data')["cantidad"]}}</span>
+                @if (Auth::user()->carrito != null)
+                <span class="carrito__cantidad">{{Auth::user()->carrito->items->sum('cantidad')}}</span>
                 @else
-                <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+                <span class="carrito__cantidad">0</span>
                 @endif
               </a>
             </div>
@@ -278,32 +279,33 @@
         
         <div class="m-auto d-flex justify-content-center align-items-center gap-3">
           <i class="bi bi-bag">
-            @if (session()->get('carrito'))
-            <span class="carrito__cantidad">{{session('carrito-data')['cantidad']}}</span>
+            @if (Auth::user()->carrito != null)
+              <span class="carrito__cantidad">{{Auth::user()->carrito->items->sum('cantidad')}}</span>
+            {{-- <span class="carrito__cantidad">{{session('carrito-data')['cantidad']}}</span> --}}
             @else
-            <span class="carrito__cantidad">{{count((array) session('carrito'))}}</span>
+            <span class="carrito__cantidad">0</span>
             @endif
           </i>
           <h5 class="offcanvas-title" id="offcanvasCart">Mi carrito</h5>
         </div>
       </div>
       <div class="offcanvas-content d-flex flex-column flex-grow-1">
-        @if (session()->get('carrito'))
+        @if (Auth::user()->carrito != null && Auth::user()->carrito->items->count() > 0)
         <div class="offcanvas-body">
-            @foreach (session()->get('carrito') as $id=>$libro)
+            @foreach (Auth::user()->carrito->items as $item)
                 <div class="cart-book">
                   <figure>
-                    <img src="{{asset($libro['portada'])}}" alt="portada" class="img-fluid">
+                    <img src="{{asset($item->libro->portada)}}" alt="portada" class="img-fluid">
                   </figure>
   
                   <div class="book-data">
-                    <p>{{$libro["titulo"]}}</p>
+                    <p>{{$item->libro->titulo}}</p>
                     <div class="book-data__body">
-                      <p>{{$libro["cantidad"]}} x <span class="fw-bold">{{$libro["precio"]}}€</span></p>
+                      <p>{{$item->cantidad}} x <span class="fw-bold">{{$item->libro->precio}}€</span></p>
                     </div>
                     <div class="book-data__footer">
-                      <p class="total-unidad">{{$libro["precio"]*$libro["cantidad"]}}€</p>
-                      <form action="{{route('delete_to_cart', $id)}}" method="post">
+                      <p class="total-unidad">{{$item->libro->precio * $item->cantidad}}€</p>
+                      <form action="{{route('delete_to_cart', $item->libro->id)}}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="bi bi-trash3 bg-transparent border-0"></button>
@@ -320,9 +322,9 @@
                 </div>
           @endif
         </div>
-        @if (session()->get('carrito'))
+        @if (Auth::user()->carrito!=null && Auth::user()->carrito->items->count() > 0)
         <div class="offcanvas-footer">
-          <p id="total">Total: <span class="precio">{{session()->get('carrito-data')["total"]}}€</span></p>
+          <p id="total">Total: <span class="precio">{{Auth::user()->carrito->items->sum('subtotal')}}€</span></p>
           <a href="{{route('show-cart')}}" class="text-center text-decoration-none">Ver carrito</a>
           <form action="{{route('vaciar-carrito')}}" method="post">
             @csrf
@@ -338,7 +340,7 @@
         <div id="alert-index" class="alert alert-success"><i class="bi bi-check-circle"></i> {{session('message')}}</div>
     @endif
 
-    @if (session('message_error'))
+    @if (session()->has('message_error'))
       <div id="alert-error" class="alert alert-danger alert-dismissible fade show my-2" role="alert">
         <i class="bi bi-exclamation-circle"></i> 
         {{session('message_error')}} 

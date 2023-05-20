@@ -22,8 +22,9 @@ $(document).ready(function(){
                 "token": token,
                 "id": id
             },
-            success: function(){
-                $(".carrito__cantidad").load(urlCantidadCarrito); //Actualizamos solo el número del carrito
+            success: function(data){
+                data = JSON.parse(data);
+                $(".carrito__cantidad").html(data.cantidad); //Actualizamos solo el número del carrito
                 // location.reload();
                 $('#add-to-cart__message').css("display", "block");
                 //Obtenemos de nuevo el contenido del carrito a través de AJAX para que se actualice el offcanvas sin recargar la página

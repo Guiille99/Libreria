@@ -64,6 +64,55 @@ class PostController extends Controller{
         }
     }
 
+    public function edit(Post $post){
+        $categorias = Categoria::all();
+        $comentarios = $post->comentarios;
+        return view('blog.post-edit', compact('post', 'comentarios', 'categorias'));
+    }
+
+    public function update(Request $request, Post $post){
+        $request->validate([
+            "titulo" => "required|max:120",
+            "slug" => "required",
+            "cuerpo" => "required",
+            "categoria" => "required"
+        ]);
+
+        if (!$this->compruebaTituloValido($request->titulo, $post->id)) {
+            return redirect()->back()->withErrors(['titulo' => 'El valor del campo titulo ya está en uso.']);
+        }
+
+        if ($request->hasFile('portada')) {
+            $request->validate([
+                "portada" => "image|mimes:jpeg,jpg,png|max:2048",
+            ]);
+            $portadaPublicId = $this->getPublicID($post->portada, true);
+            $thumbnailPublicId = $this->getPublicID($post->thumbnail, false);
+            $publicsID = [$portadaPublicId, $thumbnailPublicId];
+
+            foreach ($publicsID as $publicID) {
+                Cloudinary::destroy($publicID); //Eliminamos las imágenes de Cloudinary
+            }
+            $post->portada = $this->uploadImage($request->portada, true);
+            $post->thumbnail = $this->uploadImage($request->portada, false);
+        }
+        
+        DB::beginTransaction();
+        try {
+            $post->nombre = $request->titulo;
+            $post->slug = $request->slug;
+            $post->categoria_id = Categoria::where('nombre', $request->categoria)->first()->id;
+            $post->cuerpo = $request->cuerpo;
+
+            $post->save();
+            DB::commit();
+            return redirect()->route('admin.posts')->with("message", "El post ha sido actualizado correctamente");
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
+        }
+    }
+
     public function showBlog(){
         $generos = LibroController::getGeneros();
         //Obtiene los 3 últimos post de la categoría Destacados
@@ -137,6 +186,18 @@ class PostController extends Controller{
         }
     }
 
+    public function deleteComment(Comentario $comentario){
+        DB::beginTransaction();
+        try {
+            $comentario->delete();
+            DB::commit();
+            return redirect()->back()->with("message", "El comentario ha sido eliminado correctamente");
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
+        }
+    }
+
     public function destroy(Post $post){
         DB::beginTransaction();
         try {
@@ -162,5 +223,31 @@ class PostController extends Controller{
         $parentPath = ($isPortada) ? "books/posts/" : "books/posts/thumbnails/";
         $publicID = urldecode($parentPath . $filename);
         return $publicID;
+    }
+
+    private function uploadImage($file, $isPortada){
+        $filename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME); //Obtengo el nombre de la img sin la extensión
+        if ($isPortada) {
+            $imagePath = Cloudinary::upload($file->getRealPath(),[
+                "public_id" => time() . "-" . $filename,
+                "folder" => "books/posts"
+            ]);
+        }
+        else{
+            $imagePath = Cloudinary::upload($file->getRealPath(),[
+                "public_id" => time() . "-" . $filename,
+                "transformation" => [
+                    "width" => "640",
+                    "height" => "427",
+                ],
+                "folder" => "books/posts/thumbnails"
+            ]);
+        }
+        return $imagePath->getSecurePath();
+    }
+
+    private function compruebaTituloValido($newTitulo, $idPost){
+        $titulos = Post::where('nombre', $newTitulo)->whereNot('id', $idPost)->get();
+        return (count($titulos) == 0) ? true : false; 
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
@@ -128,12 +129,22 @@ Route::controller(PostController::class)->group(function(){
     Route::get('blog/{slug}', 'showPost')->name("show.post");
     Route::get('blog/categorias/{categoria}', 'showPostsCategory')->name("show.categoria");
     Route::get('admin/posts', 'showAllPosts')->middleware("checkadmin")->name("admin.posts");
-    Route::get('admin/posts/{post}', 'edit')->middleware("checkadmin")->name("edit.post");
+    Route::get('admin/posts/{post}/edit', 'edit')->middleware("checkadmin")->name("edit.post");
     Route::get('admin/ultimos-posts', 'getPosts')->middleware("checkadmin")->name("showAll.posts");
     Route::get('admin/post/create', 'create')->middleware('checkadmin')->name("post.create");
     Route::post('blog/{post}/add-comment', 'addComment')->middleware('auth')->name("add.comment");
     Route::post('admin/posts/add-post', 'store')->middleware('checkadmin')->name('store.post');
     Route::delete('admin/delete-post/{post}', 'destroy')->middleware('checkadmin')->name('post.destroy');
+    Route::delete('admin/post/delete-comment/{comentario}', 'deleteComment')->middleware('checkadmin')->name('comment.destroy');
+    Route::put('admin/posts/{post}/edit', 'update')->middleware('checkadmin')->name('update.post');
+});
+
+//RUTAS PARA EL MANEJO DE LAS PROVINCIAS
+Route::controller(ProvinciaController::class)->group(function(){
+    Route::get('admin/provincias', 'show')->middleware('checkadmin')->name('provincias.show');
+    Route::get('admin/provincias-all', 'getProvincias')->middleware('checkadmin')->name('provincias.showAll');
+    Route::get('admin/provincia/create', 'create')->middleware('checkadmin')->name('provincia.create');
+    Route::post('admin/provincia/add-provincia', 'store')->middleware('checkadmin')->name('provincia.store');
 });
 
 //RUTAS PARA MANEJO DE EMAILS

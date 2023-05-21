@@ -3,7 +3,6 @@
 
 .form__modify__container{
     .btn-modify, .btn-add{
-        float: right;
         width: 100%;
         @include m.tablet{
             width: unset;

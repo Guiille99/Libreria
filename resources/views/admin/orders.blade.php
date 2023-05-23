@@ -19,7 +19,7 @@
             </thead>
 
             <tbody>
-                <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="modalEliminacionPedido" aria-hidden="true">
                     <div class="modal-dialog">
                         <form id="modal-delete-form" action="" method="post">
                             @csrf
@@ -28,7 +28,7 @@
                             <div class="modal-content">
                                 <div class="modal-header d-flex gap-2">
                                     <i class="bi bi-exclamation-circle"></i>
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Eliminación de pedido</h1>
+                                    <h1 class="modal-title fs-5" id="modalEliminacionPedido"> Eliminación de pedido</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">

@@ -14,6 +14,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TareaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use App\Mail\ContactanosMailable;
@@ -145,6 +146,13 @@ Route::controller(ProvinciaController::class)->group(function(){
     Route::get('admin/provincias-all', 'getProvincias')->middleware('checkadmin')->name('provincias.showAll');
     Route::get('admin/provincia/create', 'create')->middleware('checkadmin')->name('provincia.create');
     Route::post('admin/provincia/add-provincia', 'store')->middleware('checkadmin')->name('provincia.store');
+});
+
+//RUTAS PARA EL MANEJO DE LAS TAREAS DEL USUARIO
+Route::controller(TareaController::class)->group(function(){
+    Route::get('admin/tareas', 'getTareas')->middleware('checkadmin')->name('tareas.get');
+    Route::get('admin/calendario', 'showCalendar')->middleware('checkadmin')->name('calendar.show');
+    Route::post('admin/add-task', 'store')->middleware('checkadmin')->name('tarea.store');
 });
 
 //RUTAS PARA MANEJO DE EMAILS

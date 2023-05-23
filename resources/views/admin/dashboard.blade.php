@@ -1,5 +1,6 @@
 @extends('layouts.plantilla-admin')
 @section('title', 'Books | Admin')
+{{-- <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script> --}}
 @section('content')
     <div class="container-fluid dashboard__content mt-3">
         <div class="card-estadisticas">
@@ -54,7 +55,7 @@
                 <h3 class="title">Últimas ventas</h3>
                 <a href="{{route('showAll.orders')}}" class="btn-add"> <i class="bi bi-eye-fill"></i> Mostrar todas</a>
             </div>
-            <div class="registros">
+            <div class="registros table-responsive">
                 <table id="last-orders" class="table text-center table-striped table-hover w-100">
                     <thead>
                         <th>Nº pedido</th>
@@ -116,6 +117,8 @@
                 </table>
             </div>
         </div>
+
+       
 
         {!! $ventaChart->script() !!}
         {!! $userChart->script() !!}

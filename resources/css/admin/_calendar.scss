@@ -5,6 +5,9 @@
     width: 100%;
     @include m.desktop{
         width: 65%;
-        height: fit-content;
+        // height: fit-content;
+    }
+    .fc-daygrid-event-harness{
+        font-size: .8rem;
     }
 }

@@ -116,7 +116,7 @@
     
     
         <main class="container-fluid flex-grow-1 py-3">
-            <div class="row h-100">
+            <div class="row">
                 {{-- Alerta si se ha añadido, actualizado o eliminado un usuario --}}
                 @if (session("message")) 
                     <div id="alert-success" class="alert alert-success mt-2"><i class="bi bi-check-circle"></i> {{session('message')}}</div>

@@ -152,7 +152,9 @@ Route::controller(ProvinciaController::class)->group(function(){
 Route::controller(TareaController::class)->group(function(){
     Route::get('admin/tareas', 'getTareas')->middleware('checkadmin')->name('tareas.get');
     Route::get('admin/calendario', 'showCalendar')->middleware('checkadmin')->name('calendar.show');
-    Route::post('admin/add-task', 'store')->middleware('checkadmin')->name('tarea.store');
+    Route::post('admin/calendario/add-task', 'store')->middleware('checkadmin')->name('tarea.store');
+    Route::put('admin/calendario/modify-task', 'update')->middleware('checkadmin')->name('tarea.update');
+    Route::delete('admin/calendario/delete-task', 'destroy')->middleware('checkadmin')->name('tarea.destroy');
 });
 
 //RUTAS PARA MANEJO DE EMAILS

@@ -53,6 +53,17 @@
                         @enderror
                     </div>
 
+                    <div class="mt-3 col">
+                        <input type="checkbox" name="tarea_check" id="tarea_check" class="d-none">
+                        <label for="tarea_check" id="tarea_check-label">
+                            <div class="task-list-mark">
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <span>Tarea realizada</span>
+                        </label>
+
+                    </div>
+
                     <div class="form-floating mt-3 col">
                         <input type="color" id="colorFondo" class="form-control" value="#2596be" placeholder="Color de fondo">
                         <label for="colorFondo" class="form-label ms-1">Color de fondo</label>

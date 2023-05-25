@@ -23,6 +23,12 @@ $(document).ready(function () {
         },
         selectable: true,
         events: url,
+        eventDidMount: function(info) {
+            if (info.event.extendedProps.status === 1) {
+                var el = info.el;
+                el.style.textDecoration = 'line-through';
+            }
+        },
         eventMouseEnter: function (info) {
             $(info.el).tooltip({
                 title: info.event.title,
@@ -41,12 +47,14 @@ $(document).ready(function () {
                 $("#horaInicio").val(fechaHora[1].substring(0, 5));
             }
             $("#tareaModal").html("Nueva tarea");
+            $("#tarea_check-label").hide();
             $("#btnModifyTask").hide();
             $("#btnDeleteTask").hide();
             $("#btnAddTask").show();
             $("#modal-tarea").modal("show");
         },
         eventClick: function (info) {
+            // console.log(info.extendedProps.status);
             $("#tareaModal").html("Tarea");
             $("#btnAddTask").hide();
             $("#btnModifyTask").show();
@@ -57,8 +65,13 @@ $(document).ready(function () {
             $("#horaInicio").val(moment(info.event.start).format("HH:mm"));
             $("#fecFin").val(moment(info.event.end).format("YYYY-MM-DD"));
             $("#horaFin").val(moment(info.event.end).format("HH:mm"));
+            $("#tarea_check-label").show();
             $("#colorFondo").val(info.event.backgroundColor);
             $("#colorTexto").val(info.event.textColor);
+
+            if (info.event.extendedProps.status === 1) {
+                $("#tarea_check").prop("checked", true);
+            }
 
             $("#modal-tarea").modal("show");
         },
@@ -126,6 +139,7 @@ $(document).ready(function () {
                 "fechaFin": tarea.fechaFin,
                 "horaInicio": tarea.horaInicio,
                 "horaFin": tarea.horaFin,
+                "tareaRealizada": tarea.check,
                 "colorFondo": tarea.colorFondo,
                 "colorTexto": tarea.colorTexto,
             },
@@ -182,6 +196,7 @@ $(document).ready(function () {
             horaInicio: $("#horaInicio").val(),
             fechaFin: $("#fecFin").val(),
             horaFin: $("#horaFin").val(),
+            check: $("#tarea_check").prop("checked"),
             colorFondo: $("#colorFondo").val(),
             colorTexto: $("#colorTexto").val(),
         };
@@ -197,4 +212,5 @@ $(document).ready(function () {
         $("#colorFondo").val("#2596be");
         $("#colorTexto").val("#111111");
     }
+
 });

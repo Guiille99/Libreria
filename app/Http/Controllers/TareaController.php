@@ -48,15 +48,17 @@ class TareaController extends Controller
             $fechaInicio = $this->compruebaFechas($fechaInicioAux, $fechaFinAux)["fechaInicio"];
             $fechaFin = $this->compruebaFechas($fechaInicioAux, $fechaFinAux)["fechaFin"];
 
-            $tarea = Tarea::where('id', $request->id)->first();
+            // $tarea = Tarea::where('id', $request->id)->first();
+            $tarea = Tarea::find($request->id);
             $tarea->titulo = $request->tarea;
             $tarea->inicio = $fechaInicio;
             $tarea->fin = $fechaFin;
             $tarea->color_texto = $request->colorTexto;
             $tarea->color_fondo = $request->colorFondo;
+            ($request->tareaRealizada == "true") ? $tarea->is_finish = 1 : $tarea->is_finish = 0;
             $tarea->save();
             DB::commit();
-            return response()->json("{'message': $fechaFin}");
+            return response()->json("{'message': 'La tarea se ha modificado correctamente'}");
         } catch (\Throwable $e) {
             DB::rollBack();
             return response()->json("{'message': 'Ha ocurrido un error inesperado'}");
@@ -85,6 +87,7 @@ class TareaController extends Controller
                 "title" => $tarea->titulo,
                 "start" => $tarea->inicio,
                 "end" => $tarea->fin,
+                "status" => $tarea->is_finish,
                 "textColor" => $tarea->color_texto,
                 "backgroundColor" => $tarea->color_fondo
             ];

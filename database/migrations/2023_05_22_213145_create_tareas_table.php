@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string("titulo", 100);
             $table->dateTime("inicio");
             $table->dateTime("fin");
+            // $table->string("estado", 10)->default("Pendiente");
+            $table->boolean('is_finish')->default(false);
             $table->string("color_texto", 7);
             $table->string("color_fondo", 7);
         });

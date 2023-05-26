@@ -11,7 +11,8 @@ class TareaController extends Controller
 {
 
     public function showCalendar(){
-        return view('admin.calendar');
+        $tareasPendientesHoy = Tarea::whereDate('fin', today())->get();
+        return view('admin.calendar', compact('tareasPendientesHoy'));
     }
 
     public function store(Request $request){
@@ -94,10 +95,6 @@ class TareaController extends Controller
         }
 
         return response()->json($events);
-    }
-
-    private function compruebaHora($hora){
-        return ($hora == "") ? date("H:i") : $hora;
     }
 
     private function compruebaFechas($fechaInicio, $fechaFin){

@@ -2,7 +2,10 @@
 @section('title', 'Books | Admin - Calendario')
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
 @section('content')
-<div id="calendar" class="my-4"></div>
+<div class="tasks__container">
+    <div id="calendar" class="my-4"></div>
+    @livewire('task-list-component', ['tareas' => $tareasPendientesHoy])
+</div>
 
 <div class="modal fade" id="modal-tarea" tabindex="-1" aria-labelledby="tareaModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -54,8 +57,8 @@
                     </div>
 
                     <div class="mt-3 col">
-                        <input type="checkbox" name="tarea_check" id="tarea_check" class="d-none">
-                        <label for="tarea_check" id="tarea_check-label">
+                        <input type="checkbox" name="tarea_check" id="tarea_check" class="tarea_check d-none">
+                        <label for="tarea_check" id="tarea_check-label" class="tarea_check-label">
                             <div class="task-list-mark">
                                 <i class="bi bi-check"></i>
                             </div>

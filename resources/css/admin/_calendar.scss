@@ -4,7 +4,11 @@
 
 .tasks__container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    @include m.desktop{
+        flex-direction: row;
+    }
     #calendar {
         width: 100%;
         @include m.desktop {
@@ -13,14 +17,25 @@
         .fc-daygrid-event-harness {
             font-size: 0.8rem;
         }
+
+        .fc-header-toolbar{
+            flex-direction: column;
+            gap: 5px;
+            @include m.tablet{
+                flex-direction: row;
+            }
+        }
     }
 
     .tasklist__container {
         height: fit-content;
-        width: 30%;
+        width: 100%;
         padding: 10px 20px;
         border-radius: 5px;
         box-shadow: 0px 0px 30px color.adjust(v.$black, $alpha: -0.6);
+        @include m.desktop {
+            width: 30%;
+        }
         .header {
             text-align: center;
             padding: 7px 0px;
@@ -54,6 +69,9 @@
                 }
             }
         }
+        .btn-modify{
+            display: none;
+        }
     }
 }
 
@@ -64,6 +82,11 @@
         }
         .task-list-mark {
             border-color: v.$green;
+        }
+    }
+    &:checked ~ .task__info{
+        .title{
+            text-decoration: line-through;
         }
     }
 }

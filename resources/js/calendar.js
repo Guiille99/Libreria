@@ -213,15 +213,24 @@ $(document).ready(function () {
         $("#colorTexto").val("#111111");
     }
 
-    $(".task .task-list-mark").click(function(){
-        let parentContainer = $(this).parent().parent();
-        let taskTitle = parentContainer.find(".title");
-        if ($(".task .tarea_check").prop("checked") == false) {
-            taskTitle.css("text-decoration", "line-through")
-        }
-        else{
-            taskTitle.css("text-decoration", "none")
-        }
+    // $(".task .task-list-mark").click(function(){
+    //     let parentContainer = $(this).parent().parent();
+    //     let taskTitle = parentContainer.find(".title");
+    //     let checkbox = parentContainer.find(".tarea_check");
+    //     if (checkbox.prop("checked") == false) {
+    //         taskTitle.css("text-decoration", "line-through");
+    //     }
+    //     else{
+    //         taskTitle.css("text-decoration", "none");
+    //     }
+    // })
+
+    // if ($(".task .tarea_check").prop("checked") == true) {
+    //     taskTitle.css("text-decoration", "line-through");
+    // }
+
+    $(".tasks").change(function(){
+        $(".tasklist__container .btn-modify").css("display", "block");
     })
 
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\NewsletterSuscribe;
 use App\Models\EmailNewsletter;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -25,5 +26,10 @@ class NewsletterController extends Controller{
             DB::rollBack();
             return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
+    }
+
+    public function destroyNewsletterView(User $user){
+        $generos = LibroController::getGeneros();
+        return view('users.editPerfil-deleteNewsletter', compact('user', 'generos'));
     }
 }

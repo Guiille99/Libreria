@@ -164,4 +164,5 @@ Route::controller(TareaController::class)->group(function(){
 
 Route::controller(NewsletterController::class)->group(function(){
     Route::post('suscribe-newstler', 'suscribeNewstler')->name('suscribe.newstler');
+    Route::get('desuscribir-newsletter/{user}', 'destroyNewsletterView')->name('newsletter.destroy-view');
 });

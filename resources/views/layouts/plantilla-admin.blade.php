@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="{{asset('uploads/logo.ico')}}" type="image/x-icon">
     <script src="{{asset('build/assets/jquery-3.6.3.min.js')}}"></script>
     <script src="{{asset('build/assets/moment.min.js')}}"></script>
+    @livewireStyles
     @vite(["resources/css/app.scss","resources/js/color-theme.js", "resources/js/app.js", "resources/js/validation_form.js", "resources/js/color-theme.js"])
 </head>
 <body>
@@ -137,5 +138,9 @@
     <label for="toggler-sidebar" id="body-label"></label>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/r-2.4.1/datatables.min.js"></script>
     @yield('script')
+    @livewireScripts
+    <script>
+      Livewire.onPageExpired((response, message) => {})
+  </script>
 </body>
 </html>

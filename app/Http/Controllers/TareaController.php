@@ -11,7 +11,7 @@ class TareaController extends Controller
 {
 
     public function showCalendar(){
-        $tareasPendientesHoy = Tarea::whereDate('fin', today())->get();
+        $tareasPendientesHoy = Tarea::where('user_id', Auth::id())->whereDate('fin', today())->where('is_finish', 0)->get();
         return view('admin.calendar', compact('tareasPendientesHoy'));
     }
 

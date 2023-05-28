@@ -164,5 +164,9 @@ Route::controller(TareaController::class)->group(function(){
 
 Route::controller(NewsletterController::class)->group(function(){
     Route::post('suscribe-newstler', 'suscribeNewstler')->name('suscribe.newstler');
-    Route::get('desuscribir-newsletter/{user}', 'destroyNewsletterView')->name('newsletter.destroy-view');
+    Route::get('desuscribir-newsletter/{user}', 'destroyNewsletterView')->middleware('auth')->name('newsletter.destroy-view');
+    Route::get('desuscribir-newsletter', 'destroyNewsletterNoAccountView')->name('newsletter.destroy-no-account-view');
+    Route::post('desuscribir-newsletter', 'unsuscribeEmail')->name('unsuscribe.newsletter.sendEmail');
+    Route::get('desuscribir-newsletter/{token}/{email}', 'unsuscribeNoAccount')->name('unsuscribeNoAccount.newsletter');
+    Route::delete('desuscribir-newsletter', 'unsuscribe')->name('unsuscribe.newsletter');
 });

@@ -6,6 +6,7 @@ use App\Mail\NewsletterSuscribe;
 use App\Models\EmailNewsletter;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -83,6 +84,7 @@ class NewsletterController extends Controller{
             "email" => "required|email|exists:emails_newsletter,email"
         ]);
         MailController::sendEmailUnsuscribeWarning($request->email);
+        
         return redirect()->back()->with("message", "Se ha enviado un email a su correo electrónico");
     }
 }

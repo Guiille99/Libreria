@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
 
-class NewsletterUnsuscribeWarning extends Mailable
+class NewsletterUnsuscribeWarning extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $email;

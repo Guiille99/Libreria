@@ -28,11 +28,5 @@
     <p>Si no has sido tú puedes ignorar este mensaje.</p>
     <br><br>
     <a href="{{route('unsuscribeNoAccount.newsletter', [$token, $email])}}" id="delete-newsletter-link">Darse de baja</a>
-    {{-- <form action="{{route('unsuscribe.newsletter')}}" method="post" class="email-form d-flex">
-        @csrf
-        @method('delete')
-        <input type="hidden" name="email" value="{{$email}}">
-        <button type="submit">Darse de baja</button>
-    </form> --}}
 </body>
 </html>

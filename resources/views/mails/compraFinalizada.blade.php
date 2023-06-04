@@ -1,6 +1,6 @@
 @extends('layouts.plantilla-email')
 @section('content')
-    <div class="header" style="background-image: url('https://res.cloudinary.com/det0ae4ke/image/upload/v1685877653/books/pexels-cottonbro-studio-4865739_dfe2hn.jpg'); background-position: left center;">
+    <div class="header" style="background-image: url('https://res.cloudinary.com/det0ae4ke/image/upload/v1685910624/books/email-layout-bg_iorw5x.jpg'); background-position: left center;">
         <span class="title">¡GRACIAS POR TU COMPRA!</span>
     </div>
     <p>¡Hola {{$pedido->user->nombre}}!</p>

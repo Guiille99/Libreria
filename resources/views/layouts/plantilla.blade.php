@@ -376,7 +376,7 @@
           <div class="footer__menu">
             <h4>Información legal</h4>
             <div class="info__details">
-              <a href="">Condiciones de uso</a>
+              <a href="{{route('condiciones-uso')}}">Condiciones de uso</a>
               <a href="">Política de protección de datos</a>
               <a href="">Política de cookies</a>
               <a href="">Condiciones para vender</a>
@@ -388,7 +388,7 @@
             <div class="info__details">
               <a href="{{route('newsletter.destroy-no-account-view')}}">Baja del Newsletter</a>
               <a href="">Empleo</a>
-              <a href="">Quiénes somos</a>
+              <a href="{{route('quienes-somos')}}">Quiénes somos</a>
             </div>
           </div>
 

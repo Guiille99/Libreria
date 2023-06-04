@@ -19,8 +19,14 @@ class HomeController extends Controller
                 $genero->genero = str_replace(["/"], "-", $genero->genero);
             }
         }
-
-
         return view("index", compact('libros_recomendados', 'libros_recientes', 'generos'));
+    }
+
+    public function showQuienesSomos(){
+        return view('empresa.quienes-somos');
+    }
+
+    public function showCondicionesUso(){
+        return view('empresa.condiciones-uso');
     }
 }

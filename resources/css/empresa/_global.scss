@@ -1,0 +1,34 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+.info-empresa__container{
+    padding: 10px;
+    margin: 0 auto;
+    @include m.tablet{
+        width: 75%;
+    }
+    .portada{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        #title{
+            width: 90%;
+            padding: 5px 0px;
+            text-align: center;
+            color: v.$white;
+            font-weight: bolder;
+            background: linear-gradient(45deg, #ffffff1f, v.$black);
+            @include m.tablet{
+                padding: 5px 40px;
+                width: auto;
+            }
+        }
+    }
+    .info__content{
+        padding: 20px;
+    }
+}

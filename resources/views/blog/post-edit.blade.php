@@ -41,7 +41,11 @@
                     <div class="form-floating mt-3 col-md-6">
                         <select id="categorias" class="form-select" name="categoria" aria-label="Default select example">
                             @foreach ($categorias as $categoria)
+                                @if ($post->categoria->nombre == $categoria->nombre)
+                                <option value="{{$categoria->nombre}}" selected>{{$categoria->nombre}}</option>
+                                @else
                                 <option value="{{$categoria->nombre}}">{{$categoria->nombre}}</option>
+                                @endif
                             @endforeach
                           </select>
                           <label for="categorias" class="form-label ms-1">Categoría</label>

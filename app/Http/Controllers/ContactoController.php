@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendContactEmail;
 use Illuminate\Http\Request;
 use App\Models\Libro;
 
@@ -17,5 +18,17 @@ class ContactoController extends Controller
         }
 
         return view("contacto", compact("generos"));
+    }
+
+    public function sendMessage(Request $request){
+        // dd($request);
+        $request->validate([
+            "nombre" => "required",
+            "email" => "required|email",
+            "mensaje" => "required"
+        ]);
+        // dd($request->email);
+        dispatch(new SendContactEmail($request->mensaje, $request->email));
+        return redirect()->back();
     }
 }

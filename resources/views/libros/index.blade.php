@@ -18,7 +18,7 @@
                     <h1 class="text-center">Libros de {{$filtro}}</h1>
                 @endif
             </div>
-            <div class="recomendados__container col-6 col-md-10 m-auto">
+            <div class="recomendados__container col-8 col-md-10 m-auto">
                 <div class="libros__container mt-3">
                     @foreach ($libros as $libro)
                     <div class="card">

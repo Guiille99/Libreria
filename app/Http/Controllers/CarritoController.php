@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendPedidoEmail;
 use App\Models\Carrito;
 use App\Models\CarritoLibro;
 use App\Models\Libro;
@@ -174,33 +175,15 @@ class CarritoController extends Controller
     
             CarritoLibro::where('carrito_id', Auth::user()->carrito->id)->delete();
             DB::commit();
+            dispatch(new SendPedidoEmail(Auth::user()->email, $pedido));
             return view("carrito.compra-finalizada", compact("generos"));
         } catch (\Throwable $e) {
             DB::rollBack();
-            // return $e->getMessage();
             return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }
 
-    // public static function compruebaLibrosEliminados($carrito){
-    //     $cambios = false;
-    //     foreach ($carrito as $idLibro => $datos) {
-    //         $libro = Libro::where('id', $idLibro)->first();
-    //         if ($libro == null) {
-    //             unset($carrito[$idLibro]);
-    //             $cambios = true;
-    //         }
-    //     }
-    //     if ($cambios) { //Si hay cambios actualizamos
-    //         $carritoData = session()->get('carrito-data');
-    //         session()->put('carrito', $carrito); //Actualizamos la sesión
-    //         $carritoData["total"] = CarritoController::getTotal(); //Almacenamos el precio total
-    //         $carritoData["cantidad"] = CarritoController::getCantidad($carrito); //Almacenamos la cantidad total
-    //         session()->put("carrito-data", $carritoData);
-    //     }
-    // }
-
-    private function libroCartExists($carrito, $libro){
+    public function libroCartExists($carrito, $libro){
         $exists = (CarritoLibro::where('carrito_id', $carrito->id)->where('libro_id', $libro->id)->first() == null) ? false : true;
         return $exists;
     }

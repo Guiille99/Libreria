@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
-{
- 
+{ 
     public function index(Request $request){
         // $libros = Libro::paginate(5);
         $libros = Libro::select('id', 'titulo', 'autor', 'editorial', 'stock', 'fecha_publicacion', 'precio', 'genero', 'valoracion', 'created_at', 'updated_at')->get();
@@ -76,24 +75,19 @@ class LibroController extends Controller
         return redirect()->route('libros.filter', $request->filtro); //Envío el filtro recogido en la barra de búsqueda y lo envío
     }
 
-    public function destroy(Libro $libro){ 
+    public function destroy(Request $request, Libro $libro){ 
         DB::beginTransaction();
         try {
-            if (isset($carrito[$libro->id])) { //Si el libro está en el carrito
-                $carrito = session()->get('carrito');
-                $carritoData = session()->get('carrito-data');
-                unset($carrito[$libro->id]); //Eliminamos el libro del carrito
-                session()->put('carrito', $carrito); //Actualizamos el carrito
-                $carritoData["total"] = CarritoController::getTotal();
-                $carritoData["cantidad"] = CarritoController::getCantidad($carrito);
-                session()->put("carrito-data", $carritoData);
-                Cookie::queue("cookie-cart-" . Auth::id(), serialize(session()->get('carrito')), 60*24*30);
-                Cookie::queue("cookie-cartData-" . Auth::id(), serialize(session()->get('carrito-data')), 60*24*30);
+            $carritoController = new CarritoController();
+            $wishlistController = new WishlistController();
+            $carrito = Auth::user()->carrito;
+            if ($carrito != null && $carritoController->libroCartExists($carrito, $libro)) { //Si el libro está en el carrito
+                CarritoController::deleteToCart($request, $libro->id);
             }
 
-            $wishlist = session()->get('wishlist');
-            if (array_key_exists($libro->id, $wishlist)) { //Si el libro está en la wishlist
-                WishlistController::deleteToWishlist($libro);
+            $wishlist = Auth::user()->wishlist;
+            if ($wishlist != null && $wishlistController->libroWishlistExist($wishlist, $libro)) { //Si el libro está en la wishlist
+                $wishlistController->deleteToWishlist($request, $libro->id);
             }
             $publicID = $this->getPublicID($libro->portada);
             Cloudinary::destroy($publicID); //Elimina la imagen

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Mail\EnviarCorreo;
 use App\Mail\NewsletterSuscribe;
 use App\Mail\NewsletterUnsuscribeWarning;
+use App\Mail\PostDestacado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;

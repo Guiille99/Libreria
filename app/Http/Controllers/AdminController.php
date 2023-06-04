@@ -8,7 +8,6 @@ use App\Models\Libro;
 use App\Models\Pedido;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -19,12 +18,11 @@ class AdminController extends Controller
         $beneficioUltMes = $this->getBeneficioUltimoMes();
         $librosVendidosUltMes = $this->getLibrosVendidosUltMes();
         $usuariosRegistrados = $this->getUsuariosRegistrados();
-        $ultimosPedidos = PedidoController::getLastNPedidos(5);
-        // dd($ultimosPedidos);
+        // $ultimosPedidos = PedidoController::getLastNPedidos(5);
         $ventaChart = $chartData["ventaChart"];
         $userChart = $chartData["userChart"];
         
-        return view('admin.dashboard', compact('ingresoUltMes', 'beneficioUltMes', 'librosVendidosUltMes', 'usuariosRegistrados', 'ultimosPedidos', 'ventaChart', 'userChart'));
+        return view('admin.dashboard', compact('ingresoUltMes', 'beneficioUltMes', 'librosVendidosUltMes', 'usuariosRegistrados', 'ventaChart', 'userChart'));
     }
 
     private function generaGrafica(){
@@ -92,7 +90,6 @@ class AdminController extends Controller
         return $librosVendidosUltMes;
     }
     private function getUsuariosRegistrados(){
-        // $usuariosUltMes = User::select(DB::raw('COUNT(id) as usuarios'))->where(DB::raw('MONTH(created_at)'), '=', Carbon::now()->subMonth()->month)->first();
         $usuariosRegistrados = User::select(DB::raw('COUNT(id) as usuarios'))->first();
         $usuariosRegistrados = ($usuariosRegistrados->usuarios==null) ? 0 : $usuariosRegistrados->usuarios;
         return $usuariosRegistrados;

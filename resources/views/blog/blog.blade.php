@@ -12,32 +12,20 @@
     </div>
     {{-- IMÁGENES PRINCIPALES --}}
     <div class="imagenes__principales py-4 col-md-10 col-lg-9">
-        <div class="destacada1 blog__card">
-            <a href="{{route('show.post', $postsDestacados[0]->slug)}}"></a>
-            <figure>
-                <img src="{{asset($postsDestacados[0]->portada)}}" alt="{{$postsDestacados[0]->nombre}}" class="img-fluid">
-            </figure>
-            <p>{{$postsDestacados[0]->nombre}}</p>
-        </div>
-
+        @foreach ($postsDestacados as $post)
         <div class="destacada2 blog__card">
-            <a href="{{route('show.post', $postsDestacados[1]->slug)}}"></a>
+            <a href="{{route('show.post', $post->slug)}}"></a>
             <figure>
-                <img src="{{asset($postsDestacados[1]->portada)}}" alt="{{$postsDestacados[1]->nombre}}" class="img-fluid">
+                <img src="{{asset($post->portada)}}" alt="{{$post->nombre}}" class="img-fluid">
             </figure>
+            @if ($post->nombre == "Día de la mujer")
             <div class="mensaje__oferta">
                 <p> <span class="porcentaje">5%</span> de dto.</p>
             </div>
-            <p>{{$postsDestacados[1]->nombre}}</p>
+            @endif
+            <p>{{$post->nombre}}</p>
         </div>
-
-        <div class="destacada3 blog__card">
-            <a href="{{route('show.post', $postsDestacados[2]->slug)}}"></a>
-            <figure>
-                <img src="{{asset($postsDestacados[2]->portada)}}" alt="{{$postsDestacados[2]->nombre}}" class="img-fluid"> 
-            </figure>
-            <p>{{$postsDestacados[2]->nombre}}</p>
-        </div>
+        @endforeach
     </div>
 
     {{-- ÚLTIMAS RESEÑAS --}}

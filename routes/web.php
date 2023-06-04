@@ -7,7 +7,6 @@ use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MailController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PedidoController;
@@ -17,12 +16,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
-use App\Mail\ContactanosMailable;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\EnviarCorreo;
-use App\Models\Libro;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +66,10 @@ Route::get('/register', [RegisterController::class, "index"])->name("register.in
 Route::post('/register', [RegisterController::class, "store"])->name("register.store");
 
 
-Route::get('/contacto', [ContactoController::class, "index"])->name("contacto");
+Route::controller(ContactoController::class)->group(function(){
+    Route::get('/contacto', "index")->name("contacto");
+    Route::post('contacto', 'sendMessage')->name('contacto.sendMessage');
+});
 
 // RUTAS DE RESETEO DE CONTRASEÑA
 Route::controller(PasswordResetController::class)->group(function(){
@@ -109,6 +106,7 @@ Route::controller(DireccionController::class)->group(function(){
 Route::controller(PedidoController::class)->group(function(){
     Route::get("mis-pedidos", 'showPedidos')->middleware('auth')->name('show.orders');
     Route::get("ultimos-pedidos", 'getUltimosPedidos')->middleware('auth')->middleware('checkadmin')->name('show.last-orders');
+    Route::get("ultimos-nPedidos", 'getLastNPedidos')->middleware('auth')->middleware('checkadmin')->name('show.last-nOrders');
     Route::get("/admin/pedidos", "showAllOrders")->middleware("checkadmin")->name("showAll.orders");
     Route::get("/admin/pedido/{pedido}", "edit")->middleware('checkadmin')->name("edit.order");
     Route::get("pedidos-cancelados", "showPedidosCancelados")->middleware('auth')->name('show.cancelOrders');
@@ -156,11 +154,6 @@ Route::controller(TareaController::class)->group(function(){
     Route::put('admin/calendario/modify-task', 'update')->middleware('checkadmin')->name('tarea.update');
     Route::delete('admin/calendario/delete-task', 'destroy')->middleware('checkadmin')->name('tarea.destroy');
 });
-
-//RUTAS PARA MANEJO DE EMAILS
-// Route::controller(MailController::class)->group(function(){
-//     Route::post('suscribe-newstler', 'sendEmailSuscribeNewstler')->name('suscribe.newstler');
-// });
 
 Route::controller(NewsletterController::class)->group(function(){
     Route::post('suscribe-newstler', 'suscribeNewstler')->name('suscribe.newstler');

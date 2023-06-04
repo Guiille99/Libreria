@@ -7,3 +7,11 @@ nav:has(.pagination){
         gap: 40px;
     }
 }
+.pagination{
+    .page-link{
+        font-size: .9rem;
+        @include m.tablet{
+            font-size: unset;
+        }
+    }
+}

@@ -28,29 +28,40 @@
         @endforeach
     </div>
 
-    {{-- ÚLTIMAS RESEÑAS --}}
-    <main class="resenas__container py-3 pb-5">
-        <div class="resenas">
-            <h1>ÚLTIMAS RESEÑAS</h1>
-    
-            <div class="resenas__grid col-10 col-lg-9">
-                @foreach ($ultimasResenas as $resena)
-                <div class="resena">
-                    <a href="{{route('show.post', $resena->slug)}}"></a>
-                    <figure>
-                        <img src="{{asset($resena->thumbnail)}}" alt="{{$resena->nombre}}" class="img-fluid">
-                    </figure>
-                    <div class="resena__info">
-                        <h5>{{$resena->nombre}}</h5>
-    
-                        <div class="resena__info__publicacion">
-                            <p class="resena__autor">{{$resena->user->nombre}} {{$resena->user->apellidos}}</p>
-                            <p class="resena__fecha">{{$resena->created_at->format("d/m/Y")}}</p>
+    <main class="blog-main-content py-3 pb-5">
+        {{-- ÚLTIMAS RESEÑAS --}}
+        <div class="resenas__container">
+            <div class="resenas">
+                <h1>ÚLTIMAS RESEÑAS</h1>
+        
+                <div class="resenas__grid col-10 col-lg-9">
+                    @foreach ($ultimasResenas as $resena)
+                    <div class="resena">
+                        <a href="{{route('show.post', $resena->slug)}}"></a>
+                        <figure>
+                            <img src="{{asset($resena->thumbnail)}}" alt="{{$resena->nombre}}" class="img-fluid">
+                        </figure>
+                        <div class="resena__info">
+                            <h5>{{$resena->nombre}}</h5>
+        
+                            <div class="resena__info__publicacion">
+                                <p class="resena__autor">{{$resena->user->nombre}} {{$resena->user->apellidos}}</p>
+                                <p class="resena__fecha">{{$resena->created_at->format("d/m/Y")}}</p>
+                            </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
+        </div>
+
+        <div class="categorias__container col-10 col-md-9 mb-5">
+            @foreach ($categorias as $categoria)
+                <div class="categoria">
+                    <a href="{{route('show.categoria', $categoria->slug)}}"></a>
+                    <p>{{$categoria->nombre}}</p>
+                </div>
+            @endforeach
         </div>
 
         {{-- VENTAJAS --}}
@@ -59,17 +70,17 @@
                     <i class="bi bi-bag-check"></i>
                     <p>Compra segura</p>
                 </div>
-
+    
                 <div class="ventaja">
                     <i class="bi bi-truck"></i>
                     <p>Envío gratis a partir de 15€</p>
                 </div>
-
+    
                 <div class="ventaja">
                     <i class="bi bi-shop"></i>
                     <p>Recogida en tienda gratis</p>
                 </div>
-
+    
                 <div class="ventaja">
                     <i class="bi bi-arrow-clockwise"></i>
                     <p>Devolución gratis hasta 30 días</p>

@@ -4,12 +4,13 @@
     padding: 10px;
     margin: 0 auto;
     @include m.tablet{
-        width: 75%;
+        width: 85%;
     }
     .portada{
         display: flex;
         align-items: center;
         justify-content: center;
+        background-image: url("https://res.cloudinary.com/det0ae4ke/image/upload/v1685913363/books/quienes-somos-bg_qimlof.jpg");
         height: 150px;
         width: 100%;
         background-repeat: no-repeat;
@@ -30,5 +31,8 @@
     }
     .info__content{
         padding: 20px;
+        li::marker, .condicion{
+            font-weight: bolder;
+        }
     }
 }

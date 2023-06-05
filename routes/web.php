@@ -36,6 +36,8 @@ Route::get('libro/{libro}', [LibroController::class, "show"])->name("libros.show
 
 Route::get('quienes-somos', [HomeController::class, "showQuienesSomos"])->name("quienes-somos");
 Route::get('condiciones-uso', [HomeController::class, "showCondicionesUso"])->name("condiciones-uso");
+Route::get('politica-proteccion-de-datos', [HomeController::class, "showProteccionDatos"])->name("proteccion-datos");
+Route::get('politica-de-cookies', [HomeController::class, "showPoliticaCookies"])->name("politica-cookies");
 
 Route::get('admin', [AdminController::class, "index"])->middleware('checkadmin')->name("admin.index"); //Página principal del admin
 Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario

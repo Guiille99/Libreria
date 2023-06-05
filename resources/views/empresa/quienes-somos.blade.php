@@ -1,6 +1,13 @@
 @extends('layouts.plantilla')
 @section('title', 'Books | Quiénes somos')    
 @section('content')
+<div class="container">
+    <nav class="pt-3" aria-label="breadcrumb">
+        <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a href="{{route('index')}}">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Quiénes somos</li> 
+        </ol>
+    </nav>
     <div class="quienes-somos__container info-empresa__container">
         <div class="portada">
             <h1 id="title">QUIÉNES SOMOS</h1>
@@ -13,4 +20,5 @@
             <p>Te invitamos a visitar nuestra librería, sumergirte en la magia de las historias y descubrir nuevos mundos entre sus páginas. Únete a nuestra comunidad de lectores y descubre el placer infinito de perderse en un buen libro. ¡Esperamos verte pronto en <strong>Books</strong>!"</p>
         </div>
     </div>
+</div>
 @endsection

@@ -127,11 +127,12 @@ class PostController extends Controller{
     }
 
     public function showBlog(){
-        $generos = LibroController::getGeneros();
+        // $generos = LibroController::getGeneros();
         //Obtiene los 3 últimos post de la categoría Destacados
         $postsDestacados = Post::where('categoria_id', '5')->latest()->take(3)->get();
         $ultimasResenas = Post::orderby('created_at', 'desc')->take(6)->get();
-        return view('blog.blog', compact('generos', 'postsDestacados', 'ultimasResenas'));
+        $categorias = Categoria::all('nombre', 'slug');
+        return view('blog.blog', compact('postsDestacados', 'ultimasResenas', 'categorias'));
     }
 
     public function showPost($slug){

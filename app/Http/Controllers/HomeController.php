@@ -29,4 +29,10 @@ class HomeController extends Controller
     public function showCondicionesUso(){
         return view('empresa.condiciones-uso');
     }
+    public function showProteccionDatos(){
+        return view('empresa.politica-proteccion-datos');
+    }
+    public function showPoliticaCookies(){
+        return view('empresa.politica-cookies');
+    }
 }

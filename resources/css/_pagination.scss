@@ -8,6 +8,9 @@ nav:has(.pagination){
     }
 }
 .pagination{
+    .page-item{
+        width: fit-content;
+    }
     .page-link{
         font-size: .9rem;
         @include m.tablet{

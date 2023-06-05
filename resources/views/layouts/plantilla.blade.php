@@ -377,9 +377,8 @@
             <h4>Información legal</h4>
             <div class="info__details">
               <a href="{{route('condiciones-uso')}}">Condiciones de uso</a>
-              <a href="">Política de protección de datos</a>
-              <a href="">Política de cookies</a>
-              <a href="">Condiciones para vender</a>
+              <a href="{{route('proteccion-datos')}}">Política de protección de datos</a>
+              <a href="{{route('politica-cookies')}}">Política de cookies</a>
             </div>
           </div>
 
@@ -387,7 +386,8 @@
             <h4>Otros enlaces</h4>
             <div class="info__details">
               <a href="{{route('newsletter.destroy-no-account-view')}}">Baja del Newsletter</a>
-              <a href="">Empleo</a>
+              <a href="">Condiciones para vender</a>
+              {{-- <a href="">Empleo</a> --}}
               <a href="{{route('quienes-somos')}}">Quiénes somos</a>
             </div>
           </div>

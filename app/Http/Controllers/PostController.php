@@ -144,10 +144,10 @@ class PostController extends Controller{
     }
 
     public function showPostsCategory($slug){
-        $generos = LibroController::getGeneros();
+        // $generos = LibroController::getGeneros();
         $categoria = Categoria::where('slug', $slug)->first();
         $posts = Post::where('categoria_id', $categoria->id)->get();
-        return view("blog.posts-categoria", compact("categoria", "posts", "generos"));
+        return view("blog.posts-categoria", compact("categoria", "posts"));
     }
 
     public function getPosts(Request $request){

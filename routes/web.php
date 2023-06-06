@@ -13,6 +13,7 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProvinciaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
@@ -38,6 +39,7 @@ Route::get('quienes-somos', [HomeController::class, "showQuienesSomos"])->name("
 Route::get('condiciones-uso', [HomeController::class, "showCondicionesUso"])->name("condiciones-uso");
 Route::get('politica-proteccion-de-datos', [HomeController::class, "showProteccionDatos"])->name("proteccion-datos");
 Route::get('politica-de-cookies', [HomeController::class, "showPoliticaCookies"])->name("politica-cookies");
+Route::get('ayuda', [HomeController::class, "showHelp"])->name("support");
 
 Route::get('admin', [AdminController::class, "index"])->middleware('checkadmin')->name("admin.index"); //Página principal del admin
 Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario
@@ -74,6 +76,11 @@ Route::post('/register', [RegisterController::class, "store"])->name("register.s
 Route::controller(ContactoController::class)->group(function(){
     Route::get('/contacto', "index")->name("contacto");
     Route::post('contacto', 'sendMessage')->name('contacto.sendMessage');
+});
+
+//RUTAS DE PÁGINAS DE AYUDA
+Route::controller(SupportController::class)->group(function(){
+    Route::get('ayuda/como-puedo-saber-el-estado-de-mi-pedido', "saberEstadoPedido")->name('saber-estado-pedido');
 });
 
 // RUTAS DE RESETEO DE CONTRASEÑA

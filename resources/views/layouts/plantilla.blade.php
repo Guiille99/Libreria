@@ -386,8 +386,7 @@
             <h4>Otros enlaces</h4>
             <div class="info__details">
               <a href="{{route('newsletter.destroy-no-account-view')}}">Baja del Newsletter</a>
-              <a href="">Condiciones para vender</a>
-              {{-- <a href="">Empleo</a> --}}
+              <a href="{{route('support')}}">Ayuda</a>
               <a href="{{route('quienes-somos')}}">Quiénes somos</a>
             </div>
           </div>

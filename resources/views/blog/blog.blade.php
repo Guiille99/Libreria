@@ -55,11 +55,12 @@
             </div>
         </div>
 
+        <h1 class="text-center">CATEGORÍAS</h1>
         <div class="categorias__container col-10 col-md-9 mb-5">
             @foreach ($categorias as $categoria)
-                <div class="categoria">
+                <div class="categoria {{$categoria->slug}}">
                     <a href="{{route('show.categoria', $categoria->slug)}}"></a>
-                    <p>{{$categoria->nombre}}</p>
+                    <p class="title">{{$categoria->nombre}}</p>
                 </div>
             @endforeach
         </div>

@@ -35,4 +35,7 @@ class HomeController extends Controller
     public function showPoliticaCookies(){
         return view('empresa.politica-cookies');
     }
+    public function showHelp(){
+        return view('empresa.support');
+    }
 }

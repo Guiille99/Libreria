@@ -395,10 +395,10 @@
         </div>
 
         <div class="rrss__container">
-          <a href=""><i class="bi bi-facebook"></i></a>
-          <a href=""><i class="bi bi-instagram"></i></a>
-          <a href=""><i class="bi bi-twitter"></i></a>
-          <a href=""><i class="bi bi-linkedin"></i></a>
+          <a href="https://es-es.facebook.com/"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+          <a href="https://twitter.com/?lang=es"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.linkedin.com/"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
     </footer>

@@ -48,7 +48,7 @@ class UserController extends Controller
             "email" => "required|unique:users",
             "username" => "required|min:5|max:25|unique:users",
             "password" => "required|min:5|max:80",
-            "avatar" => "required|image|mimes:jpeg,jpg,png|max:500"
+            "avatar" => "image|mimes:jpeg,jpg,png|max:500"
         ]);
         DB::beginTransaction();
         try {
@@ -59,7 +59,12 @@ class UserController extends Controller
             $user->password =  Hash::make($request->password); //Codificamos la contraseña
             $user->email = $request->email;
             $user->rol = $request->rol;
-            $user->avatar = $this->uploadImage($request->avatar);
+            if ($request->has('avatar')) {
+                $user->avatar = $this->uploadImage($request->avatar);
+            }
+            else{
+                $user->avatar = UserController::DEFAULT_AVATAR_URL;
+            }
             $user->save();
             DB::commit();
             return redirect()->route('admin.users')->with("message", "Usuario añadido correctamente");

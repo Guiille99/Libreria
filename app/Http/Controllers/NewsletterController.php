@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendNewsletterSuscribe;
+use App\Jobs\SendNewsletterUnsuscribeWarning;
 use App\Models\EmailNewsletter;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +22,8 @@ class NewsletterController extends Controller{
             $email->email = $request->email;
             $email->save();
             DB::commit();
-            MailController::sendEmailSuscribeNewstler($request);
+            // MailController::sendEmailSuscribeNewstler($request);
+            dispatch(new SendNewsletterSuscribe($request->email));
             return redirect()->back()->with("message", "Tu suscripción a nuestro noticiero ha sido completada");
         } catch (\Throwable $e) {
             DB::rollBack();
@@ -77,7 +80,7 @@ class NewsletterController extends Controller{
         $request->validate([
             "email" => "required|email|exists:emails_newsletter,email"
         ]);
-        MailController::sendEmailUnsuscribeWarning($request->email);
+        dispatch(new SendNewsletterUnsuscribeWarning($request->email));
         return redirect()->back()->with("message", "Se ha enviado un email a su correo electrónico");
     }
 }

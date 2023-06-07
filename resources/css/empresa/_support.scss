@@ -9,6 +9,7 @@
     .pregunta{
         border: 1px solid adjust-color($color: v.$black, $alpha: 0.5);
         padding: 10px;
+        height: 100%;
         p{
             font-weight: bolder;
             text-align: center;
@@ -22,6 +23,7 @@
         }
     }
     a{
+        color: unset;
         text-decoration: none;
     }
 }

@@ -20,21 +20,31 @@
                         <p>¿Cómo puedo saber el estado de mi pedido?</p>
                     </div>
                 </a>
-                <div class="pregunta">
-                    <p>¿Cuáles son los métodos de pago disponibles?</p>
-                </div>
-                <div class="pregunta">
-                    <p>¿Cómo puedo cancelar un pedido?</p>
-                </div>
-                <div class="pregunta">
-                    <p>¿Se puede devolver un pedido?</p>
-                </div>
-                <div class="pregunta">
-                    <p>No puedo añadir una nueva dirección de envío</p>
-                </div>
-                <div class="pregunta">
-                    <p>¿Cómo puedo darme de baja del Newsletter?</p>
-                </div>
+                <a href="{{route('support.metodos-pago')}}">
+                    <div class="pregunta">
+                        <p>¿Cuáles son los métodos de pago disponibles?</p>
+                    </div>
+                </a>
+                <a href="{{route('support.cancelar-pedido')}}">
+                    <div class="pregunta">
+                        <p>¿Cómo puedo cancelar un pedido?</p>
+                    </div>
+                </a>
+                <a href="{{route('support.devolver-pedido')}}">
+                    <div class="pregunta">
+                        <p>¿Se puede devolver un pedido?</p>
+                    </div>
+                </a>
+                <a href="{{route('support.direccion-envio')}}">
+                    <div class="pregunta">
+                        <p>No puedo añadir una nueva dirección de envío</p>
+                    </div>
+                </a>
+                <a href="{{route('support.baja-newsletter')}}">
+                    <div class="pregunta">
+                        <p>¿Cómo puedo darme de baja del Newsletter?</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

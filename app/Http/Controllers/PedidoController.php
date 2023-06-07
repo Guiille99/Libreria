@@ -137,7 +137,5 @@ class PedidoController extends Controller
             ->toJson();
         }
         return redirect()->back();
-        // $pedidos = Pedido::orderby('id', 'desc')->take($nPedidos)->paginate($nPedidos);
-        // return $pedidos;
     }
 }

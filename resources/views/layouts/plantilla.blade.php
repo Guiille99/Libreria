@@ -369,7 +369,7 @@
             <div class="info__details">
               <p><i class="bi bi-telephone-fill"></i> 623456789</p>
               <p><i class="bi bi-geo-alt-fill"></i> Sevilla (España)</p>
-              <a href="mailto:info@carpinteriamaderareal@gmail.com"><i class="bi bi-envelope-fill"></i> info@book.com</a>
+              <a href="mailto:info@carpinteriamaderareal@gmail.com"><i class="bi bi-envelope-fill"></i> books2023.info@gmail.com</a>
             </div>
           </div>
 

@@ -64,23 +64,23 @@ class AdminController extends Controller
 
     private function getBeneficioUltimoMes(){
         $mesAnterior = Carbon::now()->subMonth()->month;
-        $ingresosUltMes = Pedido::select(DB::raw('SUM(total) as ingreso'))->where(DB::raw('MONTH(created_at)'), '=', $mesAnterior)->first();
+        $ingresosUltMes = $this->getIngresoUltMes();
         $gastoUltMes = Libro::select(DB::raw('SUM(precio*0.6) as gasto'))->where(DB::raw('MONTH(created_at)'), '=', $mesAnterior)->first();
         $gastoUltMes = ($gastoUltMes->gasto==null) ? 0 : $gastoUltMes->gasto;
-        $ingresosUltMes = ($ingresosUltMes->ingreso==null) ? 0 : $ingresosUltMes->ingreso;
+        $ingresosUltMes = ($ingresosUltMes==null) ? 0 : $ingresosUltMes;
         $beneficioUltMes = $ingresosUltMes - $gastoUltMes;
         return $beneficioUltMes;
 
     }
 
     private function getIngresoUltMes(){
-        $ingresosUltMes = Pedido::select(DB::raw('SUM(total) as ingreso'))->where(DB::raw('MONTH(created_at)'), '=', Carbon::now()->subMonth()->month)->first();
-        $ingresosUltMes = ($ingresosUltMes->ingreso==null) ? 0 : $ingresosUltMes->ingreso;
+        $ingresosUltMes = Pedido::where(DB::raw('MONTH(created_at)'), '=', Carbon::now()->subMonth()->month)->where('estado', '!=', 'Cancelado')->sum('total');
+        $ingresosUltMes = ($ingresosUltMes==null) ? 0 : $ingresosUltMes;
         return $ingresosUltMes;
     }
 
     private function getLibrosVendidosUltMes(){
-        $pedidosUltMes = Pedido::where(DB::raw('MONTH(created_at)'), '=', 5)->get();
+        $pedidosUltMes = Pedido::where(DB::raw('MONTH(created_at)'), '=', Carbon::now()->subMonth()->month)->get();
         $librosVendidosUltMes = 0;
         foreach ($pedidosUltMes as $pedido) {
             foreach ($pedido->libros as $libro) {
@@ -90,8 +90,8 @@ class AdminController extends Controller
         return $librosVendidosUltMes;
     }
     private function getUsuariosRegistrados(){
-        $usuariosRegistrados = User::select(DB::raw('COUNT(id) as usuarios'))->first();
-        $usuariosRegistrados = ($usuariosRegistrados->usuarios==null) ? 0 : $usuariosRegistrados->usuarios;
+        $usuariosRegistrados = User::count('id');
+        $usuariosRegistrados = ($usuariosRegistrados==null) ? 0 : $usuariosRegistrados;
         return $usuariosRegistrados;
     }
 }

@@ -10,7 +10,7 @@
             <li class="breadcrumb-item active" aria-current="page">¿Cómo puedo saber el estado de mi pedido?</li> 
         </ol>
     </nav>
-    <div class="info-empresa__container support__container">
+    <div class="info-empresa__container support__container py-3">
         <div class="title__container">
             <h1 class="title">¿Cómo puedo saber el estado de mi pedido?</h1>
         </div>

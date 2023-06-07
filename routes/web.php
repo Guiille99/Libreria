@@ -81,6 +81,11 @@ Route::controller(ContactoController::class)->group(function(){
 //RUTAS DE PÁGINAS DE AYUDA
 Route::controller(SupportController::class)->group(function(){
     Route::get('ayuda/como-puedo-saber-el-estado-de-mi-pedido', "saberEstadoPedido")->name('saber-estado-pedido');
+    Route::get('ayuda/cuales-son-los-metodos-de-pago-disponibles', "metodosDePagoSupport")->name('support.metodos-pago');
+    Route::get('ayuda/como-puedo-cancelar-un-pedido', "cancelarPedidoSupport")->name('support.cancelar-pedido');
+    Route::get('ayuda/se-puede-devolver-un-pedido', "devolverPedidoSupport")->name('support.devolver-pedido');
+    Route::get('ayuda/no-puedo-anadir-una-nueva-direccion-de-envio', "anadirDireccionEnvioSupport")->name('support.direccion-envio');
+    Route::get('ayuda/como-darme-de-baja-del-newsletter', "bajaDelNewsletterSupport")->name('support.baja-newsletter');
 });
 
 // RUTAS DE RESETEO DE CONTRASEÑA

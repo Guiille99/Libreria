@@ -16,6 +16,9 @@ $(document).ready(function () {
             center: "title",
             right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
+        buttonText: {
+            today: "Hoy"
+        },
         views: {
             dayGridMonth: { buttonText: "Mes" },
             timeGridWeek: { buttonText: "Semana" },
@@ -32,7 +35,7 @@ $(document).ready(function () {
         eventMouseEnter: function (info) {
             $(info.el).tooltip({
                 title: info.event.title,
-                placement: "bottom",
+                placement: "top",
             });
         },
         dateClick: function (info) {

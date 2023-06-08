@@ -139,12 +139,11 @@ class PostController extends Controller{
         $generos = LibroController::getGeneros();
         $post = Post::where('slug', $slug)->first();
         $postsMismaCategoria = Post::where('categoria_id', $post->categoria->id)->where('nombre', '!=', $post->nombre)->take(3)->get();
-        $comentarios = $post->comentarios;
+        $comentarios = $post->comentarios()->orderby('created_at', 'desc')->paginate(5);
         return view('blog.post', compact('post', 'postsMismaCategoria', 'comentarios', 'generos'));
     }
 
     public function showPostsCategory($slug){
-        // $generos = LibroController::getGeneros();
         $categoria = Categoria::where('slug', $slug)->first();
         $posts = Post::where('categoria_id', $categoria->id)->get();
         return view("blog.posts-categoria", compact("categoria", "posts"));

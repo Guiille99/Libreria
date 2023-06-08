@@ -42,7 +42,7 @@ Route::get('politica-de-cookies', [HomeController::class, "showPoliticaCookies"]
 Route::get('ayuda', [HomeController::class, "showHelp"])->name("support");
 
 Route::get('admin', [AdminController::class, "index"])->middleware('checkadmin')->name("admin.index"); //Página principal del admin
-Route::delete('admin/{user}', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario
+Route::delete('admin/{user}/delete', [UserController::class, "destroy"])->middleware('checkadmin')->name("user.destroy"); //Página para eliminar un usuario
 Route::get('admin/{user}/edit', [UserController::class, "edit"])->middleware('checkadmin')->name("user.edit"); //Página para mostrar el formulario de actualización de usuario
 Route::put('admin/{user}/edit', [UserController::class, "update"])->middleware('checkadmin')->name("user.update"); //Página para actualizar el usuario
 Route::get('admin/usuarios', [UserController::class, "show"])->middleware('checkadmin')->name("admin.users"); //Página que muestra los registros de los usuarios

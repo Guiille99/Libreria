@@ -23,7 +23,12 @@
                         {{$direccion->calle}}, {{$direccion->numero}}, {{$direccion->cp}} - {{$direccion->provincia->nombre}}
                     </p>
                     @endif
-            @endforeach
+                @endforeach
+                @else
+                <div class="alert alert-warning mt-2" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <span>Actualmente usted no tiene ninguna dirección registrada</span>
+                </div>
             @endif
         </div>
 
@@ -67,10 +72,10 @@
             @endif
         </div>
 
+        @if (Auth::user()->direcciones->count()>0)
         <div class="title mt-4">
             <p>CAMBIAR DIRECCIÓN PRINCIPAL</p>
         </div>
-
         <div class="data py-4">
             <form action="{{route('update-principal-address', $user)}}" method="post" class="d-flex flex-column gap-3">
                 @csrf
@@ -85,6 +90,6 @@
                 </button>
             </form>
         </div>
+        @endif
     </div>
-    
 @endsection

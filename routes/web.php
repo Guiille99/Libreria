@@ -111,11 +111,11 @@ Route::controller(CarritoController::class)->group(function(){
 
 //RUTAS DE MANEJO DE LAS DIRECCIONES
 Route::controller(DireccionController::class)->group(function(){
-    Route::delete('perfil/deleteAddress/{user}/{direccion}', 'destroy')->name('delete-address');
-    Route::put('perfil/update-principal-address/{user}', 'updatePrincipalAddress')->name('update-principal-address');
+    Route::delete('perfil/deleteAddress/{user}/{direccion}', 'destroy')->middleware('auth')->name('delete-address');
+    Route::put('perfil/update-principal-address/{user}', 'updatePrincipalAddress')->middleware('auth')->name('update-principal-address');
     Route::get('new_address_process', 'create')->middleware('auth')->name('address.create');
     Route::post('perfil/new_address', 'store')->middleware('auth')->name('store.address');
-    Route::get('perfil/address/{user}/{direccion}', 'edit')->name('edit.address');
+    Route::get('perfil/address/{user}/{direccion}', 'edit')->middleware('auth')->name('edit.address');
     Route::put('perfil/address/{direccion}/update-address', 'update')->middleware('auth')->name('update.address');
 });
 

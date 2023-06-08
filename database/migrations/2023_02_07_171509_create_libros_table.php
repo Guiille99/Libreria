@@ -24,7 +24,7 @@ return new class extends Migration
             $table->double("precio",4,2);
             $table->string("genero", 40);
             $table->text("descripcion");
-            $table->double("valoracion");
+            $table->double("valoracion",4,2);
             $table->integer("paginas");
             $table->integer("stock");
             $table->timestamps();

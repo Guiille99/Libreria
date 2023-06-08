@@ -6,18 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Libro;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 { 
     public function index(Request $request){
-        // $libros = Libro::paginate(5);
         $libros = Libro::select('id', 'titulo', 'autor', 'editorial', 'stock', 'fecha_publicacion', 'precio', 'genero', 'valoracion', 'created_at', 'updated_at')->get();
         if ($request->ajax()) {
-            // dump($request->ajax());
         return datatables()->of($libros)
         ->addColumn('action', function($libro){
             $btn="<div class='d-flex align-items-center gap-2'>
@@ -36,7 +31,7 @@ class LibroController extends Controller
     }
 
     public static function getGeneros(){
-        $generos = Libro::select('genero')->distinct()->get();
+        $generos = Libro::select('genero')->distinct()->orderby('genero')->get();
         foreach ($generos as $genero) {
             if (strpos($genero->genero, "/")!="") { //Si se encuentra / en el nombre del género lo sustituiremos para evitar errores
                 $genero->genero = str_replace(["/"], "-", $genero->genero);
@@ -114,7 +109,7 @@ class LibroController extends Controller
             "autor" => "required|min:2|max:100",
             "editorial" => "required|min:2|max:80",
             "isbn" => "required|min:14|max:17|unique:libros",
-            "portada" => "required|image|mimes:jpeg,jpg,png|max:2048",
+            "portada" => "required|image|mimes:jpeg,jpg,png|max:350",
             "fecha_publicacion" => "required",
             "precio" => "required",
             "genero" => "required|min:2|max:40",
@@ -134,7 +129,6 @@ class LibroController extends Controller
                 $libro->portada = $this->uploadImage($file); //Subimos la imagen y almacenamos la url
             }
     
-            
             $libro->titulo = $request->titulo;
             $libro->autor = $request->autor;
             $libro->editorial = $request->editorial;
@@ -166,42 +160,31 @@ class LibroController extends Controller
             "isbn" => "required|min:14|max:17",
             "fecha_publicacion" => "required",
             "precio" => "required",
-            "genero" => "required|min:5|max:40",
+            "genero" => "required|min:2|max:40",
             "descripcion" => "required|min:5|max:600",
             "valoracion" => "numeric|min:1|max:10",
             "paginas" => "required",
             "stock" => "required",
         ]);
+        if ($request->has("portada")) {
+            $request->validate([
+                "portada" => "image|mimes:jpeg,jpg,png|max:350",
+            ]);
+        }
 
         DB::beginTransaction();
         try {
-            $isbns = Libro::select('isbn')->where('isbn', $request->isbn)->whereNot('isbn', $libro->isbn);
-    
+            $isbns = Libro::select('isbn')->where('isbn', $request->isbn)->whereNot('isbn', $libro->isbn)->get();
             if (count($isbns) != 0) {
                 return redirect()->route('libro.edit', $libro)->withErrors([
                     "isbn" => "La ISBN ya está en uso"
                 ]);
             }
-            // $isbns = Libro::all('isbn');
-    
-            // foreach ($isbns as $isbn) {
-            //     if ($isbn->isbn==$request->isbn && $isbn->isbn!=$libro->isbn) {
-            //         return redirect()->route('libro.edit', $libro)->withErrors([
-            //             "isbn" => "ISBN está en uso"
-            //         ]);
-            //     }
-            // }
     
             if($request->hasFile('portada')){
                 $publicID = $this->getPublicID($libro->portada);
                 Cloudinary::destroy($publicID);
                 $libro->portada = $this->uploadImage($request->portada);
-                // unlink($libro->portada);//Borra la anterior foto registrada
-                // $file = $request->file('portada');//Obtenemos los datos del archivo subido
-                // $destinationPath = "uploads/libros/";//Se define la ruta donde se guardará el archivo subido
-                // $filename = time() . "-" . $file->GetClientOriginalName() ;//concatenamos el nombre del archivo con el tiempo en ms para que no se repita ningún archivo
-                // $uploadSuccess = $request->file('portada')->move($destinationPath, $filename);//Movemos el archivo a la carpeta correspondiente
-                // $libro->portada = $destinationPath . $filename;//Subimos el archivo a la base de datos
             }
                     
             $libro->titulo = $request->titulo;
@@ -228,8 +211,7 @@ class LibroController extends Controller
     }
 
     public function show(Libro $libro){
-        $generos = Libro::select('genero')->distinct()->get();
-        return view("libros.show", compact('libro', 'generos'));
+        return view("libros.show", compact('libro'));
     }
 
     private function uploadImage($file){

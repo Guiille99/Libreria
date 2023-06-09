@@ -10,7 +10,7 @@ class Pedido extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class)->withDefault(['username' => 'Usuario eliminado']);
+        return $this->belongsTo(User::class);
     }
 
     public function direccion(){

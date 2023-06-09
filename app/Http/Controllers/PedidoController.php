@@ -55,7 +55,7 @@ class PedidoController extends Controller
 
     public function getUltimosPedidos(Request $request){
         if ($request->ajax()) {
-            $pedidos = Pedido::orderby('id', 'desc')->get();
+            $pedidos = Pedido::whereNotNull('user_id')->orderby('id', 'desc')->get();
             return datatables()->of($pedidos)
             ->addColumn('user_id', function($pedido){
                 return $pedido->user->username;
@@ -113,10 +113,10 @@ class PedidoController extends Controller
 
     public static function getLastNPedidos(Request $request){
         if ($request->ajax()) {
-            $pedidos = Pedido::orderby('id', 'desc')->take(5);
+            $pedidos = Pedido::whereNotNull('user_id')->orderby('id', 'desc')->take(5);
             return datatables()->of($pedidos)
             ->addColumn('user_id', function($pedido){
-                return ($pedido->user == null) ? 'Usuario eliminado' : $pedido->user->username;
+                return $pedido->user->username;
             })
             ->addColumn('direccion_id', function($pedido){
                 return $pedido->direccion->calle . ", " . $pedido->direccion->numero . " - " . $pedido->direccion->cp ." (" . $pedido->direccion->provincia->nombre . ")";

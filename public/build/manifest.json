@@ -11,7 +11,7 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/css/app.scss": {
-    "file": "assets/app-29acf461.css",
+    "file": "assets/app-ffbb5088.css",
     "src": "resources/js/app.css"
   },
   "resources/fonts/Montserrat-Medium.ttf": {
@@ -27,7 +27,7 @@
     "src": "resources/fonts/WorkSans-Regular.ttf"
   },
   "resources/js/app.css": {
-    "file": "assets/app-29acf461.css",
+    "file": "assets/app-ffbb5088.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
@@ -39,9 +39,9 @@
       "assets/WorkSans-Regular-1b94e0d8.ttf"
     ],
     "css": [
-      "assets/app-29acf461.css"
+      "assets/app-ffbb5088.css"
     ],
-    "file": "assets/app-a2ea979f.js",
+    "file": "assets/app-d9a4510f.js",
     "imports": [
       "_axios-ca6126ea.js"
     ],
@@ -57,7 +57,7 @@
     "src": "resources/js/bootstrap.js"
   },
   "resources/js/calendar.js": {
-    "file": "assets/calendar-8b4261fb.js",
+    "file": "assets/calendar-ebed75dc.js",
     "isEntry": true,
     "src": "resources/js/calendar.js"
   },

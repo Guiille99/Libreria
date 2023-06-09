@@ -57,7 +57,6 @@ $(document).ready(function () {
             $("#modal-tarea").modal("show");
         },
         eventClick: function (info) {
-            // console.log(info.extendedProps.status);
             $("#tareaModal").html("Tarea");
             $("#btnAddTask").hide();
             $("#btnModifyTask").show();
@@ -107,7 +106,6 @@ $(document).ready(function () {
                 colorTexto: tarea.colorTexto,
             },
             success: function (data) {
-                // calendar.fetchEvents();
                 console.log(data);
                 $("#modal-tarea").modal("hide");
                 //Con esto refrescamos la vista
@@ -147,7 +145,6 @@ $(document).ready(function () {
                 "colorTexto": tarea.colorTexto,
             },
             success: function (data) {
-                // calendar.fetchEvents();
                 console.log(data);
                 $("#modal-tarea").modal("hide");
                 //Con esto refrescamos la vista
@@ -161,7 +158,6 @@ $(document).ready(function () {
     }
 
     function eliminarTarea(){
-        // let tarea = recuperarDatosFormulario();
         let token = $("input[name='_token']").val();
         $.ajaxSetup({
             headers: {
@@ -179,8 +175,6 @@ $(document).ready(function () {
                 "token": token,
             },
             success: function (data) {
-                // calendar.fetchEvents();
-                console.log(data);
                 $("#modal-tarea").modal("hide");
                 //Con esto refrescamos la vista
                 calendar.prev();

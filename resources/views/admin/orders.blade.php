@@ -205,11 +205,6 @@
                 },
                 "editor": {
                     "close": "Cerrar",
-                    // "create": {
-                    //     "button": "Nuevo",
-                    //     "title": "Crear Nuevo Registro",
-                    //     "submit": "Crear"
-                    // },
                     "error": {
                         "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
                     }

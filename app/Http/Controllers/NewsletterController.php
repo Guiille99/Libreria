@@ -22,7 +22,6 @@ class NewsletterController extends Controller{
             $email->email = $request->email;
             $email->save();
             DB::commit();
-            // MailController::sendEmailSuscribeNewstler($request);
             dispatch(new SendNewsletterSuscribe($request->email));
             return redirect()->back()->with("message", "Tu suscripción a nuestro noticiero ha sido completada");
         } catch (\Throwable $e) {
@@ -32,14 +31,12 @@ class NewsletterController extends Controller{
     }
 
     public function destroyNewsletterView(User $user){
-        $generos = LibroController::getGeneros();
         $isNewsletterRegister = EmailNewsletter::where('email', $user->email)->exists();
-        return view('users.editPerfil-deleteNewsletter', compact('user', 'isNewsletterRegister', 'generos'));
+        return view('users.editPerfil-deleteNewsletter', compact('user', 'isNewsletterRegister'));
     }
 
     public function destroyNewsletterNoAccountView(){
-        $generos = LibroController::getGeneros();
-        return view('newsletter.unsuscribe', compact('generos'));
+        return view('newsletter.unsuscribe');
     }
 
     public function unsuscribe(Request $request){

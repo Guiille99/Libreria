@@ -58,9 +58,8 @@ class WishlistController extends Controller
     }
 
     public function show(){
-        $generos = LibroController::getGeneros();
         $wishlistItems = (Auth::user()->wishlist == null) ? [] : WishListLibro::where('wishlist_id', Auth::user()->wishlist->id)->paginate(5);
-        return view('wishlist.show', compact('wishlistItems', 'generos'));
+        return view('wishlist.show', compact('wishlistItems'));
     }
 
     public function libroWishlistExist($wishlist, $libro){

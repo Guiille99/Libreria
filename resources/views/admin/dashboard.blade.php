@@ -69,27 +69,6 @@
                     </thead>
     
                     <tbody>
-                        {{-- @foreach ($ultimosPedidos as $pedido)
-                            <tr>
-                                <td>{{$pedido->id}}</td>
-                                <td>{{$pedido->user->username}}</td>
-                                <td>{{$pedido->total}} €</td>
-                                <td>{{$pedido->estado}}</td>
-                                <td>{{$pedido->tipo_pago}}</td>
-                                <td>{{$pedido->direccion->calle . ", " . $pedido->direccion->numero . " - " . $pedido->direccion->cp ." (" . $pedido->direccion->provincia->nombre . ")"}}</td>
-                                <td>{{$pedido->created_at->format('d/m/Y H:i:s')}}</td>
-                                <td>
-                                    <div class='d-flex align-items-center justify-content-center gap-2'>
-                                        <button type='button' id='btn-delete' data-id='$pedido->id' class='d-flex gap-2 btn-delete text-white btn-delete-user' title='Eliminar pedido' data-bs-toggle='modal' data-bs-target='#modal-delete' >
-                                            <i class='bi bi-trash3'></i> 
-                                        </button>
-                        
-                                        <a href="{{route('edit.order', $pedido)}}" class='d-flex gap-2 btn-modify text-white' title='Editar pedido'>
-                                            <i class='bi bi-pencil-square'></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach --}}
                         <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <form id="modal-delete-form" action="" method="post">

@@ -13,9 +13,8 @@ class DireccionController extends Controller
 {
 
     public function create(){
-        $generos = LibroController::getGeneros();
         $provincias = Provincia::all();
-        return view('direcciones.create', compact('generos', 'provincias'));
+        return view('direcciones.create', compact('provincias'));
     }
 
     public function store(Request $request){
@@ -63,9 +62,8 @@ class DireccionController extends Controller
     }
 
     public function edit(User $user, Direccion $direccion){
-        $generos = LibroController::getGeneros();
         $provincias = Provincia::all();
-        return view('direcciones.edit', compact('generos', 'provincias', 'user', 'direccion'));
+        return view('direcciones.edit', compact('provincias', 'user', 'direccion'));
     }
 
     public function update(Request $request, Direccion $direccion){

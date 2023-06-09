@@ -18,7 +18,7 @@
     
                 <div class="libro__info__body">
                     <p><strong>Editorial: </strong>{{$libro->editorial}}</p>
-                    <p><strong>Fecha de publicación: </strong>{{$libro->fecha_publicacion}}</p>
+                    <p><strong>Fecha de publicación: </strong>{{date('d/m/Y', strtotime($libro->fecha_publicacion))}}</p>
                     <p><strong>Género: </strong>{{$libro->genero}}</p>
                     <p><strong>Valoración: </strong>{{$libro->valoracion}}/10</p>
                     <p><strong>Páginas: </strong>{{$libro->paginas}}</p>

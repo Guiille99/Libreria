@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Charts\UsersChart;
 use App\Charts\VentasChart;
 use App\Models\Libro;
+use App\Models\LibroPedido;
 use App\Models\Pedido;
 use App\Models\User;
 use Carbon\Carbon;
@@ -80,13 +81,8 @@ class AdminController extends Controller
     }
 
     private function getLibrosVendidosUltMes(){
-        $pedidosUltMes = Pedido::where(DB::raw('MONTH(created_at)'), '=', Carbon::now()->subMonth()->month)->get();
-        $librosVendidosUltMes = 0;
-        foreach ($pedidosUltMes as $pedido) {
-            foreach ($pedido->libros as $libro) {
-                $librosVendidosUltMes += $libro->pivot->cantidad;
-            }
-        } 
+        $idPedidos = Pedido::where(DB::raw('MONTH(created_at)'), '=', Carbon::now()->subMonth()->month)->pluck('id')->toArray();
+        $librosVendidosUltMes = LibroPedido::whereIn('pedido_id', $idPedidos)->sum('cantidad');
         return $librosVendidosUltMes;
     }
     private function getUsuariosRegistrados(){

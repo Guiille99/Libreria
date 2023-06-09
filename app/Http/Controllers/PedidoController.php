@@ -58,7 +58,7 @@ class PedidoController extends Controller
             $pedidos = Pedido::orderby('id', 'desc')->get();
             return datatables()->of($pedidos)
             ->addColumn('user_id', function($pedido){
-                return $pedido->user->username;
+                return ($pedido->user == null) ? 'Usuario eliminado' : $pedido->user->username;
             })
             ->addColumn('direccion_id', function($pedido){
                 return $pedido->direccion->calle . ", " . $pedido->direccion->numero . " - " . $pedido->direccion->cp ." (" . $pedido->direccion->provincia->nombre . ")";
@@ -116,7 +116,7 @@ class PedidoController extends Controller
             $pedidos = Pedido::orderby('id', 'desc')->take(5);
             return datatables()->of($pedidos)
             ->addColumn('user_id', function($pedido){
-                return $pedido->user->username;
+                return ($pedido->user == null) ? 'Usuario eliminado' : $pedido->user->username;
             })
             ->addColumn('direccion_id', function($pedido){
                 return $pedido->direccion->calle . ", " . $pedido->direccion->numero . " - " . $pedido->direccion->cp ." (" . $pedido->direccion->provincia->nombre . ")";

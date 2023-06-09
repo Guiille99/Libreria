@@ -61,8 +61,9 @@
                         @enderror
                     </div>
 
-                    <div class="mt-4">
+                    <div class="buttons__container mt-4">
                         <button type="submit" class="btn-modify">Modificar post</button>
+                        <a href="{{route('admin.posts')}}" class="btn-back">Volver</a>
                     </div>
                 </div>
             </div>

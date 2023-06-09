@@ -160,7 +160,10 @@ Route::controller(ProvinciaController::class)->group(function(){
     Route::get('admin/provincias', 'show')->middleware('checkadmin')->name('provincias.show');
     Route::get('admin/provincias-all', 'getProvincias')->middleware('checkadmin')->name('provincias.showAll');
     Route::get('admin/provincia/create', 'create')->middleware('checkadmin')->name('provincia.create');
+    Route::get('admin/provincia/{provincia}/edit', 'edit')->middleware('checkadmin')->name('provincia.edit');
     Route::post('admin/provincia/add-provincia', 'store')->middleware('checkadmin')->name('provincia.store');
+    Route::put('admin/provincia/{provincia}/update', 'update')->middleware('checkadmin')->name('provincia.update');  
+    Route::delete('admin/provincia/{provincia}/delete', 'destroy')->middleware('checkadmin')->name('provincia.destroy');  
 });
 
 //RUTAS PARA EL MANEJO DE LAS TAREAS DEL USUARIO

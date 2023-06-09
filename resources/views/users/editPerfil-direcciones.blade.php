@@ -43,7 +43,7 @@
                 <span>Se permite un máximo de 3 direcciones</span>
             </div>
 
-            <ul class="direcciones">
+            <ul class="direcciones p-0">
                 @foreach ($direcciones as $direccion)
                 <li>
                     <form action="{{route('delete-address', [$user, $direccion])}}" method="post">
@@ -56,7 +56,7 @@
                             {{$direccion->calle}}, {{$direccion->numero}}, {{$direccion->cp}} - {{$direccion->provincia->nombre}}
                         </div>
                         <div class="d-flex gap-1">
-                            <a href="{{route('edit.address', [$user, $direccion])}}" class="btn-modify">Ver</a>
+                            <a href="{{route('edit.address', [$user, $direccion])}}" class="btn-modify"> <i class="bi bi-eye-fill"></i> Ver</a>
                             <button class="btn btn-danger">
                                 <i class="bi bi-trash3"></i>
                                 Eliminar

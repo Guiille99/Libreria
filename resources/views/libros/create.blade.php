@@ -145,8 +145,9 @@
                     @enderror
                 </div>
 
-                <div class="mt-4">
+                <div class="buttons__container mt-4">
                     <input type="submit" value="Crear Libro" class="btn-add">
+                    <a href="{{route('libros.index')}}" class="btn-back">Volver</a>
                 </div>
     
             </div>

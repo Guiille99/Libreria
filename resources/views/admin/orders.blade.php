@@ -63,7 +63,7 @@
                 {data: 'total'},
                 {data: 'estado'},
                 {data: 'tipo_pago'},
-                {data: 'direccion_id'},
+                // {data: 'direccion_id'},
                 {data: 'created_at'},
                 {data: 'action'},
             ],

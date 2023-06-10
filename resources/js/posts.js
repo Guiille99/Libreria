@@ -6,10 +6,7 @@ $(document).ready(function(){
     function toggleSpeech() {
         let btnMicrofono = $(".play-btn");
         let isChecked = btnMicrofono.attr("aria-checked");
-        let textoEnriquecido = $(".post__content-body").html();
-        let divTmp = $("<div/>");
-        divTmp.html(textoEnriquecido);
-        let texto = divTmp.text();
+        let texto = $(".post__content-body").text();
         if (isChecked=="false") {
             btnMicrofono.attr("aria-checked", "true");
             btnMicrofono.removeClass("bi-volume-down-fill");

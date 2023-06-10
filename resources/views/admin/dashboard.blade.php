@@ -63,7 +63,6 @@
                         <th>Total</th> 
                         <th>Estado</th> 
                         <th>Tipo de pago</th> 
-                        <th>Dirección</th> 
                         <th>Fecha de compra</th>
                         <th>Acciones</th> 
                     </thead>
@@ -97,8 +96,6 @@
             </div>
         </div>
 
-       
-
         {!! $ventaChart->script() !!}
         {!! $userChart->script() !!}
     </div>
@@ -122,17 +119,16 @@
                 {data: 'total'},
                 {data: 'estado'},
                 {data: 'tipo_pago'},
-                {data: 'direccion_id'},
                 {data: 'created_at'},
                 {data: 'action'},
             ],
             lengthMenu: [5, 10, 15],
             columnDefs: [
-                {orderable: false, target:[7]},
+                {orderable: false, target:[6]},
                 {targets: [2], render: function(data, type, row){
                         return data + " €";
                 }},
-                {targets: [6], render: function(data, type, row){
+                {targets: [5], render: function(data, type, row){
                         return moment.utc(data).local().format('DD/MM/YYYY HH:mm:ss');
                 }},
             ],

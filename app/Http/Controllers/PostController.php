@@ -61,7 +61,7 @@ class PostController extends Controller{
             $post->categoria_id = Categoria::where('nombre', $request->categoria)->first()->id;
             $post->save();
             DB::commit();
-            if ($post->categoria->nombre == "Destacado") {
+            if ($post->categoria->nombre == "Destacados") {
                 dispatch(new SendPostDestacadoEmail($post));
             }
             return redirect()->route('admin.posts')->with("message", "El post ha sido creado correctamente");

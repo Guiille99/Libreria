@@ -30,7 +30,7 @@ class AdminController extends Controller
         $monthName = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
         $ventaChart = new VentasChart;
         $userChart = new UsersChart;
-        $ventasPorMes = Pedido::selectRaw('MONTH(created_at) as mes, SUM(total) as total')->groupBy('mes')->get();
+        $ventasPorMes = Pedido::selectRaw('MONTH(created_at) as mes, SUM(total) as total')->where('estado', '!=', 'Cancelado')->groupBy('mes')->get();
         $usuariosPorMes = User::selectRaw('MONTH(created_at) as mes, COUNT(id) as usuarios')->groupBy('mes')->get();
         foreach ($ventasPorMes as $ventaMes) {
             $meses[]= $monthName[$ventaMes->mes-1];

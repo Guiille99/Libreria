@@ -17,8 +17,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-                {{-- <form id="modal-addTask-form" action="" method="post"> --}}
-                    {{-- @csrf --}}
                     <div class="form-floating col">
                         <textarea id="tarea" class="form-control" placeholder="Tarea"></textarea>
                         <label for="tarea" class="form-label ms-1">Tarea</label>
@@ -82,7 +80,6 @@
                             <small class="text-danger">* {{$message}}</small> <br>
                         @enderror
                     </div>
-                {{-- </form> --}}
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

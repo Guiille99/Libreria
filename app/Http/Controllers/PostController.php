@@ -66,7 +66,8 @@ class PostController extends Controller{
             }
             return redirect()->route('admin.posts')->with("message", "El post ha sido creado correctamente");
         } catch (\Throwable $e) {
-            return redirect()->back()->with("message_error", $e);
+            DB::rollBack();
+            return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }
 

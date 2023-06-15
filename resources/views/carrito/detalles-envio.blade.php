@@ -71,37 +71,6 @@
                 <a href="{{route('address.create')}}" class="d-block mt-3 add-address-link"><i class="bi bi-plus"></i>Añadir dirección</a>
                 @endif
             </div>
-
-            {{-- <div class="mt-2">
-                <label for="provincia" class="form-label">Provincia *</label>
-                <select name="provincia" id="provincia" class="col-12 form-select" required>
-                    @foreach ($provincias as $provincia)
-                        @if (Auth::user()->direcciones()->count()>0 && $provincia->nombre == Auth::user()->getDireccionPrincipal()->provincia->nombre)
-                        <option value="{{$provincia->nombre}}" selected>{{$provincia->nombre}}</option>
-                        @else
-                        <option value="{{$provincia->nombre}}">{{$provincia->nombre}}</option>
-                        @endif
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="mt-2 d-flex flex-column col-md-6">
-                <label for="cp" class="form-label">Código postal *</label>
-                @if (Auth::user()->direcciones()->count()>0)
-                <input type="tel" name="cp" id="cp" class="form-control" value="{{Auth::user()->getDireccionPrincipal()->cp}}" maxlength="5" required>
-                @else
-                <input type="tel" name="cp" id="cp" class="form-control" maxlength="5" required>
-                @endif
-            </div>
-
-            <div class="mt-2 col-md-6">
-                <label for="direccion" class="form-label">Dirección de la calle *</label>
-                @if (Auth::user()->direcciones()->count()>0)
-                <input type="text" name="direccion" id="direccion" value="{{Auth::user()->getDireccionPrincipal()->calle}}, {{Auth::user()->getDireccionPrincipal()->numero}}" class="col-12 form-control" required>
-                @else
-                <input type="text" name="direccion" id="direccion" placeholder="Calle Ejemplo, 27" class="col-12 form-control" required>
-                @endif
-            </div> --}}
         </div>
 
         <div class="pedido__container col-md-5 border pb-4">

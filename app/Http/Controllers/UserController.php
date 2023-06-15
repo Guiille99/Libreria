@@ -79,7 +79,6 @@ class UserController extends Controller
     }
 
     public function destroyAccountPerfil(Request $request, User $user){
-        // dd(Hash::check($request->password, $user->password));
         if (Hash::check($request->password, $user->password)) {
             DB::beginTransaction();
             try {
@@ -96,7 +95,6 @@ class UserController extends Controller
         }
     }
 
-    // public function destroy(User $user){ 
     public function destroy($id){ 
         DB::beginTransaction();
         try {

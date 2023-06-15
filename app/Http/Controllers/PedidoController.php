@@ -91,6 +91,7 @@ class PedidoController extends Controller
             DB::commit();
             return redirect()->back()->with("message", "El pedido ha sido cancelado correctamente");
         } catch (\Throwable $e) {
+            DB::rollBack();
             return redirect()->back()->with("message_error", "Ha ocurrido un error inesperado");
         }
     }

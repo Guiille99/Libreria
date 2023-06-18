@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger("libro_id")->nullable();
             $table->double("precio",4,2);
             $table->unsignedInteger("cantidad");
-            $table->double("subtotal",4,2);
+            $table->double("subtotal",6,2);
             $table->foreign("pedido_id")->references("id")->on("pedidos")->onDelete("cascade")->onUpdate("cascade");
             $table->foreign("libro_id")->references("id")->on("libros")->nullOnDelete()->onUpdate("cascade");
         });

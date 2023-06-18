@@ -148,7 +148,7 @@
 
                 <div class="buttons__container mt-4">
                     <input type="submit" value="Modificar" class="btn-modify">
-                    <a href="{{route('admin.users')}}" class="btn-back">Volver</a>
+                    <a href="{{route('libros.index')}}" class="btn-back">Volver</a>
                 </div>
             </div>
         </div>

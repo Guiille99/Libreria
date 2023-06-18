@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             // $table->dateTime("fecha");
-            $table->double("total",4,2);
+            $table->double("total",10,2);
             $table->string("estado", 45)->default("Pre-admisión");
             $table->string("tipo_pago", 45);
             $table->unsignedBigInteger("user_id")->nullable();

@@ -166,6 +166,9 @@ class CarritoController extends Controller
             foreach (Auth::user()->carrito->items as $item) {
                 $libro = Libro::where("id", $item->libro_id)->first();
                 $libro->stock -= $item->cantidad;
+                if ($libro->stock < 0) {
+                    return redirect()->back()->with("message_error", "Stock insuficiente"); 
+                }
                 $libro->save();
                 $pedido->libros()->attach($libro->id, ["precio"=>$libro->precio, "cantidad"=>$item->cantidad, "subtotal"=>$item->subtotal]);
             }

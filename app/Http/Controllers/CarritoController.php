@@ -167,7 +167,7 @@ class CarritoController extends Controller
                 $libro = Libro::where("id", $item->libro_id)->first();
                 $libro->stock -= $item->cantidad;
                 if ($libro->stock < 0) {
-                    return redirect()->back()->with("message_error", "Stock insuficiente"); 
+                    return redirect()->route('show-cart')->with("message_error", "Stock insuficiente. Pulsa el botón 'Actualizar carrito' y realiza las modificaciones necesarias."); 
                 }
                 $libro->save();
                 $pedido->libros()->attach($libro->id, ["precio"=>$libro->precio, "cantidad"=>$item->cantidad, "subtotal"=>$item->subtotal]);
